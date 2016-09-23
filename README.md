@@ -7,8 +7,6 @@ This is a project in association with Community Purchasing Alliance. MARVL is a 
 This project was created by Kaitlyn Bradshaw, Laurie Skelly, Benedict Schurwanz, and Paul Mitchell over 8 days in September 2016 as part of their final project at Dev Bootcamp.  
 
 ![Status](https://img.shields.io/badge/Rails-ver_5.0-brightgreen.svg)
-![Status](https://img.shields.io/badge/Ruby-ver_2.3.1-green.svg)
-![Status](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ----
 ## Features
 
