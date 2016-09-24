@@ -1,2 +1,4 @@
 log/*.log
 /Gemfile.lock
+/db/*.sql*
+/db/*
