@@ -1,0 +1,13 @@
+<h1>Edit your Information</h1>
+
+<%= form_for @user, :html => {:class => "form-group"}, :url => {:action => 'update', :id => @user.id} do |f| %>
+  <%= f.label :title %>:
+  <%= f.text_field :title %><br>
+  <%= f.label :first_name %>:
+  <%= f.text_field :first_name %><br>
+  <%= f.label :last_name %>:
+  <%= f.text_field :last_name %><br>
+  <%= f.label :email %>:
+  <%= f.text_field :email %><br>
+  <%= f.submit %>
+<% end %>
