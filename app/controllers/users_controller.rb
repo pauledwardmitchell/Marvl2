@@ -6,8 +6,9 @@ class UsersController < ApplicationController
     	@reviews = @user.reviews.limit(5)
  	 	else
     	flash[:access] = "Unauthorized access, please contact an administrator if you believe this error is incorrect."
-    	redirect root
+    	# can change to redirect root_path once we have established what that is
+    	redirect_to '/'
     end
   end
-  
+
 end
