@@ -1,3 +1,9 @@
+ActiveRecord::Base.establish_connection
+ActiveRecord::Base.connection.tables.each do |table|
+  next if table == 'schema_migrations'
+  ActiveRecord::Base.connection.execute("TRUNCATE #{table}")
+end
+
 Organisation.create!(name: "Silver Spring UMC")
 Organisation.create!(name: "KIPP DC")
 
