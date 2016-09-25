@@ -2,8 +2,10 @@ $(document).ready(function(){
 
  
 });
+  
   var map;
-
+  var geocoder;
+  
   var markers = [];
 
   function initMap() {
@@ -12,6 +14,9 @@ $(document).ready(function(){
           center: {lat: 40.7413549, lng: -73.9980244},
           zoom: 13
     });
+
+    geocoder = new google.maps.Geocoder();
+
     
     // var locations = [
     //   {title: 'Park Ave Penthouse', location: {lat: 40.7713024, lng: -73.9632393}},
@@ -22,33 +27,33 @@ $(document).ready(function(){
     //   {title: 'Chinatown Homey Space', location: {lat: 40.7180628, lng: -73.9961237}}
     // ];
         
-        var largeInfowindow = new google.maps.InfoWindow();
+      //   var largeInfowindow = new google.maps.InfoWindow();
         
-        var bounds = new google.maps.LatLngBounds();
-        // The following group uses the location array to create an array of markers on initialize.
-        for (var i = 0; i < locations.length; i++) {
-          // Get the position from the location array.
-          var position = locations[i].location;
-          var title = locations[i].title;
-          // Create a marker per location, and put into markers array.
-          var marker = new google.maps.Marker({
-            map: map,
-            position: position,
-            title: title,
-            animation: google.maps.Animation.DROP,
-            id: i
-          });
-          // Push the marker to our array of markers.
-          markers.push(marker);
-          // Create an onclick event to open an infowindow at each marker.
-          marker.addListener('click', function() {
-            populateInfoWindow(this, largeInfowindow);
-          });
-          bounds.extend(markers[i].position);
-        }
-        // Extend the boundaries of the map for each marker
-        map.fitBounds(bounds);
-      }
+      //   var bounds = new google.maps.LatLngBounds();
+      //   // The following group uses the location array to create an array of markers on initialize.
+      //   for (var i = 0; i < locations.length; i++) {
+      //     // Get the position from the location array.
+      //     var position = locations[i].location;
+      //     var title = locations[i].title;
+      //     // Create a marker per location, and put into markers array.
+      //     var marker = new google.maps.Marker({
+      //       map: map,
+      //       position: position,
+      //       title: title,
+      //       animation: google.maps.Animation.DROP,
+      //       id: i
+      //     });
+      //     // Push the marker to our array of markers.
+      //     markers.push(marker);
+      //     // Create an onclick event to open an infowindow at each marker.
+      //     marker.addListener('click', function() {
+      //       populateInfoWindow(this, largeInfowindow);
+      //     });
+      //     bounds.extend(markers[i].position);
+      //   }
+      //   // Extend the boundaries of the map for each marker
+      //   map.fitBounds(bounds);
+      // }
 
 
 
@@ -56,19 +61,35 @@ $(document).ready(function(){
       // This function populates the infowindow when the marker is clicked. We'll only allow
       // one infowindow which will open at the marker that is clicked, and populate based
       // on that markers position.
-      function populateInfoWindow(marker, infowindow) {
-        // Check to make sure the infowindow is not already opened on this marker.
-        if (infowindow.marker != marker) {
-          infowindow.marker = marker;
-          infowindow.setContent('<div>' + marker.title + '</div>');
-          infowindow.open(map, marker);
-          // Make sure the marker property is cleared if the infowindow is closed.
-          infowindow.addListener('closeclick',function(){
-            infowindow.setMarker(null);
-          });
-        }
-      }
+      // function populateInfoWindow(marker, infowindow) {
+      //   // Check to make sure the infowindow is not already opened on this marker.
+      //   if (infowindow.marker != marker) {
+      //     infowindow.marker = marker;
+      //     infowindow.setContent('<div>' + marker.title + '</div>');
+      //     infowindow.open(map, marker);
+      //     // Make sure the marker property is cleared if the infowindow is closed.
+      //     infowindow.addListener('closeclick',function(){
+      //       infowindow.setMarker(null);
+      //     });
+      //   }
 
+    function codeAddress(address) {
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+
+codeAddress("8900 Georgia Ave, Silver Spring, MD, 20910");
+
+      }
     // function fetchLocationsData() {
     //   return $.ajax({url: 'locations/all', method: 'GET', dataType: 'json'});
     // }
@@ -82,3 +103,5 @@ $(document).ready(function(){
     // }
 
     // var x = getLocations()
+
+    
