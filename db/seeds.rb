@@ -6,4 +6,4 @@ Organisation.create!(name: "KIPP DC")
 
 Location.create!(name: "KIPP DC AIM Academy: Douglass Campus", street_address: "2600 Douglass Road SE", city: "Washington", state: "DC", zip_code: "20020", phone: "202-678-5477", organisation_id: "2")
 
-User.create!(email: "coop@shop.com", password: "password", organisation_id: 1)
+User.create!(first_name: "Coop", last_name: "Shop", email: "coop@shop.com", password: "password", organisation_id: 1)
