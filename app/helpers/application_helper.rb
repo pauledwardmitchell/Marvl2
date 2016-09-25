@@ -1,10 +1,24 @@
 module ApplicationHelper
 
   def logged_in?
-    current_user != nil
-  end 
+    session.keys.include? "user_id"
+  end
 
   def current_user
-    User.find(session[:user_id])
+    if logged_in?
+      User.find(session[:user_id])
+    else
+      nil
+    end
   end
+
+  def admin?
+    if logged_in?
+      current_user.admin?
+    else
+      false
+    end
+  end
+
 end
+
