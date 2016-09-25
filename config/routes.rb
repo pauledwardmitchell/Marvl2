@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create]
   
 
-  resources :locations
   get 'locations/all', to: 'locations#all'
+  resources :locations
 end

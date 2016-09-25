@@ -12,17 +12,6 @@ $(document).ready(function(){
           center: {lat: 40.7413549, lng: -73.9980244},
           zoom: 13
     });
-
-    function fetchLocationsData() {
-      return $.ajax({url: '/locations/all', method: 'GET'});
-    }
-
-    function getLocations() {
-      fetchLocationsData().done(response)
-      debugger
-    }
-
-getLocations()
     
     // var locations = [
     //   {title: 'Park Ave Penthouse', location: {lat: 40.7713024, lng: -73.9632393}},
@@ -60,6 +49,10 @@ getLocations()
         // Extend the boundaries of the map for each marker
         map.fitBounds(bounds);
       }
+
+
+
+
       // This function populates the infowindow when the marker is clicked. We'll only allow
       // one infowindow which will open at the marker that is clicked, and populate based
       // on that markers position.
@@ -75,3 +68,17 @@ getLocations()
           });
         }
       }
+
+    // function fetchLocationsData() {
+    //   return $.ajax({url: 'locations/all', method: 'GET', dataType: 'json'});
+    // }
+
+    // function getLocations() {
+    //   var locations = []
+    //   fetchLocationsData().done(function(response){  
+    //   locations.push(response)
+    //   });
+    //   return locations
+    // }
+
+    // var x = getLocations()
