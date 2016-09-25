@@ -1,18 +1,31 @@
-$(document).ready(function(){
+
+// loop through array of locations that came back from db... build var locations
+  //create var for stringed address... need this to pass into code address fn
+
+// create a marker for each location "(codeAddress function?)"
+
+// push marker into markers array
+// display markers on map
+// make infowindow for each marker - display on click
+
+
+// $(document).ready(function(){
 
  
-});
+// });
   
   var map;
   var geocoder;
   
   var markers = [];
 
+  var allLocations = getLocations()
+
   function initMap() {
     // Constructor creates a new map - only center and zoom are required.
     map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 40.7413549, lng: -73.9980244},
-          zoom: 13
+          center: {lat: 38.889330, lng: -77.035981},
+          zoom: 10
     });
 
     geocoder = new google.maps.Geocoder();
@@ -31,8 +44,12 @@ $(document).ready(function(){
         
       //   var bounds = new google.maps.LatLngBounds();
       //   // The following group uses the location array to create an array of markers on initialize.
-      //   for (var i = 0; i < locations.length; i++) {
+      //   for (var i = 0; i < allLocations.length; i++) {
       //     // Get the position from the location array.
+          
+      //     codeAddress(allLocations[i])
+
+
       //     var position = locations[i].location;
       //     var title = locations[i].title;
       //     // Create a marker per location, and put into markers array.
@@ -73,35 +90,66 @@ $(document).ready(function(){
       //     });
       //   }
 
-    function codeAddress(address) {
-    geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == 'OK') {
-        map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-        });
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
-  }
 
-codeAddress("8900 Georgia Ave, Silver Spring, MD, 20910");
+
+codeAddress(allLocations[0][0]);
+codeAddress(allLocations[0][1]);
 
       }
-    // function fetchLocationsData() {
-    //   return $.ajax({url: 'locations/all', method: 'GET', dataType: 'json'});
-    // }
+// console.log(codeAddress("5625 Shaddelee Ln. W., Fort Myers, FL, 33919"));
+// debugger
+//     function codeAddress(address) {
+//       var addressLatLng = []
 
-    // function getLocations() {
-    //   var locations = []
-    //   fetchLocationsData().done(function(response){  
-    //   locations.push(response)
-    //   });
-    //   return locations
-    // }
+//     geocoder.geocode( { 'address': address}, function(results, status) {
+//       if (status == 'OK') {
+//         addressLatLng = results[0].geometry.location;
+//         debugger
+//         map.setCenter(results[0].geometry.location);
+//         var marker = new google.maps.Marker({
+//             map: map,
+//             position: results[0].geometry.location
+//         });
+//       } else {
+//         alert('Geocode was not successful for the following reason: ' + status);
+//       }
+//       return addressLatLng;
+//     });
 
-    // var x = getLocations()
+//     return addressLatLng;
+//   }
 
-    
+// console.log(codeAddress("8900 Georgia Ave, Silver Spring, MD, 20910"));
+
+    function codeAddress(locationObject) {
+      var address = locationObject.street_address + ", " + locationObject.city + ", " + locationObject.state + ", " + locationObject.zip_code
+      geocoder.geocode( { 'address': address }, function(results) {
+        // if (status == 'OK') {
+          addressLatLng = results[0].geometry.location;
+          map.setCenter(addressLatLng);
+          var marker = new google.maps.Marker({
+              map: map,
+              title: locationObject.name,
+              position: addressLatLng
+          });
+          markers.push(marker);
+
+      });
+    }
+
+
+    function fetchLocationsData() {
+      return $.ajax({url: 'locations/all', method: 'GET', dataType: 'json'});
+    }
+
+    function getLocations() {
+      var locations = []
+      fetchLocationsData().done(function(response){  
+      locations.push(response)
+      });
+      return locations
+    }
+
+
+
+
