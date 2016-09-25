@@ -90,10 +90,13 @@
       //     });
       //   }
 
+    for (var i = 0; i < allLocations[0].length; i++) {
+    	debugger
+      codeAddress(allLocations[0][i]);
+    }
 
-
-codeAddress(allLocations[0][0]);
-codeAddress(allLocations[0][1]);
+// codeAddress(allLocations[0][0]);
+// codeAddress(allLocations[0][1]);
 
       }
 // console.log(codeAddress("5625 Shaddelee Ln. W., Fort Myers, FL, 33919"));
@@ -124,16 +127,15 @@ codeAddress(allLocations[0][1]);
     function codeAddress(locationObject) {
       var address = locationObject.street_address + ", " + locationObject.city + ", " + locationObject.state + ", " + locationObject.zip_code
       geocoder.geocode( { 'address': address }, function(results) {
-        // if (status == 'OK') {
           addressLatLng = results[0].geometry.location;
           map.setCenter(addressLatLng);
           var marker = new google.maps.Marker({
               map: map,
               title: locationObject.name,
-              position: addressLatLng
+              position: addressLatLng,
+              animation: google.maps.Animation.DROP
           });
           markers.push(marker);
-
       });
     }
 
