@@ -9,4 +9,7 @@ class User < ApplicationRecord
   	self.first_name + " " + self.last_name
   end
   
+  def date_format(expiration_date)
+  	expiration_date.strftime("%m/%d/%y")
+  end
 end
