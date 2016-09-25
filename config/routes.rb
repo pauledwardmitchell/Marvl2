@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: "sessions#new"
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create', as: :post_login
@@ -10,4 +11,12 @@ Rails.application.routes.draw do
 
   resources :locations
   get 'locations/all', to: 'locations#all'
+
+  namespace :admin do
+    resources :users
+  end
+
+  resources :users
+
+  get '💩', to: 'sessions#new'
 end
