@@ -7,7 +7,7 @@
 	<h3>Recent Reviews</h3>
 	<div class = "reviews">
 		<% @reviews.each do |review| %>
-		<<%= review.vendor %><br>
+		<%= review.vendor %><br>
 		<%= link_to review.title, review %><br>
 		<%= review.content %><br><br>
 	<%end%>
