@@ -1,4 +1,6 @@
 log/*.log
 /Gemfile.lock
+db/schema.rb
 /db/*.sql*
 /db/*
+/tmp/*
