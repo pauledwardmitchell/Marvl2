@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
   end
-  resources :users, only: [:show, :new, :create]
+
+  resources :users
 
   get '💩', to: 'sessions#new'
 end

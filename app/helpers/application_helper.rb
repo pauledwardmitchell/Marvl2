@@ -4,7 +4,6 @@ module ApplicationHelper
     session.keys.include? "user_id"
   end
 
-  #broke these into two helper methods with the anticipation that eventually we will need to check admin vs. user
   def current_user
     if logged_in?
       User.find(session[:user_id])
@@ -15,9 +14,11 @@ module ApplicationHelper
 
   def admin?
     if logged_in?
-      User.find(session[:user_id]).admin?
+      current_user.admin?
     else
       false
     end
   end
+
 end
+

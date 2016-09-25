@@ -4,9 +4,13 @@
   <%= link_to "manage users", admin_users_path %>
 <% end %>
 
+<% if @user.id == session[:user_id] %>
+	<%= link_to "Edit Your Profile", edit_user_path(@user) %>
+<% end %>
 
 <h3>Organization: <%= @user.organisation.name %></h3>
 <h3>Email: <%= @user.email %></h3>
+<h3>Membership Expiration: <%= @expiration %>
 
 <% if @reviews.length > 0 %>
 	<h3>Recent Reviews</h3>
