@@ -9,17 +9,25 @@
 	<%= link_to "Privacy Settings", edit_privacy_path(@user) %>
 <% end %>
 
-<h3>Membership Expiration: <%= @expiration %></h3>
-<h3>Organization: <%= @user.organisation.name %></h3>
-<h3>Email: <%= @user.email %></h3>
+<% if @privacy.membership_allowed %>
+	<h3>Membership Expiration: <%= @expiration %></h3>
+<% end %>
+<% if @privacy.organisation_allowed %>
+	<h3>Organization: <%= @user.organisation.name %></h3>
+<% end %>
+<% if @privacy.email_allowed %>
+	<h3>Email: <%= @user.email %></h3>
+<% end %>
 
-<% if @reviews.length > 0 %>
-	<h3>Recent Reviews</h3>
-	<div class = "reviews">
-		<% @reviews.each do |review| %>
-		<%= review.vendor.name %><br>
-		<%= review.title %><br>
-		<%= review.content %><br><br>
-	<%end%>
-	</div>
+<% if @privacy.reviews_allowed %>
+	<% if @reviews.length > 0 %>
+		<h3>Recent Reviews</h3>
+		<div class = "reviews">
+			<% @reviews.each do |review| %>
+			<%= review.vendor.name %><br>
+			<%= review.title %><br>
+			<%= review.content %><br><br>
+		<%end%>
+		</div>
+	<% end %>
 <% end %>
