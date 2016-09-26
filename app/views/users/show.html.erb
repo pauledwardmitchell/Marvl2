@@ -1,7 +1,4 @@
 <h1><%= @user.full_name %></h1>
-<% if @user.status == "pending" %>
-	<p>You will recieve full access once an administrator has confirmed your membership</p>
-<% else %>
 	<% if admin? %>
 	  <%= link_to "manage users", admin_users_path %>
 	<% end %>
@@ -24,4 +21,4 @@
 		<%end%>
 		</div>
 	<% end %>
-<% end %>
+
