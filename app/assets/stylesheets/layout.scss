@@ -32,6 +32,16 @@ body {
   margin-bottom: 50px;
   border-bottom: 1px dotted green;
 
+  .brand {
+    display: inline-block;
+  }
+
+  img {
+    color: $blue;
+    display: inline;
+    max-height: 50px;
+  }
+
   h2 {
     margin-top: 0px;
     margin-bottom: 0px;
