@@ -1,0 +1,10 @@
+<h1>Our Current Membership Ambassadors</h1>
+<p>Membership ambassadors are here to answer any questions you might have about CPA</p>
+
+<% @ambassadors.each do |ambassador| %>
+	<% ambassador.users.each do |user| %>
+		<%= user.full_name %><br>
+		<%= user.organisation.name %><br>
+		<%= user.email %><br><br>
+	<% end %>
+<% end %>

@@ -55,6 +55,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def ambassadors
+    @ambassadors = Role.where(name: "Ambassador")
+  end
+
   private
   def user_params
     params.require(:user).permit!
