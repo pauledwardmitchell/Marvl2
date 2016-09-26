@@ -5,6 +5,7 @@ class LocationsController < ApplicationController
 
   def all
     locations = Location.all
+    render json: locations
   end
 
   def show

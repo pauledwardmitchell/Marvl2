@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   	unless @user.id == current_user.id
 			flash[:access] = "Unauthorized access, please contact an administrator if you believe this error is incorrect."
-      redirect_to :back
+      redirect_back
 		end
   end
 
@@ -30,5 +30,32 @@ class UsersController < ApplicationController
       flash[:access] = "Unauthorized access, please contact an administrator if you believe this error is incorrect."
       redirect_to @user
     end
+  end
+
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+    @organisation = Organisation.find_by(name: params[:organisation])
+    if @organisation
+      @user.organisation_id = @organisation.id
+    else
+      @organisation = Organisation.create(name: params[:organisation])
+      @user.organisation_id = @organisation.id
+    end
+    if @user.save
+      redirect_to root_path
+      flash[:new] = "An administrator will notify you when your account has been confirmed"
+    else
+      @errors = @user.errors.full_messages
+      render "new"
+    end
+  end
+
+  private
+  def user_params
+    params.require(:user).permit!
   end
 end
