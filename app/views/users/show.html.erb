@@ -6,6 +6,7 @@
 
 <% if @user.id == session[:user_id] %>
 	<%= link_to "Edit Your Profile", edit_user_path(@user) %>
+	<%= link_to "Change your Privacy Settings", privacy_user_path(@user) %>
 <% end %>
 
 <h3>Organization: <%= @user.organisation.name %></h3>

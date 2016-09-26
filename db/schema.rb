@@ -77,8 +77,9 @@ ActiveRecord::Schema.define(version: 20160925200327) do
     t.string   "email"
     t.string   "password_digest"
     t.integer  "organisation_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.date     "membership_expiration"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "vendors", force: :cascade do |t|
