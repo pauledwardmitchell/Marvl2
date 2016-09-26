@@ -59,7 +59,7 @@ class UsersController < ApplicationController
     @ambassadors = Role.where(name: "Ambassador")
   end
 
-  def vendors
+  def samplevendors
     @vendors = Vendor.all.limit(5)
   end 
 
