@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  resources :locations, only [:index]
+  resources :locations, only: [:index]
   get 'locations/all', to: 'locations#all'
 
   namespace :admin do
