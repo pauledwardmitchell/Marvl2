@@ -31,6 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 gem 'carrierwave', '~> 0.11.2'
+gem 'carrierwave-postgresql-table'
 gem 'mini_magick', '~> 4.5.1'
 
 group :development, :test do
