@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  resources :locations
+  resources :locations, only [:index]
   get 'locations/all', to: 'locations#all'
 
   namespace :admin do
@@ -20,5 +20,6 @@ Rails.application.routes.draw do
 
   resources :users
 
-  get '💩', to: 'sessions#new'
+  get '', to: 'sessions#new'
+
 end
