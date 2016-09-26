@@ -1,4 +1,9 @@
 
+<h1><%= @user.full_name %> 
+	<% if @ambassador %>
+	- Membership Ambassador 
+	<% end %></h1>
+
 <% if admin? %>
   <%= link_to "Manage User", admin_users_path %>
 <% end %>
@@ -6,6 +11,9 @@
 <% if @user.id == session[:user_id] %>
 	<%= link_to "Edit Your Profile", edit_user_path(@user) %>
 	<%= link_to "Privacy Settings", edit_privacy_path(@user) %>
+	<% unless @ambassador %>
+		<%= link_to "Become an Ambassador", new_role_path %>
+	<% end %>
 <% end %>
 
 <% if @privacy.membership_allowed %>
