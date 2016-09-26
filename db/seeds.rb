@@ -27,5 +27,3 @@ end
 50.times do
   Review.create(title: "Review Title " + rand(1..1000).to_s, content: "Jean shorts PBR&B meggings kogi austin. Edison bulb cliche tbh franzen, typewriter polaroid man braid distillery ethical selfies migas humblebrag 8-bit +1 pickled.", rating: rand(1..5), vendor_id: rand(1..10), user_id: 1)
 end
-
-
