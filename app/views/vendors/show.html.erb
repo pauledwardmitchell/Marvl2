@@ -15,8 +15,9 @@
 	<h3>Recent Reviews</h3>
 	<div class = "reviews">
 		<% @reviews.each do |review| %>
-		<%= review.vendor %><br>
-		<%= link_to review.title, review %><br>
+		<%= review.user.full_name %><br>
+		<%= link_to review.title, [review.vendor, review] %><br>
+		<%= review.rating %> stars<br>
 		<%= review.content %><br><br>
 	<%end%>
 	</div>

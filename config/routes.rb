@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :new, :create]
   
-  resources :vendors
+  resources :vendors do
+    resources :reviews
+  end
 
   resources :locations
   get 'locations/all', to: 'locations#all'
