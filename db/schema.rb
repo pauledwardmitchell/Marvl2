@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20160926161832) do
     t.boolean  "email_allowed",        default: true
     t.boolean  "organisation_allowed", default: true
     t.boolean  "membership_allowed",   default: true
+    t.boolean  "reviews_allowed",      default: true
     t.integer  "user_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false

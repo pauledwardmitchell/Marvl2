@@ -6,26 +6,26 @@
     <th>Show</th>
     <th>Hide</th>
   </tr>
-  <%= form_for @privacy, :html => {:class => "form-group"}, :url => {:action => 'update', :user_id => @user.id} do |f| %>
+  <%= form_for @privacy, :html => {:class => "form-group"}, :url => {:action => 'update'} do |f| %>
   <tr>
     <td><%= f.label :Email %>:</td>
-    <td><%= f.radio_button :email_allowed, 'show', :checked => true  %></td>
-    <td><%= f.radio_button :email_allowed, 'hide', :checked =>false  %><br></td>
+    <td><%= f.radio_button :email_allowed, 'true'  %></td>
+    <td><%= f.radio_button :email_allowed, 'false' %><br></td>
   </tr>
   <tr>
     <td><%= f.label :Organization %>:</td>
-  	<td><%= f.radio_button :organisation_allowed, 'show', :checked => true  %></td>
-    <td><%= f.radio_button :organisation_allowed, 'hide', :checked =>false  %><br></td>
+  	<td><%= f.radio_button :organisation_allowed, 'true' %></td>
+    <td><%= f.radio_button :organisation_allowed, 'false' %><br></td>
   </tr>
   <tr>
-    <td><%= f.label :membership_expiration %>:</td>
-    <td><%= f.radio_button :membership_allowed, 'show', :checked => true  %></td>
-    <td><%= f.radio_button :membership_allowed, 'hide', :checked =>false  %><br></td>
+    <td><%= f.label :Membership_Expiration %>:</td>
+    <td><%= f.radio_button :membership_allowed, 'true' %></td>
+    <td><%= f.radio_button :membership_allowed, 'false' %><br></td>
   </tr>
   <tr>
-    <td><%= f.label :reviews %>:</td>
-    <td><%= f.radio_button :reviews_allowed, 'show', :checked => true  %></td>
-    <td><%= f.radio_button :reviews_allowed, 'hide', :checked =>false  %><br></td>
+    <td><%= f.label :Reviews %>:</td>
+    <td><%= f.radio_button :reviews_allowed, 'true' %></td>
+    <td><%= f.radio_button :reviews_allowed, 'false' %><br></td>
   </tr>
   </table>
   <%= f.submit %>
