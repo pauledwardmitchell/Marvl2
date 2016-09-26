@@ -1,5 +1,12 @@
 <h1>Here is the page for <%= @vendor.name %>!</h1>
 
+<h2>This vendor is in the following service categories:</h2>
+<ul>
+  <% @vendor.categories.each do |category| %>
+    <li><%= category.name %></li>
+  <% end %>
+</ul>
+
 <% if admin? %>
   <%= link_to "manage vendors", admin_vendors_path %>
 <% end %>

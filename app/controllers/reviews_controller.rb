@@ -21,6 +21,22 @@ class ReviewsController < ApplicationController
     end 
   end
 
+  def edit
+    @review = Review.find(params[:id])
+    @vendor = Vendor.find(params[:vendor_id])
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    @vendor = Vendor.find(params[:vendor_id])
+    
+    if @review.update(review_params)
+      redirect_to @vendor
+    else
+      render 'edit'
+    end
+  end
+
   private
     def review_params
       params.require(:review).permit(:title, :content, :rating, :flagged, :vendor_id, :user_id)

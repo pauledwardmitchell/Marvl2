@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
+  resources :categories, only: [:index]
+  
   resources :locations, only: [:index]
   get 'locations/all', to: 'locations#all'
 
