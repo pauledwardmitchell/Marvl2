@@ -12,7 +12,7 @@ Location.create(name: "Main campus", street_address: "8900 Georgia Ave", city: "
 Location.create(name: "KIPP DC AIM Academy: Douglass Campus", street_address: "2600 Douglass Road SE", city: "Washington", state: "DC", zip_code: "20020", phone: "202-678-5477", organisation_id: organisation_two.id)
 
 coop = User.create(first_name: "Coop", last_name: "Shop", email: "coop@shop.com", password: "password", organisation_id: organisation.id, membership_expiration: "12/01/16")
-fake = User.create(first_name: 'Fake', last_name: 'Member', email: 'fake@person.com', password: 'fakeperson', organisation_id: organisation_two.id)
+fake = User.create(first_name: 'Fake', last_name: 'Member', email: 'fake@person.com', password: 'fakeperson', organisation_id: organisation_two.id, membership_expiration: "09/26/17")
 
 member = Role.create name: "Member"
 admin = Role.create name: "Admin"
