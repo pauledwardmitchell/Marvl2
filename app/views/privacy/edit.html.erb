@@ -1,12 +1,12 @@
 <h1>Manage your Privacy Settings</h1>
 
+  <%= form_for @privacy, :html => {:class => "form-group"}, :url => {:action => 'update'} do |f| %>
 <table>
   <tr>
     <th></th>
     <th>Show</th>
     <th>Hide</th>
   </tr>
-  <%= form_for @privacy, :html => {:class => "form-group"}, :url => {:action => 'update'} do |f| %>
   <tr>
     <td><%= f.label :Email %>:</td>
     <td><%= f.radio_button :email_allowed, 'true'  %></td>
@@ -27,6 +27,8 @@
     <td><%= f.radio_button :reviews_allowed, 'true' %></td>
     <td><%= f.radio_button :reviews_allowed, 'false' %><br></td>
   </tr>
+  <tr>
+  <td><%= f.submit %></td>
+  </tr>
   </table>
-  <%= f.submit %>
 <% end %>
