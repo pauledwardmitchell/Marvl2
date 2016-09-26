@@ -6,6 +6,10 @@
 
 <% if admin? %>
   <%= link_to "Manage User", admin_users_path %>
+  <%= form_for @roles, url: url_for(controller: "roles", action: "admin" ) do |f| %>
+  <%= hidden_field_tag "user_id", @user.id %>
+  <%= f.submit "Make #{@user.full_name} Admin" %>
+<% end %>
 <% end %>
 
 <% if @user.id == session[:user_id] %>

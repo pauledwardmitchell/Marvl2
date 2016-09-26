@@ -7,6 +7,7 @@ class UsersController < ApplicationController
       @expiration = @user.date_format(@user.membership_expiration)
       @privacy = @user.privacy
       @ambassador = @user.ambassador?
+      @roles = Role.new
     else
       flash[:access] = "Unauthorized access, please contact an administrator if you believe this error is incorrect."
       # can change to redirect root_path once we have established what that is
