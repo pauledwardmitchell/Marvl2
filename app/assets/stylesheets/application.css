@@ -1,3 +1,11 @@
 .reviews {
 	/*reviews on the user page are tagged with this div class*/
 }
+
+.alert {
+	/*div tag for errors / flash notices*/
+}
+
+.form-group {
+	/*form tag*/
+}
