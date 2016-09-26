@@ -1,7 +1,8 @@
 $main:#333;
 $green:#00964E;
+$green-light:#DEF3DE;
 $blue:#008CC1;
-
+$blue-light: #EAF2FA;
 
 h1, h2 {
   font-family: 'Big John', sans-serif;
@@ -15,18 +16,26 @@ h3, h4 {
 body {
   font-family: 'Karla', Helvetica, sans-serif;
   color: #333;
+  background-color: $blue-light;
 }
 
 .container {
-  margin: 20px auto;
+  margin: 50px auto;
   width: 80%;
   padding: 20px;
   border: 1px dotted $green;
   min-height: 600px;
+  background-color: mintcream;
 }
 
-.nav h2{
+.nav {
+  margin-bottom: 50px;
+  border-bottom: 1px dotted green;
 
+  h2 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
 }
 
 .right a, .left a {
