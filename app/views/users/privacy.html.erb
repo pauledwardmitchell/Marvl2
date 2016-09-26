@@ -1,0 +1,14 @@
+<h1>Manage your Privacy Settings</h1>
+
+<%= form_for @privacy, :html => {:class => "form-group"}, :url => {:action => 'update', :user_id => @user.id} do |f| %>
+  <%= f.label :Email %>:
+  <%= f.radio_button :email_allowed, 'show', :checked => true  %>
+  <%= f.radio_button :email_allowed, 'hide', :checked =>false  %><br>
+  <%= f.label :Organization %>:
+	<%= f.radio_button :organisation_allowed, 'show', :checked => true  %>
+  <%= f.radio_button :organisation_allowed, 'hide', :checked =>false  %><br>
+  <%= f.label :membership_expiration %>:
+  <%= f.radio_button :membership_allowed, 'show', :checked => true  %>
+  <%= f.radio_button :membership_allowed, 'hide', :checked =>false  %><br>
+  <%= f.submit %>
+<% end %>
