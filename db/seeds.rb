@@ -7,7 +7,7 @@ end
 
 organisation = Organisation.create!(name: "Silver Spring UMC")
 organisation_two = Organisation.create!(name: "KIPP DC")
-Organisation.create!(name: "E. L. Haynes Public Charter School")
+Organisation.create(name: "E. L. Haynes Public Charter School")
 
 
 Location.create(name: "Main campus", street_address: "8900 Georgia Ave", city: "Silver Spring", state: "MD", zip_code: "20910", phone: "(301) 587-1215", organisation_id: "1")
