@@ -34,6 +34,9 @@ root@coop-shop:~# git pull origin master
 
 * once you are inside `Marvl/`, it's the same repo that you have on your local machine. pull any new changes from github.
 
+> note: if you need to merge anything, it will open an unfamiliar terminal editor (called nano; see screencap below). to save and exit, type `ctrl-x` and it will disappear
+
+![](/md_assets/getoutofnano.jpg)
 ---
 
 >```unix
@@ -77,4 +80,7 @@ root@coop-shop:~# service unicorn restart
 * now you've made all of the changes. restarting the web server will make them appear on the internet.
 
 
-You're done! Log out of root and go have a snack. Good work.
+
+You're done! 
+
+Quickly check the server (http://45.55.84.132/)[http://45.55.84.132/) to eyeball-verify that we have not blown anything up, then log out of root and go have a snack! Good work.
