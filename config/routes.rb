@@ -18,7 +18,10 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  resources :users
+  resources :users do 
+    get "/privacy", :to => "users#privacy"
+  end
+
 
   get '💩', to: 'sessions#new'
 end
