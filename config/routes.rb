@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create', as: :post_login
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users, only: [:show, :new, :create]
+  resources :users, only: [:edit, :show, :new, :create]
+
+  resources :privacy, only: [:edit, :update]
   
   resources :vendors do
     resources :reviews
@@ -16,10 +18,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
-  end
-
-  resources :users do 
-    get "/privacy", :to => "users#privacy"
   end
 
 

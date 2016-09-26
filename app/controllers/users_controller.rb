@@ -30,10 +30,4 @@ class UsersController < ApplicationController
       redirect_to @user
     end
   end
-
-  def privacy
-    @user = User.find(params[:user_id])
-    @privacy = Privacy.find_by(user_id: @user.id)
-  end
-
 end

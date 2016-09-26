@@ -6,7 +6,7 @@
 
 <% if @user.id == session[:user_id] %>
 	<%= link_to "Edit Your Profile", edit_user_path(@user) %>
-	<%= link_to "Privacy Settings", user_privacy_path(@user) %>
+	<%= link_to "Privacy Settings", edit_privacy_path(@user) %>
 <% end %>
 
 <h3>Membership Expiration: <%= @expiration %></h3>
@@ -17,8 +17,8 @@
 	<h3>Recent Reviews</h3>
 	<div class = "reviews">
 		<% @reviews.each do |review| %>
-		<%= review.vendor %><br>
-		<%= link_to review.title, review %><br>
+		<%= review.vendor.name %><br>
+		<%= review.title %><br>
 		<%= review.content %><br><br>
 	<%end%>
 	</div>
