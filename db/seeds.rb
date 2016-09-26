@@ -14,6 +14,8 @@ Location.create(name: "KIPP DC AIM Academy: Douglass Campus", street_address: "2
 coop = User.create(first_name: "Coop", last_name: "Shop", email: "coop@shop.com", password: "password", organisation_id: organisation.id, membership_expiration: "12/01/16")
 fake = User.create(first_name: 'Fake', last_name: 'Member', email: 'fake@person.com', password: 'fakeperson', organisation_id: organisation_two.id)
 
+Privacy.create(user_id: coop.id)
+
 member = Role.create name: "Member"
 admin = Role.create name: "Admin"
 

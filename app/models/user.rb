@@ -2,6 +2,7 @@ class User < ApplicationRecord
   belongs_to :organisation
   has_many :reviews
   has_many :votes
+  has_one :privacy
   has_and_belongs_to_many :roles
 
   has_secure_password
