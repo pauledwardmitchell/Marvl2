@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: "sessions#new"
 
+  get '/ambassadors', to: 'users#ambassadors'
+  get '/vendors', to: 'users#vendors'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create', as: :post_login
   delete '/logout', to: 'sessions#destroy'

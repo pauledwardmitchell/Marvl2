@@ -55,6 +55,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def ambassadors
+    @ambassadors = Role.where(name: "Ambassador")
+  end
+
+  def vendors
+    @vendors = Vendor.all.limit(5)
+  end 
+
   private
   def user_params
     params.require(:user).permit!
