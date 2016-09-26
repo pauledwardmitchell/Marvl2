@@ -1,0 +1,14 @@
+<h1>REVIEW: <%= @review.title %> </h1>
+
+<% if admin? %>
+  <%= link_to "Edit This Review", edit_vendor_review_path(@vendor, @review) %>
+<% end %>
+
+<% if @review.user_id == session[:user_id] %>
+  <%= link_to "Edit This Review", edit_vendor_review_path(@vendor, @review) %>
+<% end %>
+
+<div>
+  <p>CONTENT: <%= @review.content %> %></p>
+  <p>RATING: <%= @review.rating %> stars</p>
+</div>
