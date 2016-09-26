@@ -1,7 +1,7 @@
 class PrivacyController < ApplicationController
 
 	def edit
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
     @privacy = Privacy.find_by(user_id: @user.id)
 	end
 
