@@ -1,14 +1,27 @@
 <h1>Manage your Privacy Settings</h1>
 
+<table>
+<tr>
+  <th></th>
+  <th>Show</th>
+  <th>Hide</th>
+</tr>
 <%= form_for @privacy, :html => {:class => "form-group"}, :url => {:action => 'update', :user_id => @user.id} do |f| %>
-  <%= f.label :Email %>:
-  <%= f.radio_button :email_allowed, 'show', :checked => true  %>
-  <%= f.radio_button :email_allowed, 'hide', :checked =>false  %><br>
-  <%= f.label :Organization %>:
-	<%= f.radio_button :organisation_allowed, 'show', :checked => true  %>
-  <%= f.radio_button :organisation_allowed, 'hide', :checked =>false  %><br>
-  <%= f.label :membership_expiration %>:
-  <%= f.radio_button :membership_allowed, 'show', :checked => true  %>
-  <%= f.radio_button :membership_allowed, 'hide', :checked =>false  %><br>
+<tr>
+  <td><%= f.label :Email %>:</td>
+  <td><%= f.radio_button :email_allowed, 'show', :checked => true  %></td>
+  <td><%= f.radio_button :email_allowed, 'hide', :checked =>false  %><br></td>
+</tr>
+<tr>
+  <td><%= f.label :Organization %>:</td>
+	<td><%= f.radio_button :organisation_allowed, 'show', :checked => true  %></td>
+  <td><%= f.radio_button :organisation_allowed, 'hide', :checked =>false  %><br></td>
+</tr>
+<tr>
+  <td><%= f.label :membership_expiration %>:</td>
+  <td><%= f.radio_button :membership_allowed, 'show', :checked => true  %></td>
+  <td><%= f.radio_button :membership_allowed, 'hide', :checked =>false  %><br></td>
+</tr>
+</table>
   <%= f.submit %>
 <% end %>
