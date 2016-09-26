@@ -1,10 +1,23 @@
 <h1>Here are all the vendors in MARVL</h1>
 
-
 <ul>
   <% @vendors.each do |vendor| %>
-    <p>
+    <li>
       <%= link_to vendor.name, vendor %>
-    </p>
+    </li>
+  <% end %>
+</ul>
+
+
+<h1>Here are all the vendors in MARVL sorted by category</h1>
+
+<ul>
+  <% @categories.each do |category| %>
+    <li><%= category.name %></li>
+      <ul>
+        <% category.vendors.each do |vendor| %>
+        <li><%= link_to vendor.name, vendor %></li>
+        <% end %>
+      </ul>
   <% end %>
 </ul>

@@ -1,6 +1,6 @@
 class Vendor < ApplicationRecord
-  has_many :services
-  has_many :categories, through: :services
+  has_many :offerings
+  has_many :categories, through: :offerings
   has_many :reviews
 
   def full_address

@@ -2,6 +2,7 @@ class VendorsController < ApplicationController
 
   def index
     @vendors = Vendor.all
+    @categories = Category.all
   end
 
   def show
