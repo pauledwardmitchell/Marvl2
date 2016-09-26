@@ -1,0 +1,7 @@
+<h1>Sample Vendors</h1>
+<p>Upon joining CPA, you will receive access to a full list of vendors with user reviews</p>
+
+<% @vendors.each do |vendor| %>
+	<%= vendor.name %><br>
+	<%= vendor.full_address %><br><br>
+<% end %>
