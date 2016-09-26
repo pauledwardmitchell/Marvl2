@@ -4,6 +4,7 @@ class CreatePrivacies < ActiveRecord::Migration[5.0]
     	t.boolean :email_allowed, default: true
       t.boolean :organisation_allowed, default: true
       t.boolean :membership_allowed, default: true
+      t.boolean :reviews_allowed, default: true
       t.integer :user_id
       
       t.timestamps
