@@ -4,12 +4,12 @@
   <%= link_to "manage vendors", admin_vendors_path %>
 <% end %>
 
-
 <h3>Address: <%= @vendor.street_address %>, <%= @vendor.city %>, <%= @vendor.state %>, <%= @vendor.zip_code %></h3>
 <h3>Phone: <%= @vendor.phone %></h3>
 <h3>Email: <%= %></h3>
 <h3>Website: <%= %></h3>
 
+<%= link_to "Add a review of this vendor", new_vendor_review_path(@vendor) %>
 
 <% if @reviews.length > 0 %>
 	<h3>Recent Reviews</h3>
