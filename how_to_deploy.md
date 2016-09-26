@@ -83,4 +83,4 @@ root@coop-shop:~# service unicorn restart
 
 You're done! 
 
-Quickly check the server (http://45.55.84.132/)[http://45.55.84.132/) to eyeball-verify that we have not blown anything up, then log out of root and go have a snack! Good work.
+Quickly check the server [http://45.55.84.132/](http://45.55.84.132/) to eyeball-verify that we have not blown anything up, then log out of root and go have a snack! Good work.
