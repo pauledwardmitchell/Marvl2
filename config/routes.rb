@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :roles, only: [:new, :create]
+
   resources :privacy, only: [:edit, :update]
   
   resources :vendors do
