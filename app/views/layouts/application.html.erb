@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'layout' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -13,7 +14,9 @@
       <div class="nav">
         <div class="left">
           <%# owl icon %>
-          <h2 class="brand">MARVL</h2> <%# linkify this %>
+          <div class="brand">
+            <h2>MARVL</h2> <%# linkify this %>
+          </div>
         </div>
         <div class="right">
           <%# login/logout logic %>
