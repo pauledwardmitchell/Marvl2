@@ -1,0 +1,40 @@
+<%= form_for [@vendor, @review] do |f| %>
+
+  <% if @review.errors.any? %>
+    <div id="errors">
+      <h2><%= pluralize(@review.errors.count, "error") %> prevented this review from saving.</h2>
+      <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <p>
+    <%= f.label :title, "Review Title:" %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :content, "Review Content:" %><br>
+    <%= f.text_area :content %>
+  </p>
+  <p>
+  	<p>Rate your experience with this vendor. (1 = Poor, 5 = Excellent)</p>
+  	<%= f.label :rating, "1" %>
+    <%= f.radio_button :rating, "1" %>
+  	<%= f.label :rating, "2" %>
+    <%= f.radio_button :rating, "2" %>
+  	<%= f.label :rating, "3" %>
+    <%= f.radio_button :rating, "3" %>
+  	<%= f.label :rating, "4" %>
+    <%= f.radio_button :rating, "4" %>
+  	<%= f.label :rating, "5" %>
+    <%= f.radio_button :rating, "5" %>
+  </p>
+  
+  <%= f.hidden_field :vendor_id, :value => params[:vendor_id] %>
+  <%= f.hidden_field :user_id, :value => session[:user_id] %>
+
+  <%= f.submit "Submit Review" %>
+<% end %>

@@ -33,3 +33,19 @@ end
   Review.create(title: "Review Title " + rand(1..1000).to_s, content: "Jean shorts PBR&B meggings kogi austin. Edison bulb cliche tbh franzen, typewriter polaroid man braid distillery ethical selfies migas humblebrag 8-bit +1 pickled.", rating: rand(1..5), vendor_id: rand(1..10), user_id: 1)
 end
 
+Category.create!(name: "Carpet / Flooring")
+Category.create!(name: "Doors")
+Category.create!(name: "Electrician")
+Category.create!(name: "Fire Alarm")
+Category.create!(name: "Hardscapes")
+Category.create!(name: "HVAC")
+Category.create!(name: "Insurance")
+Category.create!(name: "Kitchen Cleaning")
+Category.create!(name: "Painter")
+Category.create!(name: "Pest Control")
+Category.create!(name: "Pipe Organ Repair")
+
+30.times do
+  Offering.create!(vendor_id: rand(1..10), category_id: rand(1..10))
+end
+

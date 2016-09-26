@@ -1,15 +1,22 @@
 <h1>Here is the page for <%= @vendor.name %>!</h1>
 
+<h2>This vendor is in the following service categories:</h2>
+<ul>
+  <% @vendor.categories.each do |category| %>
+    <li><%= category.name %></li>
+  <% end %>
+</ul>
+
 <% if admin? %>
   <%= link_to "manage vendors", admin_vendors_path %>
 <% end %>
-
 
 <h3>Address: <%= @vendor.street_address %>, <%= @vendor.city %>, <%= @vendor.state %>, <%= @vendor.zip_code %></h3>
 <h3>Phone: <%= @vendor.phone %></h3>
 <h3>Email: <%= %></h3>
 <h3>Website: <%= %></h3>
 
+<%= link_to "Add a review of this vendor", new_vendor_review_path(@vendor) %>
 
 <% if @reviews.length > 0 %>
 	<h3>Recent Reviews</h3>
