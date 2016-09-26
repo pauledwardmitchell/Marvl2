@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create', as: :post_login
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users, only: [:show, :new, :create]
+  resources :users
+
+  resources :privacy, only: [:edit, :update]
   
   resources :vendors do
     resources :reviews
@@ -18,7 +20,6 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  resources :users
 
   get '', to: 'sessions#new'
 

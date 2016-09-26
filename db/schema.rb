@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20160926170041) do
 
   # These are extensions that must be enabled in order to support this database
@@ -41,6 +42,16 @@ ActiveRecord::Schema.define(version: 20160926170041) do
     t.datetime "membership_expiration"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+  end
+
+  create_table "privacies", force: :cascade do |t|
+    t.boolean  "email_allowed",        default: true
+    t.boolean  "organisation_allowed", default: true
+    t.boolean  "membership_allowed",   default: true
+    t.boolean  "reviews_allowed",      default: true
+    t.integer  "user_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "reviews", force: :cascade do |t|
