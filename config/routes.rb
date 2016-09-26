@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "sessions#new"
 
   get '/ambassadors', to: 'users#ambassadors'
-  get '/vendors', to: 'users#vendors'
+  get '/samplevendors', to: 'users#samplevendors'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create', as: :post_login
   delete '/logout', to: 'sessions#destroy'
