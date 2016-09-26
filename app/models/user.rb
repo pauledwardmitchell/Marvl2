@@ -26,6 +26,12 @@ class User < ApplicationRecord
     self.roles.include? admin
   end
 
+
+  def ambassador?
+    ambassador = Role.find_by name: 'Ambassador'
+    self.roles.include? ambassador
+  end
+
   def member?
     member = Role.find_by name 'Member'
     self.roles.include? member

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     	@reviews = @user.reviews.limit(5)
       @expiration = @user.date_format(@user.membership_expiration)
       @privacy = @user.privacy
+      @ambassador = @user.ambassador?
     else
       flash[:access] = "Unauthorized access, please contact an administrator if you believe this error is incorrect."
       # can change to redirect root_path once we have established what that is
@@ -53,6 +54,14 @@ class UsersController < ApplicationController
       render "new"
     end
   end
+
+  def ambassadors
+    @ambassadors = Role.where(name: "Ambassador")
+  end
+
+  def vendors
+    @vendors = Vendor.all.limit(5)
+  end 
 
   private
   def user_params
