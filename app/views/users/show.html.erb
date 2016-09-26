@@ -1,11 +1,11 @@
-
-<h1><%= @user.full_name %> 
+<h1><%= @user.full_name %>
 	<% if @ambassador %>
-	- Membership Ambassador 
-	<% end %></h1>
+	- Membership Ambassador
+	<% end %>
+</h1>
 
 <% if admin? %>
-  <%= link_to "Manage User", admin_users_path %>
+  <%= link_to "Manage Users", admin_users_path %>
 <% end %>
 
 <% if @user.id == session[:user_id] %>

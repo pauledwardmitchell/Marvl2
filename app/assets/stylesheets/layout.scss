@@ -1,0 +1,84 @@
+$main:#333;
+$green:#00964E;
+$green-light:#DEF3DE;
+$blue:#008CC1;
+$blue-light: #EAF2FA;
+
+h1, h2 {
+  font-family: 'Big John', sans-serif;
+  color: $blue;
+}
+
+h3, h4 {
+  font-family: 'Arvo', Palatino, serif;
+}
+
+body {
+  font-family: 'Karla', Helvetica, sans-serif;
+  color: #333;
+  background-color: $blue-light;
+}
+
+.container {
+  margin: 50px auto;
+  width: 80%;
+  padding: 20px;
+  border: 1px dotted $green;
+  min-height: 600px;
+  background-color: mintcream;
+}
+
+.nav {
+  margin-bottom: 50px;
+  border-bottom: 1px dotted green;
+
+  h2 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+}
+
+.right a, .left a {
+    text-decoration: none;
+    color: #444;
+}
+
+.right {
+    float:right;
+}
+
+.left, .right {
+    display: inline-block;
+}
+
+.form-container {
+
+  display: inline-block;
+  width: 60%;
+  margin: auto 20%;
+
+  form {
+
+    display: block;
+    margin: 10px;
+    padding: 20px;
+    border: 1px dotted $green;
+
+    label {
+
+      margin-right: 20px;
+      width: 20%;
+      display: inline-block;
+
+    }
+
+    input[type="text"], input[type="password"] {
+
+      width: 65%;
+      margin: 10px 10px 20px 0px;
+      height: 2em;
+
+    }
+  }
+}
+
