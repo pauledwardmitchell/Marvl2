@@ -36,6 +36,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @organisation = Organisation.find_by(name: params[:organisation])
+    if @organisation
+      @user.organisation_id = @organisation.id
+    else
+      @organisation = Organisation.create(name: params[:organisation])
+      @user.organisation_id = @organisation.id
+    end
     if @user.save
       redirect_to root_path
       flash[:new] = "An administrator will notify you when your account has been confirmed"
