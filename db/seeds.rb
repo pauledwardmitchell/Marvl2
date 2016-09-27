@@ -7,7 +7,8 @@ end
 
 organisation = Organisation.create!(name: "Silver Spring UMC")
 organisation_two = Organisation.create!(name: "KIPP DC")
-Organisation.create(name: "E. L. Haynes Public Charter School")
+organisations = [organisation, organisation_two]
+organisations << Organisation.create(name: "E. L. Haynes Public Charter School")
 
 
 Location.create(name: "Main campus", street_address: "8900 Georgia Ave", city: "Silver Spring", state: "MD", zip_code: "20910", phone: "(301) 587-1215", organisation_id: "1")
@@ -28,6 +29,15 @@ coop.add_role(admin.id)
 coop.status = "ready_to_party"
 fake.add_role(member.id)
 
+30.times do
+  user = User.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password)
+  user.organisation_id = organisations[rand(0..2)].id
+  if user.save
+    user.add_role(member.id)
+    user.status = 'ready_to_party'
+  end
+end
+
 vendors = []
 10.times do
   vendors << Vendor.create(name: Faker::Company.name, street_address: "8900 Georgia Ave", city: "Silver Spring", state: "MD", zip_code: "20910", phone: "(301) 555-1215")
@@ -35,13 +45,11 @@ end
 
 
 50.times do
-  Review.create(title: "Review Title " + rand(1..1000).to_s, content: "Jean shorts PBR&B meggings kogi austin. Edison bulb cliche tbh franzen, typewriter polaroid man braid distillery ethical selfies migas humblebrag 8-bit +1 pickled.", rating: rand(1..5), vendor_id: rand(1..10), user_id: 1)
+  Review.create(title: "Review Title " + rand(1..1000).to_s, content: "Jean shorts PBR&B meggings kogi austin. Edison bulb cliche tbh franzen, typewriter polaroid man braid distillery ethical selfies migas humblebrag 8-bit +1 pickled.", rating: rand(1..5), vendor_id: rand(1..10), user_id: rand(3..32))
 end
 
 cat_names = %w(Carpet/Flooring Doors Electrician Fire\ Alarm Hardscapes HVAC Insurance Kitchen Cleaning Painter Pest\ Control Pipe\ Organ\ Repair)
-p cat_names
 categories = cat_names.map {|name| Category.create name: name}
-p categories
 
 30.times do
   vendor_index = rand(0..9)
