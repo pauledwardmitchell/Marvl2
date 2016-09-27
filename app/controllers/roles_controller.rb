@@ -23,7 +23,7 @@ class RolesController < ApplicationController
 		@user = User.find(params[:user_id])
 		@role = Role.find_by(name: "Member")
 		@user.add_role(@role.id)
-		# UserMailer.membership(@user).deliver_now
+		UserMailer.membership(@user).deliver_now
 		flash[:role] = "Membership approved"
 		redirect_to @user
 	end
