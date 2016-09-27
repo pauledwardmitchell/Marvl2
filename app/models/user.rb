@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :votes
   has_one :privacy
   has_and_belongs_to_many :roles
+  has_many :documents
 
   has_secure_password
 

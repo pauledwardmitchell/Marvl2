@@ -1,0 +1,26 @@
+<h1><%= @user.full_name %> documents</h1>
+
+<div class="alert">
+<% if @errors %>
+	<% @errors.each do |error| %>
+		<%= error %>
+	<% end %>
+<% end %>
+</div>
+
+<div id="images">
+	<% @documents.each do |document| %>
+		<div class="image">
+		<%= image_tag document.media_url(:small) if document.media? %>
+			<div class="image_name">
+				<%= document.name %>
+			</div>
+			<div>
+				<%= link_to "view image", user_document_path(@user, document) %>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+<%= link_to "Upload a new image", new_user_document_path %> | 
+<%= link_to "Back to your profile", user_path(@user) %>
