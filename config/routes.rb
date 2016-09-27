@@ -15,8 +15,12 @@ Rails.application.routes.draw do
   resources :privacy, only: [:edit, :update]
   
   resources :vendors do
-    resources :reviews
+    resources :reviews 
   end
+
+  # resources :reviews do
+  #   resources :votes
+  # end 
 
   resources :categories, only: [:index]
   

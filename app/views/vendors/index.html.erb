@@ -21,3 +21,26 @@
       </ul>
   <% end %>
 </ul>
+
+<h1>Do you know an outstanding vendor who should be added to this list?  Add them now!</h1>
+
+<%= form_for @vendor do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+  <%= f.label :street_address %>
+  <%= f.text_field :street_address %><br>
+  <%= f.label :city %>
+  <%= f.text_field :city %><br>
+  <%= f.label :state %>
+  <%= f.text_field :state %><br>
+  <%= f.label :zip_code %>
+  <%= f.text_field :zip_code %><br>
+  <%= f.label :phone %>
+  <%= f.text_field :phone %><br>
+  <%= f.label :email %>
+  <%= f.text_field :email %><br>
+  <%= f.label :website %>
+  <%= f.text_field :website %><br>
+
+  <%= f.submit "Submit Vendor" %> 
+<% end %>
