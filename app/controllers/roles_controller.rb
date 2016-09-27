@@ -21,6 +21,7 @@ class RolesController < ApplicationController
 		@role = Role.new(name: "Admin")
 		if @role.save
 			@user.add_role(@role.id)
+			flash[:role] = "Admin role has been added"
 			redirect_to @user
 		else
 			@errors = @role.errors.full_messages
