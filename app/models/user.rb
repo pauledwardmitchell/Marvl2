@@ -32,7 +32,7 @@ class User < ApplicationRecord
   end
 
   def member?
-    member = self.roles.find_by name 'Member'
+    member = self.roles.find_by name: 'Member'
     self.roles.include? member
   end
 
