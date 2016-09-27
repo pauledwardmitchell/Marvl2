@@ -8,11 +8,9 @@ class RolesController < ApplicationController
 		@user = User.find(current_user.id)
 		@role = Role.find_by(name: "Ambassador")
 		@user.add_role(@role.id)
-		redirect_to @user
-		@errors = @role.errors.full_messages
     redirect_to @user
 	end
-	
+
 	def admin
 		@user = User.find(params[:user_id])
 		@role = Role.find_by(name: "Admin")
