@@ -37,7 +37,22 @@
           <% end %>
 
 
+
         <% end%>
 	</div>
       <% end %>
 
+      <div>
+        <h3>Add a service category for this vendor.</h3>
+          <%= form_for [@vendor, @offering] do |f| %>
+            <%= f.hidden_field :vendor_id, :value => params[:id] %>
+            
+            <% @categories.each do |category| %>
+              <%= f.label :category_id, category.name %>
+              <%= f.radio_button :category_id, category.id %>
+            <% end %>
+  	        
+            <%= f.submit "Submit selected service category for this vendor" %>
+          <% end %>
+
+      </div>

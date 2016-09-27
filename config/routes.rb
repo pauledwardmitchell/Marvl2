@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   
   resources :vendors do
     resources :reviews 
+    resources :offerings
   end
 
   # resources :reviews do
