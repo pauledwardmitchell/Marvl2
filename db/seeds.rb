@@ -24,6 +24,7 @@ member = Role.create name: "Member"
 admin = Role.create name: "Admin"
 
 coop.add_role(admin.id)
+coop.status = "ready_to_party"
 fake.add_role(member.id)
 
 vendors = []

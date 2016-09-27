@@ -1,13 +1,14 @@
-class VendorsController < ApplicationController
+class VotesController < ApplicationController
 
   def create
     @review = Review.find(params[:review_id])
+    @vendor = Vendor.find(params[:vendor_id])
     @vote = Vote.new(vote_params)
 
     if @vote.save
-      redirect_to @review
+      redirect_to @vendor
     else
-      render 'new'
+      redirect_to @vendor
     end
   end
 

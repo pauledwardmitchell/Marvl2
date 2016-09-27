@@ -10,6 +10,8 @@ class VendorsController < ApplicationController
     @vendor = Vendor.find(params[:id])
     @reviews = @vendor.reviews
     @vote = Vote.new
+    @offering = Offering.new
+    @categories = Category.all
   end
 
   def create
