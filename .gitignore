@@ -1,6 +1,5 @@
 log/*.log
 /Gemfile.lock
-db/schema.rb
 /db/*.sql*
 /tmp/*
 research_resources/*
