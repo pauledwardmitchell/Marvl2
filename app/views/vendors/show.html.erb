@@ -28,12 +28,12 @@
 		  <%= review.content %><br>
 
 		  <% if review.flagged %>
-            <p> This review has been flagged as naughty. </p>
+            <p> This review has been flagged as nneeding admin attention. </p>
 		  <% end %>
 
           <%= form_for [@vendor, review] do |f| %>
             <%= f.hidden_field :flagged, :value => true %>
-            <%= f.submit "Flag this review as inappropriate" %>
+            <%= f.submit "Flag this review as needing admin attention" %>
           <% end %>
 
 
