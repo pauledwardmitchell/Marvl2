@@ -26,6 +26,11 @@
 		  <%= link_to review.title, vendor_review_path(@vendor, review) %><br>
 		  <%= review.rating %> stars<br>
 		  <%= review.content %><br>
+		  <% if review.votes.any? %>
+		    <div id="up-votes">
+              <p><%= pluralize(review.votes.count, "member") %> found this review to be helpful.</p>
+            </div>
+          <% end %>
 
 		  <% if review.flagged %>
             <p> This review has been flagged as nneeding admin attention. </p>
@@ -36,7 +41,12 @@
             <%= f.submit "Flag this review as needing admin attention" %>
           <% end %>
 
-
+          <%= form_for [@vendor, review, @vote] do |f| %>
+            <%= f.hidden_field :helpful, :value => true %>
+            <%= f.hidden_field :user_id, :value => session[:user_id] %>
+            <%= f.hidden_field :review_id, :value => review.id %>
+            <%= f.submit "Upvote this Review" %>
+          <% end %><br><br>
 
         <% end%>
 	</div>
