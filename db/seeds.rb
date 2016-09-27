@@ -15,9 +15,10 @@ Location.create(name: "KIPP DC AIM Academy: Douglass Campus", street_address: "2
 Location.create(name: "E. L. Haynes Public Charter Elementary School", street_address: "4501 Kansas Avenue, NW", city: "Washington", state: "DC", zip_code: "20011", phone: "(202) 667-4446)", organisation_id: "3")
 
 coop = User.create(first_name: "Coop", last_name: "Shop", email: "coop@shop.com", password: "password", organisation_id: organisation.id, membership_expiration: "12/01/26")
-fake = User.create(first_name: 'Fake', last_name: 'Member', email: 'fake@person.com', password: 'fakeperson', organisation_id: organisation_two.id)
+fake = User.create(first_name: 'Fake', last_name: 'Member', email: 'fake@person.com', password: 'fakeperson', organisation_id: organisation_two.id, membership_expiration: "12/01/26")
 
 Privacy.create(user_id: coop.id)
+Privacy.create(user_id: fake.id)
 
 member = Role.create name: "Member"
 admin = Role.create name: "Admin"
