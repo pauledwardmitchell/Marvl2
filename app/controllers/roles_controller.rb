@@ -15,4 +15,17 @@ class RolesController < ApplicationController
       redirect_to @user
   	end
 	end
+
+	def admin
+		@user = User.find(params[:user_id])
+		@role = Role.new(name: "Admin")
+		if @role.save
+			@user.add_role(@role.id)
+			flash[:role] = "Admin role has been added"
+			redirect_to @user
+		else
+			@errors = @role.errors.full_messages
+			redirect_to @user
+		end
+	end
 end

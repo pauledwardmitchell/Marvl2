@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get '/ambassadors', to: 'users#ambassadors'
   get '/samplevendors', to: 'users#samplevendors'
+  post '/admin', to: 'roles#admin'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create', as: :post_login
   delete '/logout', to: 'sessions#destroy'
