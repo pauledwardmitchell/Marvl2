@@ -22,10 +22,9 @@ class User < ApplicationRecord
   end
 
   def is_admin?
-    admin = Role.find_by name: 'Admin'
+    admin = self.roles.find_by name: 'Admin'
     self.roles.include? admin
   end
-
 
   def ambassador?
     ambassador = Role.find_by name: 'Ambassador'

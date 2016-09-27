@@ -5,7 +5,7 @@
 </h1>
 
 <% if admin? %>
-  <%= link_to "Manage User", admin_users_path %>
+  <%= link_to "Manage Users", admin_users_path %>
   <% unless @user.is_admin? %>
 	  <%= form_for @roles, url: url_for(controller: "roles", action: "admin" ) do |f| %>
 	  <%= hidden_field_tag "user_id", @user.id %>
