@@ -6,7 +6,7 @@ class RolesController < ApplicationController
 
 	def create
 		@user = User.find(current_user.id)
-		@role = Role.new(name: "Ambassador")
+		@role = Role.find_by(name: "Ambassador")
 		if @role.save
 			@user.add_role(@role.id)
 			redirect_to @user

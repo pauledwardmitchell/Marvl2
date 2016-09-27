@@ -1,11 +1,7 @@
-<h1><%= @user.full_name %>
-	<% if @ambassador %>
-	- Membership Ambassador
-	<% end %>
-</h1>
+<div class="user-info"/>
 
 <% if admin? %>
-  <%= link_to "Manage Users", admin_users_path %>
+  <%= link_to "View/Manage Users", admin_users_path %>
   <% unless @user.is_admin? %>
 	  <%= form_for @roles, url: url_for(controller: "roles", action: "admin" ) do |f| %>
 	  <%= hidden_field_tag "user_id", @user.id %>
@@ -14,13 +10,16 @@
 	<% end %>
 <% end %>
 
-<% if @user.id == session[:user_id] %>
-	<%= link_to "Edit Your Profile", edit_user_path(@user) %>
-	<%= link_to "Privacy Settings", edit_privacy_path(@user) %>
-	<% unless @ambassador %>
-		<%= link_to "Become an Ambassador", new_role_path %>
-	<% end %>
+<h1><%= @user.full_name %></h1>
+
+<% if @ambassador %>
+	<p> Membership Ambassador</p>
+<% elsif @user.is_admin? %>
+	<p> Admin</p>
 <% end %>
+
+
+<div class="">
 
 <% if @privacy.membership_allowed %>
 	<h3>Membership Expiration: <%= @expiration %></h3>
