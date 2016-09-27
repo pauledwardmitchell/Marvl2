@@ -21,7 +21,7 @@ class User < ApplicationRecord
     self.roles << role
   end
 
-  def admin?
+  def is_admin?
     admin = Role.find_by name: 'Admin'
     self.roles.include? admin
   end
