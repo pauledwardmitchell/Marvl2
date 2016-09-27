@@ -15,9 +15,10 @@ Location.create(name: "KIPP DC AIM Academy: Douglass Campus", street_address: "2
 Location.create(name: "E. L. Haynes Public Charter Elementary School", street_address: "4501 Kansas Avenue, NW", city: "Washington", state: "DC", zip_code: "20011", phone: "(202) 667-4446)", organisation_id: "3")
 
 coop = User.create(first_name: "Coop", last_name: "Shop", email: "coop@shop.com", password: "password", organisation_id: organisation.id, membership_expiration: "12/01/26")
-fake = User.create(first_name: 'Fake', last_name: 'Member', email: 'fake@person.com', password: 'fakeperson', organisation_id: organisation_two.id)
+fake = User.create(first_name: 'Fake', last_name: 'Member', email: 'fake@person.com', password: 'fakeperson', organisation_id: organisation_two.id, membership_expiration: "12/01/26")
 
 Privacy.create(user_id: coop.id)
+Privacy.create(user_id: fake.id)
 
 member = Role.create name: "Member"
 admin = Role.create name: "Admin"
@@ -25,27 +26,26 @@ admin = Role.create name: "Admin"
 coop.add_role(admin.id)
 fake.add_role(member.id)
 
+vendors = []
 10.times do
-  Vendor.create(name: Faker::Company.name, street_address: "8900 Georgia Ave", city: "Silver Spring", state: "MD", zip_code: "20910", phone: "(301) 555-1215")
+  vendors << Vendor.create(name: Faker::Company.name, street_address: "8900 Georgia Ave", city: "Silver Spring", state: "MD", zip_code: "20910", phone: "(301) 555-1215")
 end
 
 50.times do
   Review.create(title: "Review Title " + rand(1..1000).to_s, content: "Jean shorts PBR&B meggings kogi austin. Edison bulb cliche tbh franzen, typewriter polaroid man braid distillery ethical selfies migas humblebrag 8-bit +1 pickled.", rating: rand(1..5), vendor_id: rand(1..10), user_id: 1)
 end
 
-Category.create!(name: "Carpet / Flooring")
-Category.create!(name: "Doors")
-Category.create!(name: "Electrician")
-Category.create!(name: "Fire Alarm")
-Category.create!(name: "Hardscapes")
-Category.create!(name: "HVAC")
-Category.create!(name: "Insurance")
-Category.create!(name: "Kitchen Cleaning")
-Category.create!(name: "Painter")
-Category.create!(name: "Pest Control")
-Category.create!(name: "Pipe Organ Repair")
+cat_names = %w(Carpet/Flooring Doors Electrician Fire\ Alarm Hardscapes HVAC Insurance Kitchen Cleaning Painter Pest\ Control Pipe\ Organ\ Repair)
+p cat_names
+categories = cat_names.map {|name| Category.create name: name}
+p categories
 
 30.times do
-  Offering.create!(vendor_id: rand(1..10), category_id: rand(1..10))
+  vendor_index = rand(0..9)
+  vendor_id = vendors[vendor_index].id
+  category_index = rand(0..10)
+  category_id = categories[category_index].id
+
+  Offering.create!(vendor_id: vendor_id, category_id: category_id)
 end
 
