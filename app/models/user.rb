@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :votes
   has_one :privacy
   has_and_belongs_to_many :roles
+  has_many :documents
 
   has_secure_password
 
@@ -22,7 +23,7 @@ class User < ApplicationRecord
   end
 
   def is_admin?
-    admin = self.roles.find_by name: 'Admin'
+    admin = Role.find_by name: 'Admin'
     self.roles.include? admin
   end
 
@@ -32,7 +33,7 @@ class User < ApplicationRecord
   end
 
   def member?
-    member = Role.find_by name 'Member'
+    member = Role.find_by name: 'Member'
     self.roles.include? member
   end
 
