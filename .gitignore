@@ -5,3 +5,4 @@ db/schema.rb
 /tmp/*
 research_resources/*
 /research_resources/*
+public/uploads/*
