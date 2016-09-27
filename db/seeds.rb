@@ -15,8 +15,8 @@ Location.create(name: "Main campus", street_address: "8900 Georgia Ave", city: "
 Location.create(name: "KIPP DC AIM Academy: Douglass Campus", street_address: "2600 Douglass Road SE", city: "Washington", state: "DC", zip_code: "20020", phone: "202-678-5477", organisation_id: "2")
 Location.create(name: "E. L. Haynes Public Charter Elementary School", street_address: "4501 Kansas Avenue, NW", city: "Washington", state: "DC", zip_code: "20011", phone: "(202) 667-4446)", organisation_id: "3")
 
-coop = User.create(first_name: "Coop", last_name: "Shop", email: "coop@shop.com", password: "password", organisation_id: organisation.id, membership_expiration: "12/01/26")
-fake = User.create(first_name: 'Fake', last_name: 'Member', email: 'fake@person.com', password: 'fakeperson', organisation_id: organisation_two.id, membership_expiration: "12/01/26")
+coop = User.create(first_name: "Coop", last_name: "Shop", email: "coop@shop.com", password: "password", organisation_id: organisation.id, membership_expiration: "12/01/2026")
+fake = User.create(first_name: 'Fake', last_name: 'Member', email: 'fake@person.com', password: 'fakeperson', organisation_id: organisation_two.id)
 
 Privacy.create(user_id: coop.id)
 Privacy.create(user_id: fake.id)
@@ -35,6 +35,7 @@ fake.add_role(member.id)
   if user.save
     user.add_role(member.id)
     user.status = 'ready_to_party'
+    Privacy.create(user_id: user.id)
   end
 end
 

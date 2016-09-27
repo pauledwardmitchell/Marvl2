@@ -1,12 +1,28 @@
-<h2> yo, you are an admin! </h2>
-
-~muy impressivo~
+<h2> View/Manage Users </h2>
 
 
-<h4> here are some users for you to inspect, capitán </h4>
-<ul>
+
+<table>
+  <tr>
+    <th>
+    <th>first
+    <th>last
+    <th>email
+    <th>member?
+    <th>expiration
+    <th>admin?
+  </tr>
 <% @users.each do |user| %>
-  <li> <%= link_to user.full_name, "/users/#{user.id}" %></li>
+  <tr>
+    <td><%= link_to '👤', "/users/#{user.id}" %>
+    <td><%= user.first_name %>
+    <td><%= user.last_name %>
+    <td><%= user.email %>
+    <td><%= 'yes' if user.member? %>
+      <span> <%= link_to '📝',
+    <td><%= user.membership_expiration %>📝
+    <td><%= 'yes' if user.is_admin? %>📝
+
 <% end %>
-</ul>
+</table>
 

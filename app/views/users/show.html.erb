@@ -1,32 +1,32 @@
-<div class="user-info"/>
+<%# /users/:id/show %>
 
+<div class="user-info">
 
-
-<% if admin? %>
-  <%= link_to "View/Manage Users", admin_users_path %>
-  <% unless @user.is_admin? %>
-	  <%= form_for @roles, url: url_for(controller: "roles", action: "admin" ) do |f| %>
-	  <%= hidden_field_tag "user_id", @user.id %>
-	  <%= f.submit "Make #{@user.full_name} Admin" %>
-	 	<% end %>
-	<% end %>
-	<% unless @user.member? || @user.is_admin? %>
-	<p><%=@user.full_name%>'s membership is currently pending</p>
-		<%= form_for @roles, url: url_for(controller: "roles", action: "member") do |f| %>
-		<%= hidden_field_tag "user_id", @user.id %>
-		<%= f.submit "Approve Membership" %>
+	<% if admin? && @user.id == session[:user_id] %>
+	  <%= link_to "View/Manage Users", admin_users_path %>
+	  <% unless @user.is_admin? %>
+		  <%= form_for @roles, url: url_for(controller: "roles", action: "admin" ) do |f| %>
+		  <%= hidden_field_tag "user_id", @user.id %>
+		  <%= f.submit "Make #{@user.full_name} Admin" %>
+		 	<% end %>
+		<% end %>
+		<% unless @user.member? || @user.is_admin? %>
+		<p><%=@user.full_name%>'s membership is currently pending</p>
+			<%= form_for @roles, url: url_for(controller: "roles", action: "member") do |f| %>
+			<%= hidden_field_tag "user_id", @user.id %>
+			<%= f.submit "Approve Membership" %>
+			<% end %>
 		<% end %>
 	<% end %>
-<% end %>
 
-<h1><%= @user.full_name %></h1>
+	<h1><%= @user.full_name %></h1>
 
-<% if @ambassador %>
-	<p> Membership Ambassador</p>
-<% elsif @user.is_admin? %>
-	<p> Admin</p>
-<% end %>
-
+	<% if @ambassador %>
+		<p> Membership Ambassador</p>
+	<% elsif @user.is_admin? %>
+		<p> Admin</p>
+	<% end %>
+</div>
 
 <div class="">
 
