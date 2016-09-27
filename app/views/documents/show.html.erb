@@ -1,0 +1,12 @@
+<%= if document.media? %>
+	<div class="image">
+		<%= image_tag @document.media_url %>
+		<div class="image_name">
+			<%= @document.name %>
+		</div>
+	</div>
+<% else %>
+	<div class="alert">
+		<p>image not found</p>
+	</div>
+<% end %>
