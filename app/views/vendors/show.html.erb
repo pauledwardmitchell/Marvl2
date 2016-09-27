@@ -27,12 +27,15 @@
 		  <%= review.rating %> stars<br>
 		  <%= review.content %><br>
 
-          <%= form_for "Upvote this review", vendor_review_votes_path(@vendor, review) do |f| %><br><br>
-            <%= f.hidden_field :helpful, :value => true %>
-            <%= f.hidden_field :user_id, :value => session[user_id] %>
-            <%= f.hidden_field :review_id, :value => review.id %>
-            <%= f.submit "Upvote this Review" %>
-	      <% end %>
+		  <% if review.flagged %>
+            <p> This review has been flagged as naughty. </p>
+		  <% end %>
+
+          <%= form_for [@vendor, review] do |f| %>
+            <%= f.hidden_field :flagged, :value => true %>
+            <%= f.submit "Flag this review as inappropriate" %>
+          <% end %>
+
 
         <% end%>
 	</div>

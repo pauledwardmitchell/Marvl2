@@ -1,0 +1,6 @@
+   <%= form_for [review, @vote] do |f| %><br><br>
+     <%= f.hidden_field :helpful, :value => true %>
+     <%= f.hidden_field :user_id, :value => session[:user_id] %>
+     <%= f.hidden_field :review_id, :value => review.id %>
+     <%= f.submit "Upvote this Review" %>
+<% end %>

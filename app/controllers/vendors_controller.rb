@@ -8,6 +8,7 @@ class VendorsController < ApplicationController
   def show
     @vendor = Vendor.find(params[:id])
     @reviews = @vendor.reviews
+    @vote = Vote.new
   end
 
 end
