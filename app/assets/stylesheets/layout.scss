@@ -5,22 +5,29 @@ $blue:#008CC1;
 $blue-light: #EAF2FA;
 
 
+table {
+  font-size: 11pt;
+}
+
+
 h1, h2 {
   font-family: 'Big John', sans-serif;
   color: $blue;
 }
 
 h3, h4 {
-  font-family: 'Arvo', Palatino, serif;
+  font-family: 'Arvo', Palatino, san-serif;
+  font-size: 20px;
 }
 
 body {
   font-family: 'Karla', Helvetica, sans-serif;
   color: #333;
   background-color: $blue-light;
+  margin: 0;
 }
 
-.container {
+.hold_container {
   margin: 50px auto;
   width: 80%;
   padding: 20px;
@@ -30,23 +37,30 @@ body {
 }
 
 .nav {
-  margin-bottom: 50px;
-  border-bottom: 1px dotted green;
+  padding: 20px;
+  background-color: white;
+  hold-border-bottom: 1px dotted green;
 
   .brand {
     display: inline-block;
+    font-size: 40px;
   }
 
   img {
     color: $blue;
     display: inline;
     max-height: 50px;
+    stroke-opacity: 0;
   }
 
   h2 {
     margin-top: 0px;
     margin-bottom: 0px;
   }
+}
+
+#information-text {
+  background-color: white;
 }
 
 .right a, .left a {
@@ -93,3 +107,141 @@ body {
   }
 }
 
+p {
+  font-family: "Karla", Arial, sans-serif;
+}
+
+.information {
+    background-image: url(http://cpa.coop/wp-content/themes/cpa_wp2015/assets/images/CPA_Homepage_BG_V7.png);
+    background-size: 1100px;
+    padding-bottom: 0;
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+
+.information-content {
+    width: 500px;
+    margin: auto;
+    background-color: rgba(255,255,255,.9);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+
+    h3 {
+      color: $green;
+      font-size: 2em;
+    }
+}
+
+.green-div {
+    border-bottom: 2.5px solid #396;
+    width: 70px;
+    margin: 15px auto 12px
+  }
+
+
+.form-group{
+    max-width: 500px;
+    padding: 10px 20px;
+    background: #f4f7f8;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea,
+.form-group select {
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+    color:#8a97a0;
+    margin-bottom: 20px;
+}
+
+
+.form-group .password {
+  border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+    color:#8a97a0;
+    margin-bottom: 20px;
+ }
+
+.form-group input[type="submit"],
+.form-group input[type="button"]
+{
+    position: relative;
+    display: block;
+    padding: 19px 39px 18px 39px;
+    color: #FFF;
+    margin: 0 auto;
+    background: $green;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-group input[type="submit"]:hover,
+.form-group input[type="button"]:hover
+{
+    background: gray;
+}
+
+.icon {
+ max-height: 50px;
+ margin-bottom: -30px;
+ background: #f4f7f8;
+ display: inline;
+}
+
+.cpa-logo {
+    width: 385px;
+    height: auto;
+    margin: 0 auto;
+}
+
+#sample {
+  background-color: white;
+  margin: 0;
+  height: 220px;
+}
+
+#ambassador-list {
+  float: left;
+  width: 20%;
+  padding: 20px;
+  margin-left: 30%;
+  background-color: white;
+
+ 
+}
+
+#vendor-list {
+  float: left;
+  width: 20%;
+  padding: 20px;
+  background-color: white;
+}
+
+
+.sample-logo {
+  margin-left: 25%;
+  max-height: 100px;
+}

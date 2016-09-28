@@ -73,6 +73,18 @@ root@coop-shop:~# RAILS_ENV=production bundle exec rake db:seed
 
 ---
 
+**NEW!**
+
+>```unix
+RAILS_ENV=production bundle exec rails assets:precompile
+```
+
+* if there are new images, or anything else in the assets pipeline that "should be" showing up but isn't, you need to [precompile the assets](https://www.sitepoint.com/asset-precompile-works-part/).
+I don't really know what it means. but it moves some things, renames them, turns scss into css, maybe compresses stuff. Most importantly, it makes the shit show up. No idea why this is automatic on
+development but manual on production. when I find out, this step will probably disappear from these instructions.
+
+---
+
 >```unix
 root@coop-shop:~# service unicorn restart
 ```
@@ -81,6 +93,6 @@ root@coop-shop:~# service unicorn restart
 
 
 
-You're done! 
+You're done!
 
 Quickly check the server [http://45.55.84.132/](http://45.55.84.132/) to eyeball-verify that we have not blown anything up, then log out of root and go have a snack! Good work.

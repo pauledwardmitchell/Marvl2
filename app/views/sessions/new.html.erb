@@ -1,14 +1,1 @@
-<h1>Login</h1>
-
-<p><%= flash[:notice] %></p>
-<p><%= flash[:alert] %></p>
-
-<div class="form-container">
-  <%= form_tag('/login') do %>
-    <%= label_tag(:email, "Email:") %>
-    <%= text_field_tag(:email) %>
-    <%= label_tag(:password, "Password:") %>
-    <%= password_field_tag(:password)%>
-    <%= submit_tag("Login") %>
-  <% end %>
-</div>
+<%= render(partial: '/shared/login', locals: { obj: @user }) %>

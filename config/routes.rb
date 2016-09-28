@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "sessions#new"
+  root to: "sessions#index"
 
   get '/ambassadors', to: 'users#ambassadors'
   get '/samplevendors', to: 'users#samplevendors'
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/forum', to: 'posts#forum'
   get '/reviews', to: 'reviews#index'
 
-  resources :users do 
+  resources :users do
     resources :documents, only: [:new, :create, :index, :show]
   end
 
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:new, :create, :edit, :update]
 
   resources :privacy, only: [:edit, :update]
-  
+
   resources :vendors do
     resources :reviews do
       resources :votes
@@ -30,15 +30,18 @@ Rails.application.routes.draw do
 
   # resources :reviews do
   #   resources :votes
-  # end 
+  # end
 
   resources :categories, only: [:index, :show]
-  
+
   resources :locations, only: [:index]
   get 'locations/all', to: 'locations#all'
 
   namespace :admin do
-    resources :users
+    resources :vendors
+    resources :users do
+      resources :roles
+    end
   end
 
 
