@@ -5,7 +5,9 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @recent_reviews = @category.reviews.order(created_at: :desc).take(3)
+    @reviews = @category.reviews.order(created_at: :desc).take(3)
+    @vote = Vote.new
+    binding.pry
   end
 
 end
