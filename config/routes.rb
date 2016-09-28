@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :roles, only: [:new, :create]
 
   resources :privacy, only: [:edit, :update]
-  
+
   resources :vendors do
     resources :reviews do
       resources :votes
@@ -24,15 +24,17 @@ Rails.application.routes.draw do
 
   # resources :reviews do
   #   resources :votes
-  # end 
+  # end
 
   resources :categories, only: [:index]
-  
+
   resources :locations, only: [:index]
   get 'locations/all', to: 'locations#all'
 
   namespace :admin do
-    resources :users
+    resources :users do
+      resources :roles
+    end
   end
 
 

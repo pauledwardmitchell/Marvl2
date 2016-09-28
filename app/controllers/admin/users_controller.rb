@@ -4,6 +4,8 @@ class Admin::UsersController < ApplicationController
 
   def index
     @users = User.order(:last_name)
+    @memberrole_id = Role.find_by(name: 'Member').id
+    @adminrole_id = Role.find_by(name: 'Admin').id
   end
 
   def require_admin

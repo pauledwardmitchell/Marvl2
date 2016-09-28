@@ -13,7 +13,7 @@
     <th>admin?
   </tr>
 <% @users.each do |user| %>
-  <tr>
+  <tr class="<%= user.id %>">
     <td><%= link_to '👤', "/users/#{user.id}" %>
     <td><%= user.first_name %>
     <td><%= user.last_name %>
@@ -22,7 +22,7 @@
     <td class="membership"><% if user.member? %>
           <span>✅</span>
         <% else %>
-          <a class="approve-member-link" href="#">📝</a>
+          <a class="approve-member" href="#">📝</a>
         <% end %>
     </td>
     <td><%= user.membership_expiration %>📝
@@ -33,20 +33,23 @@
 
 <script>
   $('a.approve-member').on('click', function(){
+    console.log('click')
     event.preventDefault();
     $.ajax({
-        url: <%= url_for(controller: "roles", action: "member" ) %>,
+        url: '<%= admin_user_roles_path(session[:user_id]) %>',
         method: 'post',
-      }).done(function(success){
-        var marker = success ? '✅' : '‼️';
-        $('td.membership').html(marker);
+        data: { role_id: <%= @memberrole_id %> }
+      }).done(function(user_id){
+        var marker = '✅'
+        console.log(user_id)
+        $('tr.'+user_id+' td.membership').html(marker);
       });
   });
 
 </script>
 
 
-<%= form_for @roles, url: url_for(controller: "roles", action: "member") do |f| %>
-        <%= hidden_field_tag "user_id", @user.id %>
-        <%= f.submit "Approve Membership" %>
-        <% end %>
+<%# form_for @roles, url: url_for(controller: "roles", action: "member") do |f| %>
+        <%# hidden_field_tag "user_id", @user.id %>
+        <%# f.submit "Approve Membership" %>
+        <%# end %>

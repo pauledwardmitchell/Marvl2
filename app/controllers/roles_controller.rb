@@ -15,8 +15,12 @@ class RolesController < ApplicationController
 		@user = User.find(params[:user_id])
 		@role = Role.find_by(name: "Admin")
 		@user.add_role(@role.id)
-		flash[:role] = "Admin role has been added"
-		redirect_to @user
+		if request.xhr?
+			true
+		else
+			flash[:role] = "Admin role has been added"
+			redirect_to @user
+		end
 	end
 
 	def member
@@ -24,7 +28,12 @@ class RolesController < ApplicationController
 		@role = Role.find_by(name: "Member")
 		@user.add_role(@role.id)
 		UserMailer.membership(@user).deliver_now
-		flash[:role] = "Membership approved"
-		redirect_to @user
+		if request.xhr?
+			true
+		else
+			flash[:role] = "Membership approved"
+			redirect_to @user
+		end
+
 	end
 end
