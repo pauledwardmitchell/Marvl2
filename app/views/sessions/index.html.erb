@@ -1,5 +1,8 @@
 <div class="information">
 	<div class="information-content">
+		<div id="cpa-logo">
+			<%=image_tag 'http://www.cpa.coop/wp-content/themes/cpa_wp2015/assets/images/cpa_logo_oneline.png', class: "cpa-logo" %>
+		</div>
 		<div class= "green-div"></div>
 		<div class="green-div-text">
 			<h3>Save Money, Do Good ... Together</h3>
@@ -11,4 +14,4 @@
 <%= render(partial: '/shared/login', locals: { obj: @user }) %>
 <center>
 <p>Not a Member? <%= link_to "Create an Account", new_user_path %></p>
-</center<
+</center>
