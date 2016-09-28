@@ -11,16 +11,16 @@ h1, h2 {
 }
 
 h3, h4 {
-  font-family: 'Arvo', Palatino, serif;
+  font-family: 'Arvo', Palatino, san-serif;
 }
 
 body {
   font-family: 'Karla', Helvetica, sans-serif;
   color: #333;
-  background-color: $blue-light;
+  hold-background-color: $blue-light;
 }
 
-.container {
+.hold_container {
   margin: 50px auto;
   width: 80%;
   padding: 20px;
@@ -30,11 +30,13 @@ body {
 }
 
 .nav {
-  margin-bottom: 50px;
-  border-bottom: 1px dotted green;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  hold-border-bottom: 1px dotted green;
 
   .brand {
     display: inline-block;
+    font-size: 40px;
   }
 
   img {
@@ -47,6 +49,10 @@ body {
     margin-top: 0px;
     margin-bottom: 0px;
   }
+}
+
+#information-text {
+  background-color: white;
 }
 
 .right a, .left a {
@@ -93,3 +99,40 @@ body {
   }
 }
 
+p {
+  font-family: "Karla", Arial, sans-serif;
+}
+
+.information {
+    background-image: url(http://cpa.coop/wp-content/themes/cpa_wp2015/assets/images/CPA_Homepage_BG_V7.png);
+    background-size: 1100px;
+    padding-bottom: 0;
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.information-wrapper {
+    margin-top: 47px;
+    border-top: 2px solid #e5e5e5;
+}
+
+.information-content {
+    width: 400px;
+    margin: auto;
+    background-color: rgba(255,255,255,.9);
+    padding: 20px;
+    text-align: center;
+
+    h3 {
+      color: $green;
+      font-size: 2em;
+    }
+}
+
+.green-div {
+    border-bottom: 2.5px solid #396;
+    width: 70px;
+    margin: 15px auto 12px
+  }
