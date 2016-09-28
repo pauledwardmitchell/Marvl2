@@ -3,11 +3,9 @@ class Post < ApplicationRecord
 
   def self.search(search)
     if search
-      @posts = Post.where("title LIKE ?", "%#{search}%")
-    	binding.pry
-    else
-      Post.all
+      @posts = Post.where("LOWER(title) LIKE ?", "%#{search}%").order(created_at: :desc).take(5)
     end
+    @posts
   end
 
 end
