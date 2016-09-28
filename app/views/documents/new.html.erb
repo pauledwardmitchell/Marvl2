@@ -1,0 +1,22 @@
+
+<div class="alert">
+<% if @errors %>
+	<% @errors.each do |error| %>
+		<%= error %>
+	<% end %>
+<% end %>
+</div>
+
+<h1>Upload a document image from your device</h1>
+
+<%= form_for [@user, @document], html: {class: "form-group", multipart: true } do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<%= f.file_field :media, accept: 'image/*', capture: "camera" %>
+	<%= f.label :remote_media_url, "or image URL" %>
+	<%= f.text_field :remote_media_url %>
+	<%= f.submit %>
+<% end %>
+
+<%= link_to "Back to your images", user_documents_path %> | 
+<%= link_to "Back to your profile", user_path(@user) %>

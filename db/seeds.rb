@@ -26,7 +26,6 @@ admin = Role.create name: "Admin"
 ambassador = Role.create name: "Ambassador"
 
 coop.add_role(admin.id)
-coop.status = "ready_to_party"
 fake.add_role(member.id)
 
 30.times do
@@ -34,7 +33,6 @@ fake.add_role(member.id)
   user.organisation_id = organisations[rand(0..2)].id
   if user.save
     user.add_role(member.id) unless rand(1..2) == 2
-    user.status = 'ready_to_party'
     Privacy.create(user_id: user.id)
   end
 end
@@ -60,4 +58,3 @@ categories = cat_names.map {|name| Category.create name: name}
 
   Offering.create!(vendor_id: vendor_id, category_id: category_id)
 end
-

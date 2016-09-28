@@ -1,17 +1,4 @@
-<h1>Here are all the vendors in MARVL sorted by category</h1>
-
-<ul>
-  <% @categories.each do |category| %>
-    <li><%= category.name %></li>
-      <ul>
-        <% category.vendors.each do |vendor| %>
-        <li><%= link_to vendor.name, vendor %> | <%= vendor.reviews.count %> CPA member reviews | Average rating: <%= vendor.avg_rating %></li>
-        <% end %>
-      </ul>
-  <% end %>
-</ul>
-
-<h1>Do you know an outstanding vendor who should be added to this list?  Add them now!</h1>
+<h1>Update this vendor's information.</h1>
 
 <%= form_for @vendor do |f| %>
   <%= f.label :name %>

@@ -1,0 +1,10 @@
+
+<div class="image">
+	<%= image_tag @document.media_url if @document.media? %>
+	<div class="image_name">
+		<%= @document.name %>
+	</div>
+</div>
+
+<%= link_to "Back to your images", user_documents_path %> | 
+<%= link_to "Back to your profile", user_path %>

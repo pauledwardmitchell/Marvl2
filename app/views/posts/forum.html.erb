@@ -1,0 +1,18 @@
+<h1>Welcome to the CPA forum.  Here you will find helpful posts from your loving leaders!</h1>
+
+  <div>
+	<%= form_tag forum_path, :method => 'get' do %>
+	  <p>
+	  	Search all posts for key words!
+	    <%= text_field_tag :search, params[:search] %>
+	    <%= submit_tag "Search", :name => nil %>
+	  </p>
+	<% end %>
+  </div>
+
+<% @posts.each do |post| %>
+  <p><%= post.title %></p>
+  <p><%= post.content %></p>
+  <p>Written by: <%= post.user.full_name %></p><br>
+  ______________________________
+<% end %>
