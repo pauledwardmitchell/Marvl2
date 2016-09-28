@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create', as: :post_login
   delete '/logout', to: 'sessions#destroy'
   get '/forum', to: 'posts#forum'
+  get '/reviews', to: 'reviews#index'
   get '/documents/:id/download', to: 'documents#download', as: :download
+
 
   resources :users do
     resources :documents, only: [:new, :create, :index, :show]
@@ -32,7 +34,7 @@ Rails.application.routes.draw do
   #   resources :votes
   # end
 
-  resources :categories, only: [:index]
+  resources :categories, only: [:index, :show]
 
   resources :locations, only: [:index]
   get 'locations/all', to: 'locations#all'

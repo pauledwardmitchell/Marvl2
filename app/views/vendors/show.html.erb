@@ -24,39 +24,7 @@
 
 <%= link_to "Add a review of this vendor", new_vendor_review_path(@vendor) %>
 
-<% if @reviews.length > 0 %>
-	<h3>Recent Reviews</h3>
-	<div class = "reviews">
-		<% @reviews.each do |review| %>
-		  <%= review.user.full_name %><br>
-		  <%= link_to review.title, vendor_review_path(@vendor, review) %><br>
-		  <%= review.rating %> stars<br>
-		  <%= review.content %><br>
-		  <% if review.votes.any? %>
-		    <div id="up-votes">
-              <p><%= pluralize(review.votes.count, "member") %> found this review to be helpful.</p>
-            </div>
-          <% end %>
-
-		  <% if review.flagged %>
-            <span><em>This review has been flagged as needing admin attention. </em></span>
-		  <% end %>
-
-          <%= form_for [@vendor, review] do |f| %>
-            <%= f.hidden_field :flagged, :value => true %>
-            <%= f.submit "Flag this review as needing admin attention" %>
-          <% end %>
-
-          <%= form_for [@vendor, review, @vote] do |f| %>
-            <%= f.hidden_field :helpful, :value => true %>
-            <%= f.hidden_field :user_id, :value => session[:user_id] %>
-            <%= f.hidden_field :review_id, :value => review.id %>
-            <%= f.submit "Upvote this Review" %>
-          <% end %><br><br>
-
-        <% end%>
-	</div>
-      <% end %>
+<%= render "shared/list_reviews", locals: { reviews: @reviews, vote: @vote} %>
 
       <div>
         <h3>Add a service category for this vendor.</h3>

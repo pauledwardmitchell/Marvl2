@@ -1,0 +1,28 @@
+<h1>Welcome to the reviews home page</h1>
+
+<h2>Here are the most recent reviews.</h2>
+  <div>
+    <% @recent_reviews.each do |review| %>
+      <div>
+        <%= link_to review.title, vendor_review_path(review.vendor_id, review.id) %>
+        <p><%= review.content %></p>
+      </div>
+    <% end %> 
+  </div>
+
+<h2>Here are the most recent reviews in each category.</h2>
+  <div>
+    <% @categories.each do |category| %>
+      <div>
+      	<%= category.name %>
+      	  <ul>
+            <% @reviews.select { |review| review.vendor.categories.include? category }.sort_by { |review| review[:created_at] }.take(3).each do |review| %>
+              <li>
+                <%= link_to review.title, vendor_review_path(review.vendor_id, review.id) %>
+                <p><%= review.content %></p>
+              </li> 
+            <% end %>
+      	  </ul>
+      </div>
+    <% end %> 
+  </div>
