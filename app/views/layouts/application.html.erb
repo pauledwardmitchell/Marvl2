@@ -15,17 +15,34 @@
     <div class="container">
       <div class="nav">
         <div class="left">
-          <%# owl icon %>
-          <%= image_tag('marvlowl.svg') %>
           <div class="brand">
+            <%# owl icon %>
+            <%= image_tag('marvlowl.svg') %>
             <h2>MARVL</h2> <%# linkify this %>
           </div>
         </div>
         <div class="right">
           <%# login/logout logic %>
         </div>
+        <div class="stripe">
+          <div class="stripe-inner">
+          <span class="goto">goto: </span>
+          <%= link_to "find a vendor", vendors_path %>
+          <span class="separator"></span>
+          <%= link_to "reviews", 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' %>
+          <span class="separator"></span>
+          <%= link_to "forum", forum_path  %>
+          <span class="separator"></span>
+          <%= link_to "our members", users_path %>
+          <span class="separator"></span>
+          <%= link_to "ambassadors", ambassadors_path %>
+          <span class="separator"></span>
+          <%= link_to "document uploader" , new_user_document_path(session[:user_id]) %>
+        </div>
       </div>
-    <%= yield %>
+      <main>
+        <%= yield %>
+      </main>
     </div>
   </body>
 </html>
