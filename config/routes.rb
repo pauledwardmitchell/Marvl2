@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/forum', to: 'posts#forum'
   get '/reviews', to: 'reviews#index'
+  get '/documents/:id/download', to: 'documents#download', as: :download
+
 
   resources :users do
     resources :documents, only: [:new, :create, :index, :show]

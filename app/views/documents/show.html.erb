@@ -1,10 +1,11 @@
 
 <div class="image">
-	<%= image_tag @document.media_url if @document.media? %>
+	<%= image_tag @document.media_url if @document.media? && image?(@document.media) %>
 	<div class="image_name">
 		<%= @document.name %>
 	</div>
+	<%= link_to "download", download_path(@document) %>
 </div>
 
-<%= link_to "Back to your images", user_documents_path %> | 
+<%= link_to "Back to your documents", user_documents_path %> | 
 <%= link_to "Back to your profile", user_path %>

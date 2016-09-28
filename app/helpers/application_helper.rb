@@ -20,6 +20,9 @@ module ApplicationHelper
     end
   end
 
+  def image?(new_file)
+    new_file.content_type.start_with? 'image'
+  end
 
 end
 
