@@ -30,7 +30,6 @@ body {
 .hold_container {
   margin: 50px auto;
   width: 80%;
-  padding: 20px;
   border: 1px dotted $green;
   min-height: 600px;
   background-color: mintcream;
@@ -39,23 +38,68 @@ body {
 .nav {
   padding: 20px;
   background-color: white;
-  hold-border-bottom: 1px dotted green;
+  margin-bottom: 50px;
 
   .brand {
     display: inline-block;
-    font-size: 40px;
-  }
+    padding: 20px 0 10px 20px;
 
-  img {
-    color: $blue;
-    display: inline;
-    max-height: 50px;
-    stroke-opacity: 0;
-  }
+    img {
+      float: left;
+      color: $blue;
+      height: 50px;
+    }
 
-  h2 {
-    margin-top: 0px;
-    margin-bottom: 0px;
+    h2 {
+      float:left;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      font-size: 50px;
+    }
+
+    h1 {
+    }
+
+  }
+  .stripe {
+    height: 30px;
+    background-color: $green;
+    border-top: 1px solid mintcream;
+    border-bottom: 1px solid mintcream;
+
+    span {
+      padding-left: 20px;
+      padding-right: 20px;
+      color: white
+    }
+
+    .goto{
+      font-family: 'Big John';
+      margin-right: 50px;
+      margin-top: 10px;
+    }
+    .separator {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-weight: 100;
+      font-size: 10pt;
+    }
+
+    a:visited {
+      color: white;
+    }
+
+    a:hover {
+      font-weight: 500;
+    }
+  }
+  .stripe-inner {
+    margin-top: 5px;
   }
 }
 
@@ -230,7 +274,7 @@ p {
   margin-left: 30%;
   background-color: white;
 
- 
+
 }
 
 #vendor-list {

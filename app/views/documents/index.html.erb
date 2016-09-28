@@ -11,16 +11,16 @@
 <div id="images">
 	<% @documents.each do |document| %>
 		<div class="image">
-		<%= image_tag document.media_url(:small) if document.media? %>
+		<%= image_tag document.media_url(:small) if document.media? && image?(document.media) %>
 			<div class="image_name">
 				<%= document.name %>
 			</div>
 			<div>
-				<%= link_to "view image", user_document_path(@user, document) %>
+				<%= link_to "view document", user_document_path(@user, document) %>
 			</div>
 		</div>
 	<% end %>
 </div>
 
-<%= link_to "Upload a new image", new_user_document_path %> | 
+<%= link_to "Upload a new document", new_user_document_path %> | 
 <%= link_to "Back to your profile", user_path(@user) %>

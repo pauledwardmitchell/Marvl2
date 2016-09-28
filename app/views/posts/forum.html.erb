@@ -3,12 +3,22 @@
   <div>
 	<%= form_tag forum_path, :method => 'get' do %>
 	  <p>
-	  	Search all posts for key words!
+	  	<p>Search all forum posts for key words! (Example: "HVAC" or "Pest")  We have a very simple search algorithm, so keep it simple</p>
 	    <%= text_field_tag :search, params[:search] %>
 	    <%= submit_tag "Search", :name => nil %>
 	  </p>
 	<% end %>
   </div>
+
+<% if @searched_posts %>
+  <h3> Here are the five most recent posts that match your search: </h3>
+  <% @searched_posts.each do |post| %>
+    <p><%= post.title %></p>
+    <p><%= post.content %></p>
+    <p>Written by: <%= post.user.full_name %></p><br>
+    ______________________________
+  <% end %>
+<% end %>
 
 <% @posts.each do |post| %>
   <p><%= post.title %></p>
