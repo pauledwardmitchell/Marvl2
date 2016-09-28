@@ -5,3 +5,4 @@ log/*.log
 research_resources/*
 /research_resources/*
 public/uploads/*
+/db/schema.rb
