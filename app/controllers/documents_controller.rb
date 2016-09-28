@@ -42,6 +42,13 @@ class DocumentsController < ApplicationController
 		end
 	end
 
+	def download
+		@document = Document.find(params[:id])
+		if logged_in? && @document.user.id == current_user.id
+	  	send_file(@document.media.path)
+	  end
+	end
+
 	private 
 	def doc_params
 		params.require(:document).permit(:name, :media, :remote_media_url)
