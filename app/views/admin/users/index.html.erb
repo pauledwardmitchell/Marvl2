@@ -1,12 +1,75 @@
-<h2> yo, you are an admin! </h2>
-
-~muy impressivo~
+<h2> View/Manage Users </h2>
 
 
-<h4> here are some users for you to inspect, capitán </h4>
-<ul>
+
+<table>
+  <tr>
+    <th>
+    <th>first
+    <th>last
+    <th>email
+    <th>member?
+    <th>expiration
+    <th>admin?
+  </tr>
 <% @users.each do |user| %>
-  <li> <%= link_to user.full_name, "/users/#{user.id}" %></li>
-<% end %>
-</ul>
+  <tr class="<%= user.id %>">
+    <td><%= link_to '👤', "/users/#{user.id}" %>
+    <td><%= user.first_name %>
+    <td><%= user.last_name %>
+    <td><%= user.email %>
+    <%# approve pending user %>
+    <td class="membership"><% if user.member? %>
+          <span>✅</span>
+        <% else %>
+          <a class="approve-member <%= user.id %>" href="#">📝</a>
+        <% end %>
+    </td>
+    <td><%= user.membership_expiration %><%# todo 📝 %>
+    <%# approve pending user %>
+    <td class="is-admin"><% if user.is_admin? %>
+          <span>✅</span>
+        <% else %>
+          <a class="promote-admin <%= user.id %>" href="#">📝</a>
+        <% end %>
+    </td>
 
+<% end %>
+</table>
+
+<script>
+  $('a.approve-member').on('click', function(){
+    event.preventDefault();
+    var user = $(this).attr('class').split(' ')[1]
+    $.ajax({
+      <%# TODO: janky alert! %>
+        url: '/admin/users/'+user+'/roles',
+        method: 'post',
+        data: { role_id: <%= @memberrole_id %> }
+      }).done(function(user_id){
+        var marker = '✅'
+        $('tr.'+user_id+' td.membership').html(marker);
+      });
+  });
+
+  $('a.promote-admin').on('click', function(){
+    var user = $(this).attr('class').split(' ')[1]
+    event.preventDefault();
+    $.ajax({
+      <%# TODO: janky alert! %>
+        url: '/admin/users/'+user+'/roles',
+        method: 'post',
+        data: { role_id: <%= @adminrole_id %> }
+      }).done(function(user_id){
+        var marker = '✅'
+        $('tr.'+user_id+' td.is-admin').html(marker);
+      });
+  });
+
+</script>
+
+
+<%# form_for @roles, url: url_for(controller: "roles", action: "member") do |f| %>
+        <%# hidden_field_tag "user_id", @user.id %>
+        <%# f.submit "Approve Membership" %>
+        <%# end %>

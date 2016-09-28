@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :votes
   has_one :privacy
   has_and_belongs_to_many :roles
+  has_many :documents
+  has_many :posts
 
   has_secure_password
 
@@ -34,6 +36,10 @@ class User < ApplicationRecord
   def member?
     member = Role.find_by name: 'Member'
     self.roles.include? member
+  end
+
+  def pending?
+    self.roles.length == 0
   end
 
   def date_format(expiration_date)

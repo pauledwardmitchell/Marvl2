@@ -8,13 +8,18 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create', as: :post_login
   delete '/logout', to: 'sessions#destroy'
+  get '/forum', to: 'posts#forum'
 
-  resources :users
+  resources :users do
+    resources :documents, only: [:new, :create, :index, :show]
+  end
 
   resources :roles, only: [:new, :create]
 
+  resources :posts, only: [:new, :create, :edit, :update]
+
   resources :privacy, only: [:edit, :update]
-  
+
   resources :vendors do
     resources :reviews do
       resources :votes
@@ -24,15 +29,18 @@ Rails.application.routes.draw do
 
   # resources :reviews do
   #   resources :votes
-  # end 
+  # end
 
   resources :categories, only: [:index]
-  
+
   resources :locations, only: [:index]
   get 'locations/all', to: 'locations#all'
 
   namespace :admin do
-    resources :users
+    resources :vendors
+    resources :users do
+      resources :roles
+    end
   end
 
 
