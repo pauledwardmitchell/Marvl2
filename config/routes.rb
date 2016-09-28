@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/forum', to: 'posts#forum'
 
-  resources :users do 
+  resources :users do
     resources :documents, only: [:new, :create, :index, :show]
   end
 
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:new, :create, :edit, :update]
 
   resources :privacy, only: [:edit, :update]
-  
+
   resources :vendors do
     resources :reviews do
       resources :votes
@@ -29,15 +29,18 @@ Rails.application.routes.draw do
 
   # resources :reviews do
   #   resources :votes
-  # end 
+  # end
 
   resources :categories, only: [:index]
-  
+
   resources :locations, only: [:index]
   get 'locations/all', to: 'locations#all'
 
   namespace :admin do
-    resources :users, :vendors
+    resources :vendors
+    resources :users do
+      resources :roles
+    end
   end
 
 

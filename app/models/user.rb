@@ -38,6 +38,10 @@ class User < ApplicationRecord
     self.roles.include? member
   end
 
+  def pending?
+    self.roles.length == 0
+  end
+
   def date_format(expiration_date)
   	expiration_date.strftime("%m/%d/%y")
   end
