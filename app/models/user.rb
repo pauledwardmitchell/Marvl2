@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_one :privacy
   has_and_belongs_to_many :roles
   has_many :documents
+  has_many :posts
 
   has_secure_password
 

@@ -15,8 +15,12 @@
 
 <h3>Address: <%= @vendor.street_address %>, <%= @vendor.city %>, <%= @vendor.state %>, <%= @vendor.zip_code %></h3>
 <h3>Phone: <%= @vendor.phone %></h3>
-<h3>Email: <%= %></h3>
-<h3>Website: <%= %></h3>
+<h3>Email: <%= @vendor.email%></h3>
+<h3>Website: <%= @vendor.website%></h3>
+
+<%# if admin? %>
+  <%= link_to "Update this vendor's information", edit_vendor_path(@vendor) %><br><br>
+<%# end %>
 
 <%= link_to "Add a review of this vendor", new_vendor_review_path(@vendor) %>
 
