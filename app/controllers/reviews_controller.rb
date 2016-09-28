@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
 
   def index
+    @categories = Category.all  
     @reviews = Review.all
     @recent_reviews = Review.all.order(created_at: :desc).take(5)
   end
