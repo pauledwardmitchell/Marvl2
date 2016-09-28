@@ -12,10 +12,9 @@ Rails.application.routes.draw do
   get '/reviews', to: 'reviews#index'
   get '/documents/:id/download', to: 'documents#download', as: :download
 
+  resources :users 
 
-  resources :users do
-    resources :documents, only: [:new, :create, :index, :show]
-  end
+  resources :documents, only: [:new, :create, :index, :show]
 
   resources :roles, only: [:new, :create]
 
