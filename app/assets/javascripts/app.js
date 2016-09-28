@@ -51,7 +51,7 @@
     // Check to make sure the infowindow is not already opened on this marker.
     if (infowindow.marker != marker) {
       infowindow.marker = marker;
-      infowindow.setContent('<a href="http://http://45.55.84.132/users/' + marker.id + '">' + marker.title + "</a>");
+      infowindow.setContent('<a href="45.55.84.132/users/' + marker.id + '">' + marker.title + "</a>");
       infowindow.open(map, marker);
       // Make sure the marker property is cleared if the infowindow is closed.
       infowindow.addListener('closeclick',function(){
