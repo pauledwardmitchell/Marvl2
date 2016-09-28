@@ -10,10 +10,12 @@
 	</div>
 </div>
 
+<% unless logged_in? %>
 	<%= render(partial: '/shared/login', locals: { obj: @user }) %>
 	<center>
 	<p>Not a Member? <%= link_to "Create an Account", new_user_path %></p>
 	</center>
+<% end %>
 
 <div id="sample">
 	<div id="ambassador-list">
