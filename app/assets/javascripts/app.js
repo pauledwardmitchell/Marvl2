@@ -35,7 +35,8 @@
         map: map,
         title: locationObject.name,
         position: addressLatLng,
-        animation: google.maps.Animation.DROP
+        animation: google.maps.Animation.DROP,
+        id: locationObject.id
       });
       markers.push(marker);
       marker.addListener('click', function() {
@@ -50,7 +51,7 @@
     // Check to make sure the infowindow is not already opened on this marker.
     if (infowindow.marker != marker) {
       infowindow.marker = marker;
-      infowindow.setContent('<div>' + marker.title + '</div>');
+      infowindow.setContent('<a href="http://45.55.84.132/users/' + marker.id + '">' + marker.title + "</a>");
       infowindow.open(map, marker);
       // Make sure the marker property is cleared if the infowindow is closed.
       infowindow.addListener('closeclick',function(){
