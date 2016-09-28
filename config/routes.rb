@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   get 'locations/all', to: 'locations#all'
 
   namespace :admin do
-    resources :users
+    resources :users, :vendors
   end
 
 
