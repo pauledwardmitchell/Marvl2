@@ -1,0 +1,11 @@
+<h1>Welcome to the reviews home page</h1>
+
+<h2>Here are the most recent reviews.</h2>
+  <div>
+    <% @recent_reviews.each do |review| %>
+      <div>
+        <%= link_to review.title, vendor_review_path(review.vendor_id, review.id) %>
+        <p><%= review.content %></p>
+      </div>
+    <% end %> 
+  </div>
