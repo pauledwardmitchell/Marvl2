@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "sessions#new"
+  root to: "sessions#index"
 
   get '/ambassadors', to: 'users#ambassadors'
   get '/samplevendors', to: 'users#samplevendors'
