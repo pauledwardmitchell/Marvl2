@@ -25,6 +25,8 @@
 		<p> Membership Ambassador</p>
 	<% elsif @user.is_admin? %>
 		<p> Admin</p>
+	<% else %>
+		<%= link_to "Become an Ambassador", new_role_path %>
 	<% end %>
 </div>
 
