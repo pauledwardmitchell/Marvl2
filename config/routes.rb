@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create', as: :post_login
   delete '/logout', to: 'sessions#destroy'
   get '/forum', to: 'posts#forum'
+  get '/documents/:id/download', to: 'documents#download', as: :download
 
   resources :users do
     resources :documents, only: [:new, :create, :index, :show]
