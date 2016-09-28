@@ -33,7 +33,7 @@ fake.add_role(member.id)
   user = User.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password)
   user.organisation_id = organisations[rand(0..2)].id
   if user.save
-    user.add_role(member.id)
+    user.add_role(member.id) unless rand(1..2) == 2
     user.status = 'ready_to_party'
     Privacy.create(user_id: user.id)
   end
