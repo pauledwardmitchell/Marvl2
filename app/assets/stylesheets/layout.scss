@@ -11,6 +11,7 @@ h1, h2 {
 
 h3, h4 {
   font-family: 'Arvo', Palatino, san-serif;
+  font-size: 20px;
 }
 
 body {
@@ -132,3 +133,73 @@ p {
     width: 70px;
     margin: 15px auto 12px
   }
+
+
+.form-group{
+    max-width: 500px;
+    padding: 10px 20px;
+    background: #f4f7f8;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea,
+.form-group select {
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+    color:#8a97a0;
+    margin-bottom: 20px;
+}
+
+
+.form-group .password {
+  border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+    color:#8a97a0;
+    margin-bottom: 20px;
+ }
+
+.form-group input[type="submit"],
+.form-group input[type="button"]
+{
+    position: relative;
+    display: block;
+    padding: 19px 39px 18px 39px;
+    color: #FFF;
+    margin: 0 auto;
+    background: $green;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-group input[type="submit"]:hover,
+.form-group input[type="button"]:hover
+{
+    background: gray;
+}
+
+.icon {
+ max-height: 50px;
+ margin-bottom: -30px;
+ background: #f4f7f8;
+ border-radius: 50%;
+ display: inline;
+}
