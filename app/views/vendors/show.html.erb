@@ -1,74 +1,78 @@
-<h1>Here is the page for <%= @vendor.name %>!</h1>
+<div id="vendor-information" class="left">
+  <h1><%= @vendor.name %></h1>
 
-<% if @vendor.categories.count > 0 %>
-  <h2>This vendor is in the following service categories:</h2>
-  <ul>
-    <% @vendor.categories.each do |category| %>
-      <li><%= category.name %></li>
-    <% end %>
-  </ul>
+  <h4>Address: <%= @vendor.street_address %>, <%= @vendor.city %>, <%= @vendor.state %>, <%= @vendor.zip_code %></h4>
+  <% if @vendor.phone %>
+    <h4>Phone: <%= @vendor.phone %></h4>
+  <% end %>
+  <% if @vendor.email %>
+    <h4>Email: <%= @vendor.email%></h4>
+  <% end %>
+  <% if @vendor.website %>
+    <h4>Website: <%= @vendor.website%></h4>
+  <% end %>
+
+  <% if @vendor.categories.count > 0 %>
+    <h2>Categories:</h2>
+    <ul>
+      <% @vendor.categories.each do |category| %>
+        <li><%= category.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<div class="left">
+<h3>Add a Service Category</h3>
+<%= form_for [@vendor, @offering] do |f| %>
+  <%= f.hidden_field :vendor_id, :value => params[:id] %>
+            
+  <% @categories.each do |category| %>
+    <%= f.radio_button :category_id, category.id %>
+    <%= f.label :category_id, category.name %><br>
+  <% end %>
+            
+  <%= f.submit "Submit selected service category for this vendor" %>
 <% end %>
+</div>
 
+<br><br>
 <% if admin? %>
-  <%# link_to "manage vendors", admin_vendors_path %>
+  <%= link_to "Update Vendor Information", edit_vendor_path(@vendor) %><br>
 <% end %>
 
-<h3>Address: <%= @vendor.street_address %>, <%= @vendor.city %>, <%= @vendor.state %>, <%= @vendor.zip_code %></h3>
-<h3>Phone: <%= @vendor.phone %></h3>
-<h3>Email: <%= @vendor.email%></h3>
-<h3>Website: <%= @vendor.website%></h3>
-
-<%# if admin? %>
-  <%= link_to "Update this vendor's information", edit_vendor_path(@vendor) %><br><br>
-<%# end %>
-
-<%= link_to "Add a review of this vendor", new_vendor_review_path(@vendor) %>
+<%= link_to "Add a Review", new_vendor_review_path(@vendor) %>
 
 <% if @reviews.length > 0 %>
-	<h3>Recent Reviews</h3>
-	<div class = "reviews">
-		<% @reviews.each do |review| %>
-		  <%= review.user.full_name %><br>
-		  <%= link_to review.title, vendor_review_path(@vendor, review) %><br>
-		  <%= review.rating %> stars<br>
-		  <%= review.content %><br>
-		  <% if review.votes.any? %>
-		    <div id="up-votes">
-              <p><%= pluralize(review.votes.count, "member") %> found this review to be helpful.</p>
-            </div>
-          <% end %>
-
-		  <% if review.flagged %>
-            <span><em>This review has been flagged as needing admin attention. </em></span>
-		  <% end %>
-
-          <%= form_for [@vendor, review] do |f| %>
-            <%= f.hidden_field :flagged, :value => true %>
-            <%= f.submit "Flag this review as needing admin attention" %>
-          <% end %>
-
-          <%= form_for [@vendor, review, @vote] do |f| %>
-            <%= f.hidden_field :helpful, :value => true %>
-            <%= f.hidden_field :user_id, :value => session[:user_id] %>
-            <%= f.hidden_field :review_id, :value => review.id %>
-            <%= f.submit "Upvote this Review" %>
-          <% end %><br><br>
-
-        <% end%>
-	</div>
+  <h3>Recent Reviews</h3>
+    <% @reviews.each do |review| %>
+    <div class = "reviews">
+      <%= review.user.full_name %><br>
+      <%= link_to review.title, vendor_review_path(@vendor, review) %><br>
+      <%= review.rating %> stars<br>
+      <%= review.content %><br>
+      <% if review.votes.any? %>
+        <div id="up-votes">
+          <p><%= pluralize(review.votes.count, "member") %> found this review to be helpful.</p>
+        </div>
       <% end %>
 
-      <div>
-        <h3>Add a service category for this vendor.</h3>
-          <%= form_for [@vendor, @offering] do |f| %>
-            <%= f.hidden_field :vendor_id, :value => params[:id] %>
-            
-            <% @categories.each do |category| %>
-              <%= f.radio_button :category_id, category.id %>
-              <%= f.label :category_id, category.name %><br>
-            <% end %>
-  	        
-            <%= f.submit "Submit selected service category for this vendor" %>
-          <% end %>
+      <% if review.flagged %>
+        <span><em>This review has been flagged as needing admin attention. </em></span>
+      <% end %>
 
+      <%= form_for [@vendor, review] do |f| %>
+        <%= f.hidden_field :flagged, :value => true %>
+        <%= f.submit "Flag this review as needing admin attention" %>
+      <% end %>
+
+      <%= form_for [@vendor, review, @vote] do |f| %>
+        <%= f.hidden_field :helpful, :value => true %>
+        <%= f.hidden_field :user_id, :value => session[:user_id] %>
+        <%= f.hidden_field :review_id, :value => review.id %>
+        <%= f.submit "Upvote this Review" %>
+      <% end %><br>
       </div>
+    <% end%>
+<% end %>
+
