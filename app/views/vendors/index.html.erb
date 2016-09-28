@@ -1,35 +1,17 @@
-<h1>Here are all the vendors in MARVL sorted by category</h1>
+<h2>Vendors by Category</h2>
 
-<ul>
+<div id="categories">
   <% @categories.each do |category| %>
-    <li><%= category.name %></li>
+    <h3><%= category.name %></h3>
       <ul>
         <% category.vendors.each do |vendor| %>
         <li><%= link_to vendor.name, vendor %> | <%= vendor.reviews.count %> CPA member reviews | Average rating: <%= vendor.avg_rating %></li>
         <% end %>
       </ul>
   <% end %>
-</ul>
+</div>
 
-<h1>Do you know an outstanding vendor who should be added to this list?  Add them now!</h1>
+<center>
+  <h4>Can't find the Vendor you are looking for? <%= link_to 'Add them now!', new_vendor_path %> </h4>
+</center>
 
-<%= form_for @vendor do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
-  <%= f.label :street_address %>
-  <%= f.text_field :street_address %><br>
-  <%= f.label :city %>
-  <%= f.text_field :city %><br>
-  <%= f.label :state %>
-  <%= f.text_field :state %><br>
-  <%= f.label :zip_code %>
-  <%= f.text_field :zip_code %><br>
-  <%= f.label :phone %>
-  <%= f.text_field :phone %><br>
-  <%= f.label :email %>
-  <%= f.text_field :email %><br>
-  <%= f.label :website %>
-  <%= f.text_field :website %><br>
-
-  <%= f.submit "Submit Vendor" %> 
-<% end %>
