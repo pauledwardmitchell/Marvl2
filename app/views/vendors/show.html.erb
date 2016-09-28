@@ -1,20 +1,26 @@
 <h1>Here is the page for <%= @vendor.name %>!</h1>
 
-<h2>This vendor is in the following service categories:</h2>
-<ul>
-  <% @vendor.categories.each do |category| %>
-    <li><%= category.name %></li>
-  <% end %>
-</ul>
+<% if @vendor.categories.count > 0 %>
+  <h2>This vendor is in the following service categories:</h2>
+  <ul>
+    <% @vendor.categories.each do |category| %>
+      <li><%= category.name %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <% if admin? %>
-  <%= link_to "manage vendors", admin_vendors_path %>
+  <%# link_to "manage vendors", admin_vendors_path %>
 <% end %>
 
 <h3>Address: <%= @vendor.street_address %>, <%= @vendor.city %>, <%= @vendor.state %>, <%= @vendor.zip_code %></h3>
 <h3>Phone: <%= @vendor.phone %></h3>
-<h3>Email: <%= %></h3>
-<h3>Website: <%= %></h3>
+<h3>Email: <%= @vendor.email%></h3>
+<h3>Website: <%= @vendor.website%></h3>
+
+<%# if admin? %>
+  <%= link_to "Update this vendor's information", edit_vendor_path(@vendor) %><br><br>
+<%# end %>
 
 <%= link_to "Add a review of this vendor", new_vendor_review_path(@vendor) %>
 
@@ -33,7 +39,7 @@
           <% end %>
 
 		  <% if review.flagged %>
-            <p> This review has been flagged as nneeding admin attention. </p>
+            <span><em>This review has been flagged as needing admin attention. </em></span>
 		  <% end %>
 
           <%= form_for [@vendor, review] do |f| %>
@@ -58,8 +64,8 @@
             <%= f.hidden_field :vendor_id, :value => params[:id] %>
             
             <% @categories.each do |category| %>
-              <%= f.label :category_id, category.name %>
               <%= f.radio_button :category_id, category.id %>
+              <%= f.label :category_id, category.name %><br>
             <% end %>
   	        
             <%= f.submit "Submit selected service category for this vendor" %>
