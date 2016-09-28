@@ -10,3 +10,4 @@
 </div>
 
 <%= render(partial: '/shared/login', locals: { obj: @user }) %>
+<p>Not a Member? <%= link_to "Create an Account", new_user_path %></p>

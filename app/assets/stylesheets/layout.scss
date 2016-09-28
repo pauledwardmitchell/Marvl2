@@ -4,7 +4,6 @@ $green-light:#DEF3DE;
 $blue:#008CC1;
 $blue-light: #EAF2FA;
 
-
 h1, h2 {
   font-family: 'Big John', sans-serif;
   color: $blue;
@@ -17,7 +16,8 @@ h3, h4 {
 body {
   font-family: 'Karla', Helvetica, sans-serif;
   color: #333;
-  hold-background-color: $blue-light;
+  background-color: $blue-light;
+  margin: 0;
 }
 
 .hold_container {
@@ -113,10 +113,6 @@ p {
     border-bottom: 2px solid #e5e5e5;
 }
 
-.information-wrapper {
-    margin-top: 47px;
-    border-top: 2px solid #e5e5e5;
-}
 
 .information-content {
     width: 400px;
