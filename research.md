@@ -36,3 +36,12 @@ controller:
     end
   end
 ```
+
+### green bar links
+
+marvl ambassadors /ambassadors
+forum ? /forum
+reviews /reviews
+our members
+document uploader
+
