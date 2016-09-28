@@ -22,27 +22,47 @@
     <td class="membership"><% if user.member? %>
           <span>✅</span>
         <% else %>
-          <a class="approve-member" href="#">📝</a>
+          <a class="approve-member <%= user.id %>" href="#">📝</a>
         <% end %>
     </td>
-    <td><%= user.membership_expiration %>📝
-    <td><%= 'yes' if user.is_admin? %>📝
+    <td><%= user.membership_expiration %><%# todo 📝 %>
+    <%# approve pending user %>
+    <td class="is-admin"><% if user.is_admin? %>
+          <span>✅</span>
+        <% else %>
+          <a class="promote-admin <%= user.id %>" href="#">📝</a>
+        <% end %>
+    </td>
 
 <% end %>
 </table>
 
 <script>
   $('a.approve-member').on('click', function(){
-    console.log('click')
     event.preventDefault();
+    var user = $(this).attr('class').split(' ')[1]
     $.ajax({
-        url: '<%= admin_user_roles_path(session[:user_id]) %>',
+      <%# TODO: janky alert! %>
+        url: '/admin/users/'+user+'/roles',
         method: 'post',
         data: { role_id: <%= @memberrole_id %> }
       }).done(function(user_id){
         var marker = '✅'
-        console.log(user_id)
         $('tr.'+user_id+' td.membership').html(marker);
+      });
+  });
+
+  $('a.promote-admin').on('click', function(){
+    var user = $(this).attr('class').split(' ')[1]
+    event.preventDefault();
+    $.ajax({
+      <%# TODO: janky alert! %>
+        url: '/admin/users/'+user+'/roles',
+        method: 'post',
+        data: { role_id: <%= @adminrole_id %> }
+      }).done(function(user_id){
+        var marker = '✅'
+        $('tr.'+user_id+' td.is-admin').html(marker);
       });
   });
 
