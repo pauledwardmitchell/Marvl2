@@ -51,3 +51,6 @@ p categories
   Offering.create!(vendor_id: vendor_id, category_id: category_id)
 end
 
+# 5.times do
+#   Post.create!(user_id: 1, title: "Post Title " + rand(1..1000).to_s, content: "Listicle gentrify subway tile, vape kitsch authentic shabby chic live-edge brooklyn sartorial air plant cray whatever fanny pack. Hoodie prism waistcoat gentrify fam affogato, man braid locavore ugh +1 mixtape knausgaard tilde street art williamsburg. Enamel pin cornhole blog, normcore lomo small batch helvetica. Tumeric fashion axe post-ironic af church-key, street art XOXO scenester succulents vape pok pok pug normcore synth humblebrag. Shabby chic portland kogi, ennui everyday carry irony skateboard. Single-origin coffee semiotics craft beer man braid banjo. Squid crucifix mumblecore readymade, mixtape typewriter slow-carb cardigan.")
+# end

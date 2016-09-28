@@ -8,12 +8,15 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create', as: :post_login
   delete '/logout', to: 'sessions#destroy'
+  get '/forum', to: 'posts#forum'
 
   resources :users do 
     resources :documents, only: [:new, :create, :index, :show]
   end
 
   resources :roles, only: [:new, :create]
+
+  resources :posts, only: [:new, :create, :edit, :update]
 
   resources :privacy, only: [:edit, :update]
   

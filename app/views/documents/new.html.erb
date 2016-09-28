@@ -1,4 +1,3 @@
-<h1>Upload a document image from your device</h1>
 
 <div class="alert">
 <% if @errors %>
@@ -8,10 +7,12 @@
 <% end %>
 </div>
 
+<h1>Upload a document image from your device</h1>
+
 <%= form_for [@user, @document], html: {class: "form-group", multipart: true } do |f| %>
 	<%= f.label :name %>
 	<%= f.text_field :name %>
-	<%= f.file_field :media %>
+	<%= f.file_field :media, accept: 'image/*', capture: "camera" %>
 	<%= f.label :remote_media_url, "or image URL" %>
 	<%= f.text_field :remote_media_url %>
 	<%= f.submit %>
