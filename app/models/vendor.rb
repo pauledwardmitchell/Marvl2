@@ -15,8 +15,12 @@ class Vendor < ApplicationRecord
     end
   end
 
-  def associate_category(category_name)
-    category = Category.find_by name: category_name
+  def associate_category(string_or_category)
+    if string_or_category.class == Category
+      category = string_or_category
+    else
+      category = Category.find_or_create_by name: string_or_category
+    end
     if category
       Offering.create vendor_id: self.id, category_id: category.id
     end
