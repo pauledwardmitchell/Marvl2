@@ -27,7 +27,7 @@ body {
   margin: 0;
 }
 
-.container {
+.hold_container {
   margin: 50px auto;
   width: 80%;
   border: 1px dotted $green;
@@ -48,6 +48,7 @@ body {
       float: left;
       color: $blue;
       height: 50px;
+      margin-top: 20px;
     }
 
     h2 {
@@ -377,4 +378,19 @@ h4 {
 .emphasis-font {
   font-size: 30px;
   margin-left: 10px;
+}
+
+.session {
+  float: right;
+  margin-top: 10px;
+}
+
+.alert {
+  color: red;
+}
+
+.blue-light {
+  background-color: $blue-light;
+  margin-top: 0px;
+  padding: 5px;
 }

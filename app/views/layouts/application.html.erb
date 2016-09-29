@@ -26,20 +26,16 @@
         </div>
         <div class="right">
           <div class="session">
-            <span>
               <% if logged_in? %>
                 <%= link_to current_user.first_name.downcase, my_home %>
               <% else %>
                 <%= link_to 'login', login_path %>
               <% end %>
-            </span>
-            <span>
               <% if logged_in? %>
                 <%= link_to 'logout', logout_path, {id: 'logout_link'} %>
               <% else %>
                 <%= link_to 'join us', new_user_path  %>
               <% end %>
-            </span>
           </div>
         </div>
         <div class="stripe">
