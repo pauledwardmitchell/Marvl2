@@ -37,11 +37,21 @@ controller:
   end
 ```
 
-### green bar links
+### name servers
 
-marvl ambassadors /ambassadors
-forum ? /forum
-reviews /reviews
-our members
-document uploader
+[digitalocean tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-host-name-with-digitalocean)
+
+our do server dns records
+
+```
+Zone File
+$ORIGIN coopshopdbc.com.
+$TTL 1800
+coopshopdbc.com. IN SOA ns1.digitalocean.com. hostmaster.coopshopdbc.com. 1475102897 10800 3600 604800 1800
+coopshopdbc.com. 1800 IN NS ns1.digitalocean.com.
+coopshopdbc.com. 1800 IN NS ns2.digitalocean.com.
+coopshopdbc.com. 1800 IN NS ns3.digitalocean.com.
+coopshopdbc.com. 1800 IN A 45.55.84.132
+www.coopshopdbc.com. 1800 IN A 45.55.84.132
+```
 
