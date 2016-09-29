@@ -1,7 +1,6 @@
 <div id="page-top">
 <div id="vendor-information">
   <h1><%= @vendor.name %> </h1>
-  <div id="review-link"><%=image_tag("outline-star.png")%><%= link_to "Write a Review", new_vendor_review_path(@vendor) %></div>
 
   <h4>Address: <%= @vendor.street_address %>, <%= @vendor.city %>, <%= @vendor.state %>, <%= @vendor.zip_code %></h4>
   <% if @vendor.phone %>
@@ -22,6 +21,7 @@
       <% end %>
     </ul>
   <% end %>
+  <div id="review-link"><%=image_tag("outline-star.png")%><%= link_to "Write a Review", new_vendor_review_path(@vendor) %></div><br>
   <br>
 <% if admin? %>
   <%= link_to "Update Vendor Information", edit_vendor_path(@vendor) %><br>
@@ -63,20 +63,22 @@
       <% end %>
 
       <% if review.flagged %>
-        <span><em>This review has been flagged as needing admin attention. </em></span>
+        <span><em>This review has been flagged as needing Admin Attention. </em></span>
       <% end %>
-
-      <%= form_for [@vendor, review] do |f| %>
-        <%= f.hidden_field :flagged, :value => true %>
-        <%= f.submit "Flag this review as needing admin attention" %>
-      <% end %>
-
+      <br>
+      <div class="review-left">
       <%= form_for [@vendor, review, @vote] do |f| %>
         <%= f.hidden_field :helpful, :value => true %>
         <%= f.hidden_field :user_id, :value => session[:user_id] %>
         <%= f.hidden_field :review_id, :value => review.id %>
-        <%= f.submit "Upvote this Review" %>
-      <% end %><br>
+        <%= f.submit "Helpful?" %>
+      <% end %>
+      </div>
+      <%= form_for [@vendor, review] do |f| %>
+        <%= f.hidden_field :flagged, :value => true %>
+        <%= f.submit "Flag this review as needing Admin Attention" %>
+      <% end %>
+      <br>
       </div>
     <% end%>
 <% end %>
