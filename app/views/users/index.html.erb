@@ -1,7 +1,7 @@
 <h1>CPA Member Institutions</h1>
 
 <% @organisations.each do |organisation| %>
-  <p><strong><%= organisation.name %></strong></p>
+  <h3><%= organisation.name %></h3>
   
   <% organisation.locations.each do |location| %>
     <%= location.name %> | <%= location.phone %><br>
