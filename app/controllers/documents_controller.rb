@@ -48,6 +48,17 @@ class DocumentsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@document = Document.find(params[:id])
+		if admin? || (logged_in? && @document.user.id == current_user.id)
+			@document.destroy
+			redirect_to documents_path
+		else
+			flash[:access] = "Unauthorized access, please contact an administrator if you believe this error is incorrect."
+			redirect_to '/'
+		end
+	end
+
 	def download
 		@document = Document.find(params[:id])
 		if admin? || (logged_in? && @document.user.id == current_user.id)
