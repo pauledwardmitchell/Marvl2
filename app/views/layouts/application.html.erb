@@ -54,10 +54,12 @@
           <%= link_to "our members", users_path %>
           <span class="separator"></span>
           <%= link_to "ambassadors", ambassadors_path %>
+
           <% if logged_in? %>
             <span class="separator"></span>
             <%= link_to "document uploader" , new_user_document_path(session[:user_id]) %>
           <% end %>
+
         </div>
       </div>
       <main>

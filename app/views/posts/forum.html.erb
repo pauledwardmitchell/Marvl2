@@ -1,28 +1,38 @@
-<h1>Welcome to the CPA forum.  Here you will find helpful posts from your loving leaders!</h1>
+<h1>Welcome to the CPA forum.</h1>
+<h2>Here you will find helpful posts from your loving leaders!</h2>
 
-  <div>
+<div>
+  <p><strong>Search all posts using the forms below.  We have a very simple search algorithm, so keep it simple. (Example:
+	  "HVAC" or "Pest")</strong></p>
+	
 	<%= form_tag forum_path, :method => 'get' do %>
 	  <p>
-	  	<p>Search all forum posts for key words! (Example: "HVAC" or "Pest")  We have a very simple search algorithm, so keep it simple</p>
-	    <%= text_field_tag :search, params[:search] %>
-	    <%= submit_tag "Search", :name => nil %>
+	  	Search all forum posts BY TITLE:
+	    <%= text_field_tag :title_search, params[:title_search] %>
+	    <%= submit_tag "Search all TITLES for this KEYWORD", :name => nil %>
 	  </p>
 	<% end %>
-  </div>
+</div>
 
 <% if @searched_posts %>
-  <h3> Here are the five most recent posts that match your search: </h3>
+  <h3> Here are the most recent posts that match your search: </h3>
   <% @searched_posts.each do |post| %>
     <p><%= post.title %></p>
     <p><%= post.content %></p>
     <p>Written by: <%= post.user.full_name %></p><br>
     ______________________________
   <% end %>
+  <p><strong>END OF SEARCH RESULTS</strong></p>
+<% else %>
+  <h3>No posts matched your search.</h3>
 <% end %>
 
-<% @posts.each do |post| %>
-  <p><%= post.title %></p>
-  <p><%= post.content %></p>
-  <p>Written by: <%= post.user.full_name %></p><br>
-  ______________________________
-<% end %>
+<div>
+  <h3>Here are the most recent forum posts:</h3>
+    <% @posts.each do |post| %>
+      <p><%= post.title %></p>
+      <p><%= post.content %></p>
+      <p>Written by: <%= post.user.full_name %></p><br>
+      ______________________________
+    <% end %>
+</div>

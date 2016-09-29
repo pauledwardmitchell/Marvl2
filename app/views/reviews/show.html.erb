@@ -1,4 +1,14 @@
-<h1>REVIEW: <%= @review.title %> </h1>
+<h1> <%= @review.title %> </h1>
+
+<div>
+  <p>AUTHOR: <%= @review.user.full_name %></p>	
+  <p>REVIEW CONTENT: <%= @review.content %></p>
+  <p>RATING: <%= @review.rating %> stars</p>
+  <p>
+  	<%= link_to "See all of #{@review.vendor.name}'s reviews", vendor_path(@vendor) %> | 
+  	<%= link_to "See all reviews", reviews_path %> 
+  </p>
+</div>
 
 <% if admin? %>
   <%= link_to "Edit This Review", edit_vendor_review_path(@vendor, @review) %>
@@ -7,8 +17,3 @@
 <% if @review.user_id == session[:user_id] %>
   <%= link_to "Edit This Review", edit_vendor_review_path(@vendor, @review) %>
 <% end %>
-
-<div>
-  <p>CONTENT: <%= @review.content %></p>
-  <p>RATING: <%= @review.rating %> stars</p>
-</div>
