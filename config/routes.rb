@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "sessions#index"
 
   get '/ambassadors', to: 'users#ambassadors'
-  get '/samplevendors', to: 'users#samplevendors'
+  get '/samplevendors', to: 'users#samplevendors', as: :samplevendors
   post '/admin', to: 'roles#admin'
   post '/member', to: 'roles#member'
   get '/login', to: 'sessions#new'
