@@ -14,7 +14,9 @@
 	<% end %>
 </div>
 
-<% if @searched_posts %>
+<% if @searched_posts == nil %>
+  <h3>__________________</h3>
+<% elsif @searched_posts.length > 0 %>
   <h3> Here are the most recent posts that match your search: </h3>
   <% @searched_posts.each do |post| %>
     <p><%= post.title %></p>
