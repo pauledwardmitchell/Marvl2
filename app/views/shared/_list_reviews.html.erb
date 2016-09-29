@@ -1,10 +1,13 @@
 <% if @reviews.length > 0 %>
+<div class="emphasis-font">
 	<h3>Recent Reviews</h3>
+</div>
 	<div class = "reviews">
 		<% @reviews.each do |review| %>
-		  <%= review.user.full_name %><br>
-		  <%= link_to review.title, vendor_review_path(review.vendor, review) %><br>
-		  <%= review.rating %> stars<br>
+      <div id="name">
+		    <%= review.user.full_name %> - <%= link_to review.title, vendor_review_path(review.vendor, review) %>
+      </div>
+		  <%= review.rating %> stars<br><br>
 		  <%= review.content %><br>
 		  <% if review.votes.any? %>
 		    <div class="up-votes">
@@ -14,12 +17,13 @@
 
 		  <% if review.flagged %>
             <span><em>This review has been flagged as needing admin attention. </em></span>
-		  <% end %>
-
+		  <% end %><br>
+      <div class="review-left">
           <%= form_for [review.vendor, review] do |f| %>
             <%= f.hidden_field :flagged, :value => true %>
             <%= f.submit "Flag this review as needing admin attention" %>
           <% end %>
+      </div>
 
           <%= form_for vendor_review_votes_path(review.vendor, review, @vote) do |f| %>
             <%= f.hidden_field :helpful, :value => true %>

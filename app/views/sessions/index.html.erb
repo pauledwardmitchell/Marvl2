@@ -10,12 +10,14 @@
 	</div>
 </div>
 
+<div class="blue-light">
 <% unless logged_in? %>
 	<%= render(partial: '/shared/login', locals: { obj: @user }) %>
 	<center>
 	<p>Not a Member? <%= link_to "Create an Account", new_user_path %></p>
 	</center>
 <% end %>
+</div>
 
 <div id="sample">
 	<div id="ambassador-list">
@@ -29,5 +31,11 @@
 			<%= image_tag 'http://cpa.coop/wp-content/uploads/2015/06/CPA_Step2_V2.png', class: "sample-logo" %>
 		</a>
 		<p>See a sampling of our vendors</p>
+	</div>
+	<div id="vendor-list">
+		<a href="http://www.cpa.coop">
+			<%= image_tag 'CPA_PeopleCircle.png', class: "sample-logo" %>
+		</a>
+		<p>View Community Purchasing Alliance homepage</p>
 	</div>
 </div>

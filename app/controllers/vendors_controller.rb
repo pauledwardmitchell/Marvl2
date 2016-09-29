@@ -14,6 +14,10 @@ class VendorsController < ApplicationController
     @categories = Category.all
   end
 
+  def new
+    @vendor = Vendor.new
+  end
+
   def create
     @vendor = Vendor.new(vendor_params)
 

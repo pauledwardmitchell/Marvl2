@@ -1,42 +1,49 @@
-<h1>Here is the page for <%= @vendor.name %>!</h1>
+<div id="page-top">
+<div id="vendor-information">
+  <h1><%= @vendor.name %> </h1>
 
-<% if @vendor.categories.count > 0 %>
-  <h2>This vendor is in the following service categories:</h2>
-  <ul>
-    <% @vendor.categories.each do |category| %>
-      <li><%= category.name %></li>
-    <% end %>
-  </ul>
-<% end %>
+  <h4>Address: <%= @vendor.street_address %>, <%= @vendor.city %>, <%= @vendor.state %>, <%= @vendor.zip_code %></h4>
+  <% if @vendor.phone %>
+    <h4>Phone: <%= @vendor.phone %></h4>
+  <% end %>
+  <% if @vendor.email %>
+    <h4>Email: <%= @vendor.email%></h4>
+  <% end %>
+  <% if @vendor.website %>
+    <h4>Website: <%= @vendor.website%></h4>
+  <% end %>
 
+  <% if @vendor.categories.count > 0 %>
+    <h3>Categories:</h3>
+    <ul>
+      <% @vendor.categories.each do |category| %>
+        <li><%= category.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div id="review-link"><%=image_tag("outline-star.png")%><%= link_to "Write a Review", new_vendor_review_path(@vendor) %></div><br>
+  <br><Br>
 <% if admin? %>
-  <%# link_to "manage vendors", admin_vendors_path %>
+  <%= link_to "Update Vendor Information", edit_vendor_path(@vendor) %><br>
 <% end %>
+</div>
 
-<h3>Address: <%= @vendor.street_address %>, <%= @vendor.city %>, <%= @vendor.state %>, <%= @vendor.zip_code %></h3>
-<h3>Phone: <%= @vendor.phone %></h3>
-<h3>Email: <%= @vendor.email%></h3>
-<h3>Website: <%= @vendor.website%></h3>
-
-<%# if admin? %>
-  <%= link_to "Update this vendor's information", edit_vendor_path(@vendor) %><br><br>
-<%# end %>
-
-<%= link_to "Add a review of this vendor", new_vendor_review_path(@vendor) %>
+<div class="left">
+<h3>Add a Service Category</h3>
+<%= form_for [@vendor, @offering] do |f| %>
+  <%= f.hidden_field :vendor_id, :value => params[:id] %>
+            
+  <% @categories.each do |category| %>
+    <%= f.radio_button :category_id, category.id %>
+    <%= f.label :category_id, category.name %><br>
+  <% end %>
+  <div class="form-group">          
+  <%= f.submit "Submit" %>
+  </div>
+<% end %>
+</div>
+</div>
 
 <%= render "shared/list_reviews", locals: { reviews: @reviews, vote: @vote} %>
 
-      <div>
-        <h3>Add a service category for this vendor.</h3>
-          <%= form_for [@vendor, @offering] do |f| %>
-            <%= f.hidden_field :vendor_id, :value => params[:id] %>
-            
-            <% @categories.each do |category| %>
-              <%= f.radio_button :category_id, category.id %>
-              <%= f.label :category_id, category.name %><br>
-            <% end %>
-  	        
-            <%= f.submit "Submit selected service category for this vendor" %>
-          <% end %>
 
-      </div>
