@@ -9,21 +9,24 @@
       </ul>
     </div>
   <% end %>
-  
-<h3>Thanks for writing a review!  As you write, please consider answering the following questions:</h3>
-<ul>
+<center>
+  <h1>Leave a Review for <%=@vendor.name%></h1>  
+</center>
+<!-- <h3>Thanks for writing a review!  As you write, please consider answering the following questions:</h3>
+ --><!-- <ul>
+  removing for presentation purposes since we dont' have those questions yet
   <li>What services did this vendor provide?</li>
   <li>Another question provided by Felipe, etc.</li>
-</ul>
+</ul> -->
 
-<%= form_for [@vendor, @review] do |f| %>
+<%= form_for [@vendor, @review], html: {class: "form-group"}  do |f| %>
   <p>
     <%= f.label :title, "Review Title:" %><br>
     <%= f.text_field :title %>
   </p>
   <p>
     <%= f.label :content, "Review Content:" %><br>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, cols: 20, rows: 10 %>
   </p>
   <p>
   	<p>Rate your experience with this vendor. (1 = Poor, 5 = Excellent)</p>
