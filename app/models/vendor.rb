@@ -18,7 +18,7 @@ class Vendor < ApplicationRecord
   def associate_category(category_name)
     category = Category.find_by name: category_name
     if category
-      Offering.create(self.id, category.id)
+      Offering.create vendor_id: self.id, category_id: category.id
     end
 
   end
