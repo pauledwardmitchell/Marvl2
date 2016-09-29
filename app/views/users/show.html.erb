@@ -19,18 +19,21 @@
 		<% end %>
 	<% end %>
 
-	<h1><%= @user.full_name %></h1>
+	<h1><%= @user.full_name %> <% if @ambassador %> - Membership Ambassador <%end%></h1>
 
-	<% if @ambassador %>
-		<p> Membership Ambassador</p>
-	<% elsif @user.is_admin? %>
-		<p> Admin</p>
-	<% else %>
+	<% if @user.id == session[:user_id] %>
+		<%= link_to "Edit Your Profile", edit_user_path(@user) %>
+		<%= link_to "Privacy Settings", edit_privacy_path(@user) %>
+	<% end %>
+	<% unless @ambassador %>
 		<%= link_to "Become an Ambassador", new_role_path %>
 	<% end %>
-</div>
 
-<div class="">
+
+	<% if @user.is_admin? %>
+		<p> Admin</p>
+	<% end %>
+
 
 <% if @privacy.membership_allowed %>
 	<h3>Membership Expiration: <%= @expiration %></h3>
