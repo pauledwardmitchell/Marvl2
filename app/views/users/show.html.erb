@@ -23,10 +23,10 @@
 
 	<% if @user.id == session[:user_id] %>
 		<%= link_to "Edit Your Profile", edit_user_path(@user) %>
-		<%= link_to "Privacy Settings", edit_privacy_path(@user) %>
-	<% end %>
-	<% unless @ambassador %>
-		<%= link_to "Become an Ambassador", new_role_path %>
+		 | <%= link_to "Privacy Settings", edit_privacy_path(@user) %>
+		<% unless @ambassador %>
+			 | <%= link_to "Become an Ambassador", new_role_path %>
+		<% end %>
 	<% end %>
 
 
