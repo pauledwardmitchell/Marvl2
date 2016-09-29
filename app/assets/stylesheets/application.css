@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: "Big John";
-  src: font-url('/assets/fonts/BigJohn.otf', font) format("opentype");
+  src: font-url('/assets/fonts/BigJohn.otf') format("opentype");
 }
 
 .reviews {
