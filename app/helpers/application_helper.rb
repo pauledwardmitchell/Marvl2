@@ -24,5 +24,14 @@ module ApplicationHelper
     new_file.content_type.start_with? 'image'
   end
 
+  def my_home
+    if logged_in?
+      user_path(session[:user_id])
+    else
+      '/'
+    end
+  end
+
+
 end
 
