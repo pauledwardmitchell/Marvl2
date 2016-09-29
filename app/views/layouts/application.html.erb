@@ -57,7 +57,7 @@
 
           <% if logged_in? %>
             <span class="separator"></span>
-            <%= link_to "document uploader" , new_user_document_path(session[:user_id]) %>
+            <%= link_to "document uploader" , new_document_path(session[:user_id]) %>
           <% end %>
 
         </div>
