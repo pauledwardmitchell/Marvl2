@@ -1,6 +1,7 @@
-<div class="blue-light">
+<div class="alert">
 <p><%= flash[:notice] %></p>
 <p><%= flash[:alert] %></p>
+</div>
 
 <%= form_tag('/login', class: "form-group") do %>
 <%= image_tag('user.svg', class: "icon") %>
@@ -10,4 +11,3 @@
     <%= password_field_tag :password, nil, class: 'form-group password'%>
     <%= submit_tag("Login") %>
   <% end %>
-</div>
