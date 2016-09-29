@@ -35,8 +35,8 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show]
 
-  resources :locations, only: [:index]
   get 'locations/all', to: 'locations#all'
+  resources :locations, only: [:index, :show, :all]
 
   namespace :admin do
     resources :vendors
