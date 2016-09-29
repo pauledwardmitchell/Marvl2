@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def index
+    @organisations = Organisation.all
+  end
+
   def show
   	if logged_in?
     	@user = User.find(params[:id])
