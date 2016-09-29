@@ -47,7 +47,7 @@
           <span class="goto">goto: </span>
           <%= link_to "find a vendor", vendors_path %>
           <span class="separator"></span>
-          <%= link_to "reviews", 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' %>
+          <%= link_to "reviews", reviews_path %>
           <span class="separator"></span>
           <%= link_to "forum", forum_path  %>
           <span class="separator"></span>
@@ -57,7 +57,7 @@
 
           <% if logged_in? %>
             <span class="separator"></span>
-            <%= link_to "document uploader" , new_user_document_path(session[:user_id]) %>
+            <%= link_to "document uploader" , new_document_path(session[:user_id]) %>
           <% end %>
 
         </div>
