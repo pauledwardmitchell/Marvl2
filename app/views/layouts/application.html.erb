@@ -14,35 +14,67 @@
   <body>
     <div class="container">
       <div class="nav">
+
         <div class="left">
-          <div class="brand">
-            <%# owl icon %>
-            <%= image_tag('marvlowl.svg') %>
-            <h2>MARVL</h2> <%# linkify this %>
-          </div>
+          <a href="/">
+            <div class="brand">
+              <%# owl icon %>
+              <%= image_tag('marvlowl.svg') %>
+              <h2>MARVL</h2> <%# linkify this %>
+            </div>
+          </a>
         </div>
         <div class="right">
-          <%# login/logout logic %>
+          <div class="session">
+            <span>
+              <% if logged_in? %>
+                <%= link_to current_user.first_name.downcase, my_home %>
+              <% else %>
+                <%= link_to 'login', login_path %>
+              <% end %>
+            </span>
+            <span>
+              <% if logged_in? %>
+                <%= link_to 'logout', logout_path, {id: 'logout_link'} %>
+              <% else %>
+                <%= link_to 'join us', new_user_path  %>
+              <% end %>
+            </span>
+          </div>
         </div>
         <div class="stripe">
           <div class="stripe-inner">
           <span class="goto">goto: </span>
           <%= link_to "find a vendor", vendors_path %>
           <span class="separator"></span>
-          <%= link_to "reviews", 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' %>
+          <%= link_to "reviews", reviews_path %>
           <span class="separator"></span>
           <%= link_to "forum", forum_path  %>
           <span class="separator"></span>
           <%= link_to "our members", users_path %>
           <span class="separator"></span>
           <%= link_to "ambassadors", ambassadors_path %>
-          <span class="separator"></span>
-          <%= link_to "document uploader" , new_user_document_path(session[:user_id]) %>
+
+          <% if logged_in? %>
+            <span class="separator"></span>
+            <%= link_to "document uploader" , new_document_path(session[:user_id]) %>
+          <% end %>
+
         </div>
       </div>
       <main>
         <%= yield %>
       </main>
     </div>
+
+    <script>
+      $('a#logout_link').on('click', function(){
+        event.preventDefault();
+        $.ajax({
+          url: '/logout',
+          method: 'DELETE'
+        })
+      });
+    </script>
   </body>
 </html>

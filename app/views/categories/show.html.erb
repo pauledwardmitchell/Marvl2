@@ -1,0 +1,15 @@
+<h1>Here are all the vendors in the <%= @category.name.upcase %> category.</h1>
+
+<% if @category.vendors.count > 0 %>
+  <ul>
+    <% @category.vendors.each do |vendor| %>
+      <li><%= link_to vendor.name, vendor %> | <%= vendor.reviews.count %> CPA member reviews | Average rating: <%= vendor.avg_rating %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h2>Recent reviews for <%= @category.name.upcase %>.</h2>
+
+<%= render "shared/list_reviews", locals: { reviews: @reviews, vote: @vote} %>
+
+

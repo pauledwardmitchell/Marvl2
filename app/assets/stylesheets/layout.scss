@@ -27,7 +27,7 @@ body {
   margin: 0;
 }
 
-.hold_container {
+.container {
   margin: 50px auto;
   width: 80%;
   border: 1px dotted $green;
@@ -42,7 +42,7 @@ body {
 
   .brand {
     display: inline-block;
-    padding: 20px 0 10px 20px;
+    padding: 0 0 10px 20px;
 
     img {
       float: left;
@@ -52,17 +52,31 @@ body {
 
     h2 {
       float:left;
-      margin-top: 0px;
+      margin-top: 22px;
       margin-bottom: 0px;
       font-size: 50px;
     }
 
     h1 {
     }
-
   }
+
+  .left, .right {
+    display: inline-block;
+  }
+
+  .right {
+    float: right;
+    margin-top: 27px;
+    a {
+      text-decoration: none;
+      color: $blue;
+      margin-right: 20px;
+    }
+  }
+
   .stripe {
-    height: 30px;
+    height: 35px;
     background-color: $green;
     border-top: 1px solid mintcream;
     border-bottom: 1px solid mintcream;
@@ -99,7 +113,7 @@ body {
     }
   }
   .stripe-inner {
-    margin-top: 5px;
+    margin-top: 8px;
   }
 }
 
@@ -107,18 +121,8 @@ body {
   background-color: white;
 }
 
-.right a, .left a {
-    text-decoration: none;
-    color: #444;
-}
 
-.right {
-    float:right;
-}
 
-.left, .right {
-    display: inline-block;
-}
 
 .review-left {
   float: left;
