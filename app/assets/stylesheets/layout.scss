@@ -27,12 +27,8 @@ body {
   margin: 0;
 }
 
-.hold_container {
-  margin: 50px auto;
-  width: 80%;
-  border: 1px dotted $green;
-  min-height: 600px;
-  background-color: mintcream;
+.container {
+  margin: 0 auto;
 }
 
 .nav {
@@ -77,10 +73,11 @@ body {
   }
 
   .stripe {
-    height: 35px;
+    height: 100%;
     background-color: $green;
     border-top: 1px solid mintcream;
     border-bottom: 1px solid mintcream;
+    padding-bottom: 8px;
 
     span {
       padding-left: 20px;
@@ -274,7 +271,7 @@ p {
 #sample {
   background-color: white;
   margin: 0;
-  height: 220px;
+  height: 300px;
 }
 
 #ambassador-list {
@@ -394,4 +391,36 @@ h4 {
   background-color: $blue-light;
   margin-top: 0px;
   padding: 5px;
+}
+
+@media only screen and (max-width: 870px) { 
+.nav {
+  .stripe {
+    height: 100%;
+ 
+    border-top: 1px solid mintcream;
+    border-bottom: 1px solid mintcream;
+    padding-bottom: 8px;
+
+    .goto{
+      font-family: 'Big John';
+      margin-right: .5px;
+      margin-top: 10px;
+       }
+    .separator {
+      margin-left: -15px;
+      margin-right: -15px;
+    }
+
+}
+}
+#ambassador-list {
+  float: left;
+  width: 20%;
+  padding: 20px;
+  margin-left: 10px;
+  background-color: white;
+
+
+}
 }
