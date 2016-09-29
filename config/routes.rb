@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "sessions#index"
 
   get '/ambassadors', to: 'users#ambassadors'
-  get '/samplevendors', to: 'users#samplevendors'
+  get '/samplevendors', to: 'users#samplevendors', as: :samplevendors
   post '/admin', to: 'roles#admin'
   post '/member', to: 'roles#member'
   get '/login', to: 'sessions#new'
@@ -35,8 +35,8 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show]
 
-  resources :locations, only: [:index]
   get 'locations/all', to: 'locations#all'
+  resources :locations, only: [:index, :show, :all]
 
   namespace :admin do
     resources :vendors

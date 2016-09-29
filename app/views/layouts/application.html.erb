@@ -41,7 +41,11 @@
         <div class="stripe">
           <div class="stripe-inner">
           <span class="goto">goto: </span>
-          <%= link_to "find a vendor", vendors_path %>
+          <% if logged_in? %>
+            <%= link_to "find a vendor", vendors_path %>
+          <% else %>
+            <%= link_to "find a vendor", samplevendors_path %>
+          <% end %>
           <span class="separator"></span>
           <%= link_to "reviews", reviews_path %>
           <span class="separator"></span>
