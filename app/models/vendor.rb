@@ -14,4 +14,12 @@ class Vendor < ApplicationRecord
   	  "no ratings"
     end
   end
+
+  def associate_category(category_name)
+    category = Category.find_by name: category_name
+    if category
+      Offering.create(self.id, category.id)
+    end
+
+  end
 end
