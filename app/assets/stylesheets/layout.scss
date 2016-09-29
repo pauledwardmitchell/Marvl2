@@ -344,20 +344,20 @@ h4 {
 
 #review-link{
   background-color: #D3D3D3;
-  padding: 5px;
+  padding: 10px;
   border-top: 1px solid #CCCCCC;
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
   display: inline;
   margin-top: 15px;
-  margin-right: 20px;
+  
   a {
     text-decoration: none;
     font-size: 20px;
-    font-family: 'Arvo', Palatino, san-serif;
     color: $blue;
     font-align: center;
+    font-weight: bold;
   }
   img {
     max-height: 15px;

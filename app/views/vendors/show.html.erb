@@ -22,7 +22,7 @@
     </ul>
   <% end %>
   <div id="review-link"><%=image_tag("outline-star.png")%><%= link_to "Write a Review", new_vendor_review_path(@vendor) %></div><br>
-  <br>
+  <br><Br>
 <% if admin? %>
   <%= link_to "Update Vendor Information", edit_vendor_path(@vendor) %><br>
 <% end %>
@@ -44,7 +44,7 @@
 </div>
 </div>
 
-<br><br>
+<br>
 
 <% if @reviews.length > 0 %>
   <h3 class="emphasis-font">Recent Reviews</h3>
@@ -61,9 +61,9 @@
           <p><%= pluralize(review.votes.count, "member") %> found this review to be helpful.</p>
         </div>
       <% end %>
-
       <% if review.flagged %>
         <span><em>This review has been flagged as needing Admin Attention. </em></span>
+      <br>
       <% end %>
       <br>
       <div class="review-left">
