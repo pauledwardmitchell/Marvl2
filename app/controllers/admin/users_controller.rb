@@ -3,6 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :require_admin
 
   def index
+    @user = current_user
     @users = User.order(:last_name)
     @memberrole_id = Role.find_by(name: 'Member').id
     @adminrole_id = Role.find_by(name: 'Admin').id

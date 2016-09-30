@@ -10,15 +10,21 @@
 
 <div id="images">
 	<% @documents.each do |document| %>
-		<div class="image">
-		<%= image_tag document.media_url(:small) if document.media? && image?(document.media) %>
-			<div class="image_name">
-				<%= document.name %>
+		<% if document.media? %>
+			<div class="image">
+			<%= image_tag document.media_url(:small) if document.media? && image?(document.media) %>
+				<div class="image_name">
+					<%= document.name %>
+				</div>
+				<% if admin? %>
+					<%= document.user.full_name %> - 
+					<%= document.user.email %>
+				<% end %>
+				<div>
+					<%= link_to "view document", document_path(document) %>
+				</div>
 			</div>
-			<div>
-				<%= link_to "view document", document_path(document) %>
-			</div>
-		</div>
+		<% end %>
 	<% end %>
 </div>
 

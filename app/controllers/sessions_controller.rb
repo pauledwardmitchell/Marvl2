@@ -7,8 +7,13 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(email: params[:email])
       if @user && @user.authenticate(params[:password])
-        session[:user_id] = @user.id
-        redirect_to @user
+        if @user.roles.any?
+          session[:user_id] = @user.id
+          redirect_to @user
+        else
+          flash[:notice] = "Your account has not yet been confirmed by an admin, please check back later"
+          redirect_to '/'
+        end
       else
         flash[:notice] = "Invalid email/password combination, please try again"
         render 'new'
