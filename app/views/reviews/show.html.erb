@@ -1,15 +1,16 @@
-<h1> <%= @review.title %> </h1>
+<h1><%=@vendor.name%></h1>
 
-<div>
-  <p>AUTHOR: <%= @review.user.full_name %></p>	
-  <p>REVIEW CONTENT: <%= @review.content %></p>
-  <p>RATING: <%= @review.rating %> stars</p>
-  <p>
+<h3><%= @review.title %></h3>
+<div class="green-border"></div>
+	<ul>
+	<div class="reviews">
+	  <li>Posted By - <%= @review.user.full_name %></li>
+	  <li><%= @review.content %></li>
+	  <li><%= @review.rating %> stars</li>
+  </ul>
   	<%= link_to "See all of #{@review.vendor.name}'s reviews", vendor_path(@vendor) %> | 
   	<%= link_to "See all reviews", reviews_path %> 
-  </p>
 </div>
-
 <% if admin? %>
   <%= link_to "Edit This Review", edit_vendor_review_path(@vendor, @review) %>
 <% end %>
