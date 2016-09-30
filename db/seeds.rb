@@ -1,6 +1,6 @@
-require_relative 'cpa_data/static_data.db' # <-- roles, permanent admins & orgs, etc.
-# require_relative 'cpa_data/member_data.db'
-require_relative 'cpa_data/vendor_data.db' # <-- vendors and seed reviews from original MARVL google spreadsheet
+require_relative 'cpa_data/static_data.rb' # <-- roles, permanent admins & orgs, etc.
+# require_relative 'cpa_data/member_data.rb'
+require_relative 'cpa_data/vendor_data.rb' # <-- vendors and seed reviews from original MARVL google spreadsheet
 
 
 

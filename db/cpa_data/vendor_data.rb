@@ -1,6 +1,6 @@
 require 'csv'
 
-DATA_FILENAME = 'cpa_data/vendors_reviews.csv'
+DATA_FILENAME = File.join(Rails.root, 'db', 'cpa_data', 'vendors_reviews.csv')
 HEADER_ROW = 2
 FIRST_RECORD = 3 # 'default' or an integer
 
