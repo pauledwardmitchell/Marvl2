@@ -22,7 +22,7 @@
 
 
 	<% if @user.id == session[:user_id] %>
-		<%= link_to "View your Uploaded Documents", documents_path %>
+		<%= link_to "View Uploaded Documents", documents_path %>
 		<%= link_to "Edit Your Profile", edit_user_path(@user) %>
 		<%= link_to "Privacy Settings", edit_privacy_path(@user) %>
 	<% end %>
@@ -52,6 +52,3 @@
 		</div>
 	<% end %>
 <% end %>
-
-
-
