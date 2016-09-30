@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
 
   def index
-    @organisations = Organisation.all
+    if logged_in?
+      @organisations = Organisation.all
+    else
+      flash[:access] = "Unauthorized access, please log in."
+      redirect_to '/'
+    end
   end
 
   def show

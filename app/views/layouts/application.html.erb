@@ -43,15 +43,15 @@
           <span class="goto">goto: </span>
           <% if logged_in? %>
             <%= link_to "find a vendor", vendors_path %>
+            <span class="separator"></span>
+            <%= link_to "reviews", reviews_path %>
+            <span class="separator"></span>
+            <%= link_to "forum", forum_path  %>
+            <span class="separator"></span>
+            <%= link_to "our members", users_path %>
           <% else %>
             <%= link_to "find a vendor", samplevendors_path %>
           <% end %>
-          <span class="separator"></span>
-          <%= link_to "reviews", reviews_path %>
-          <span class="separator"></span>
-          <%= link_to "forum", forum_path  %>
-          <span class="separator"></span>
-          <%= link_to "our members", users_path %>
           <span class="separator"></span>
           <%= link_to "ambassadors", ambassadors_path %>
 
