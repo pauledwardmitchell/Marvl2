@@ -5,7 +5,7 @@
 		<%= @document.name %>
 	</div>
 	<%= link_to "download", download_path(@document) %>
-	<% if admin? %>
+	<% if admin? || current_user.id == @document.user.id %>
 		<%= link_to "delete", document_path(@document), method: :delete %>
 	<% end %>
 </div>
