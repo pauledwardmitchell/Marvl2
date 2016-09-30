@@ -4,34 +4,49 @@
 </div>
 	<div class = "reviews">
 		<% @reviews.each do |review| %>
-      <div id="name">
-		    <%= review.user.full_name %> - <%= link_to review.title, vendor_review_path(review.vendor, review) %>
-      </div>
-		  <%= review.rating %> stars<br><br>
+
+      <% if review.title %>
+        <div id="name">
+  		    <%= review.user.full_name %> - <%= link_to review.title, vendor_review_path(review.vendor, review) %>
+        </div>
+
+      <% end %>
+
+      <% if review.rating %>
+  		  <%= review.rating %> stars<br><br>
+      <% end %>
+
 		  <%= review.content %><br>
-		  <% if review.votes.any? %>
+
+      <% if review.votes.any? %>
 		    <div class="up-votes">
-              <p><%= pluralize(review.votes.count, "member") %> found this review to be helpful.</p>
-            </div>
-          <% end %>
+          <p><%= pluralize(review.votes.count, "member") %> found this review to be helpful.</p>
+        </div>
+      <% end %>
 
 		  <% if review.flagged %>
             <span><em>This review has been flagged as needing admin attention. </em></span>
-		  <% end %><br>
+		  <% end %>
+
+      <br>
+
       <div class="review-left">
-          <%= form_for [review.vendor, review] do |f| %>
-            <%= f.hidden_field :flagged, :value => true %>
-            <%= f.submit "Flag this review as needing admin attention" %>
-          <% end %>
+        <%= form_for [review.vendor, review] do |f| %>
+          <%= f.hidden_field :flagged, :value => true %>
+          <%= f.submit "Flag this review" %>
+        <% end %>
       </div>
 
-          <%= form_for vendor_review_votes_path(review.vendor, review, @vote) do |f| %>
-            <%= f.hidden_field :helpful, :value => true %>
-            <%= f.hidden_field :user_id, :value => session[:user_id] %>
-            <%= f.hidden_field :review_id, :value => review.id %>
-            <%= f.submit "Upvote this Review" %>
-          <% end %><br><br>
-
-        <% end%>
-	</div>
+      <%= form_for vendor_review_votes_path(review.vendor, review, @vote) do |f| %>
+        <%= f.hidden_field :helpful, :value => true %>
+        <%= f.hidden_field :user_id, :value => session[:user_id] %>
+        <%= f.hidden_field :review_id, :value => review.id %>
+        <%= f.submit "Upvote this Review" %>
       <% end %>
+
+      <br>
+      <br>
+
+    <% end %>
+	</div>
+<% end %>

@@ -2,7 +2,14 @@
 <div id="vendor-information">
   <h1><%= @vendor.name %> </h1>
 
-  <h4>Address: <%= @vendor.street_address %>, <%= @vendor.city %>, <%= @vendor.state %>, <%= @vendor.zip_code %></h4>
+  <h4>Address:
+    <% if @vendor.street_address %>
+      <%= @vendor.street_address %>, <%= @vendor.city %>, <%= @vendor.state %>, <%= @vendor.zip_code %>
+    <% else %>
+      <%= link_to 'add an address', edit_vendor_path %>
+    <% end %>
+
+  </h4>
   <% if @vendor.phone != nil && @vendor.phone.length > 0 %>
     <h4>Phone: <%= @vendor.phone %></h4>
   <% end %>
@@ -15,7 +22,7 @@
 <% end %>
     <h4>Website: <%= @vendor.website%></h4>
   <% end %>
-  
+
   <% if @vendor.categories.count > 0 %>
     <h3>Categories:</h3>
     <ul>
@@ -35,17 +42,18 @@
 <h3>Add a Service Category</h3>
 <%= form_for [@vendor, @offering] do |f| %>
   <%= f.hidden_field :vendor_id, :value => params[:id] %>
-            
+
   <% @categories.each do |category| %>
     <%= f.radio_button :category_id, category.id %>
     <%= f.label :category_id, category.name %><br>
   <% end %>
-  <div class="form-group">          
+  <div class="form-group">
   <%= f.submit "Submit" %>
   </div>
 <% end %>
 </div>
 </div>
+
 
 <%= render "shared/list_reviews", locals: { reviews: @reviews, vote: @vote} %>
 
