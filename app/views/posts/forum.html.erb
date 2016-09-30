@@ -1,5 +1,5 @@
 <h1>Welcome to the CPA forum.</h1>
-<h2>Here you will find helpful posts from your loving leaders!</h2>
+<h3>Here you will find helpful posts from your loving leaders!</h3>
 
 <div>
   <p><strong>Search all posts using the forms below.  We have a very simple search algorithm, so keep it simple. (Example:
@@ -7,9 +7,9 @@
 	
 	<%= form_tag forum_path, :method => 'get' do %>
 	  <p>
-	  	Search all forum posts BY TITLE:
+	  	Search all Forum Posts by Title:
 	    <%= text_field_tag :title_search, params[:title_search] %>
-	    <%= submit_tag "Search all TITLES for this KEYWORD", :name => nil %>
+	    <%= submit_tag "Search", :name => nil %>
 	  </p>
 	<% end %>
 </div>
@@ -30,7 +30,8 @@
   <h3>No posts matched your search.</h3>
 <% end %>
 
-<div>
+  <% if @post && @post.length > 0 %>
+<div class="reviews">
   <h3>Here are the most recent forum posts:</h3>
     <% @posts.each do |post| %>
       <p><%= post.title %></p>
@@ -39,3 +40,4 @@
       ______________________________
     <% end %>
 </div>
+<%end %>

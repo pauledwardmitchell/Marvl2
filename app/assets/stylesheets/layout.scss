@@ -4,6 +4,10 @@ $green-light:#DEF3DE;
 $blue:#008CC1;
 $blue-light: #EAF2FA;
 
+@font-face {
+  font-family: "Big John";
+  src: font-url('BigJohn.otf') format("opentype");
+}
 
 table {
   font-size: 11pt;
@@ -193,6 +197,10 @@ p {
     margin: 15px auto 12px
   }
 
+.green-border {
+  border-bottom: 2.5px solid #396;
+  width: 200px;
+}
 
 .form-group{
     max-width: 500px;
@@ -327,6 +335,7 @@ h4 {
 
 #vendor-information{
   float: left;
+  height: 100%;
   width: 45%;
   margin-right: 50px;
     h3{
@@ -353,7 +362,7 @@ h4 {
   border-left: 1px solid #CCCCCC;
   display: inline;
   margin-top: 15px;
-  
+
   a {
     text-decoration: none;
     font-size: 20px;
@@ -393,11 +402,11 @@ h4 {
   padding: 5px;
 }
 
-@media only screen and (max-width: 870px) { 
+@media only screen and (max-width: 870px) {
 .nav {
   .stripe {
     height: 100%;
- 
+
     border-top: 1px solid mintcream;
     border-bottom: 1px solid mintcream;
     padding-bottom: 8px;
@@ -420,7 +429,18 @@ h4 {
   padding: 20px;
   margin-left: 10px;
   background-color: white;
+}
+}
 
+#page-wrap{
+  max-width: 500px;
+}
 
+@media only screen and (max-width: 500px) { 
+.nav {
+  .stripe {
+   
+
+}
 }
 }

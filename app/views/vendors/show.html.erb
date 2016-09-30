@@ -3,16 +3,19 @@
   <h1><%= @vendor.name %> </h1>
 
   <h4>Address: <%= @vendor.street_address %>, <%= @vendor.city %>, <%= @vendor.state %>, <%= @vendor.zip_code %></h4>
-  <% if @vendor.phone %>
+  <% if @vendor.phone != nil && @vendor.phone.length > 0 %>
     <h4>Phone: <%= @vendor.phone %></h4>
   <% end %>
-  <% if @vendor.email %>
+  <% if @vendor.email != nil && @vendor.email.length >0 %>
     <h4>Email: <%= @vendor.email%></h4>
   <% end %>
-  <% if @vendor.website %>
+  <% if @vendor.website != nil && @vendor.website.length > 0 %>
+<% if admin? %>
+  <%= link_to "Update Vendor Information", edit_vendor_path(@vendor) %><br>
+<% end %>
     <h4>Website: <%= @vendor.website%></h4>
   <% end %>
-
+  
   <% if @vendor.categories.count > 0 %>
     <h3>Categories:</h3>
     <ul>
@@ -22,7 +25,7 @@
     </ul>
   <% end %>
   <div id="review-link"><%=image_tag("outline-star.png")%><%= link_to "Write a Review", new_vendor_review_path(@vendor) %></div><br>
-  <br><Br>
+  <br><br>
 <% if admin? %>
   <%= link_to "Update Vendor Information", edit_vendor_path(@vendor) %><br>
 <% end %>
