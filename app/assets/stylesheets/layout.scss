@@ -197,6 +197,10 @@ p {
     margin: 15px auto 12px
   }
 
+.green-border {
+  border-bottom: 2.5px solid #396;
+  width: 200px;
+}
 
 .form-group{
     max-width: 500px;
@@ -331,6 +335,7 @@ h4 {
 
 #vendor-information{
   float: left;
+  height: 100%;
   width: 45%;
   margin-right: 50px;
     h3{
@@ -424,7 +429,18 @@ h4 {
   padding: 20px;
   margin-left: 10px;
   background-color: white;
+}
+}
 
+#page-wrap{
+  max-width: 500px;
+}
 
+@media only screen and (max-width: 500px) { 
+.nav {
+  .stripe {
+   
+
+}
 }
 }

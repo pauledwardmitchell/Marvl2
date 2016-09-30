@@ -1,6 +1,7 @@
 <%# /users/:id/show %>
 
 <div class="user-info">
+	<h1><%= @user.full_name %> <% if @ambassador %> - Membership Ambassador <%end%><% if @user.is_admin?%> - Admin<%end%></h1>
 
 	<% if admin? && @user.id == session[:user_id] %>
 	  <%= link_to "View/Manage Users", admin_users_path %>
@@ -19,31 +20,24 @@
 		<% end %>
 	<% end %>
 
-	<h1><%= @user.full_name %> <% if @ambassador %> - Membership Ambassador <%end%></h1>
 
 	<% if @user.id == session[:user_id] %>
+		<%= link_to "View your Uploaded Documents", documents_path %>
 		<%= link_to "Edit Your Profile", edit_user_path(@user) %>
 		<%= link_to "Privacy Settings", edit_privacy_path(@user) %>
 	<% end %>
 	<% if !@ambassador && @user.id == current_user.id %>
 		<%= link_to "Become an Ambassador", new_role_path %>
 	<% end %>
-
-
-	<% if @user.is_admin? %>
-		<p> Admin</p>
-		<%= link_to "View All Documents", documents_path %>
-	<% end %>
-
-
+<br><br>
 <% if @privacy.membership_allowed %>
-	<h3>Membership Expiration: <%= @expiration %></h3>
+	<h4>Membership Expiration: <%= @expiration %></h4>
 <% end %>
 <% if @privacy.organisation_allowed %>
-	<h3>Organization: <%= @user.organisation.name %></h3>
+	<h4>Organization: <%= @user.organisation.name %></h4>
 <% end %>
 <% if @privacy.email_allowed %>
-	<h3>Email: <%= @user.email %></h3>
+	<h4>Email: <%= @user.email %></h4>
 <% end %>
 
 <% if @privacy.reviews_allowed %>
@@ -59,7 +53,5 @@
 	<% end %>
 <% end %>
 
-<% if !admin? %>
-	<%= link_to "View your document images", documents_path %>
-<% end %>
+
 

@@ -1,6 +1,7 @@
-<h1>Update this vendor's information.</h1>
-
-<%= form_for @vendor do |f| %>
+<center>
+  <h1>Update <%=@vendor.name%>'s Information</h1>
+</center>
+<%= form_for @vendor, html: {class: "form-group"} do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %><br>
   <%= f.label :street_address %>
