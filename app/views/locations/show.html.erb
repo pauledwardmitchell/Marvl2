@@ -7,9 +7,8 @@
 
 <h3>Affliated Members</h3>
   <ul>
-    <%= @location.organisation.users do |user| %>
-      <li>Representative: <%= link_to user.full_name , user %></li>
+    <% @location.organisation.users do |user| %>
+      <li>Representative: <%= link_to user, user %></li>
     <% end %>
   </ul>
-
 
