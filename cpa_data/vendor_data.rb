@@ -28,9 +28,5 @@ records.each do |record|
   vend.reviews << review
   user.reviews << review
 
-  #name
-  #street address
 end
-
-
 

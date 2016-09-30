@@ -12,11 +12,11 @@ hubbard = Location.create name: "hubbard st", street_address: "531 W Hubbard St"
 van_buren = Location.create name: "van buren", street_address: "1033 W Van Buren St", city: "Chicago", state: "IL", zip_code: "60607", organisation_id: "1"
 cpa_location =  Location.create name: "cpa hq", street_address: "1226 Vermont Ave, NW, Suite 200", city: "Washington", state: "DC", zip_code: "20005", organisation_id: "2"
 
-laur = User.create
-paul = User.create
-kaitlyn = User.create
-benedict = User.create
-felipe = User.create
+laur = User.create(first_name: "Laur", last_name: "Skelly", email: "laurieskelly@gmail.com", password: "321coopshop", organisation_id: dbc.id, membership_expiration: "12/31/2026")
+paul = User.create(first_name: "Paul", last_name: "Mitchell", email: "pauledwardmitchell@gmail.com", password: "321coopshop", organisation_id: dbc.id, membership_expiration: "12/31/2026")
+kaitlyn = User.create(first_name: "Kaitlyn", last_name: "Bradshaw", email: "kmbradshaw@gmail.com", password: "321coopshop", organisation_id: dbc.id, membership_expiration: "12/31/2026")
+benedict = User.create(first_name: "Benedict", last_name: "Schurwanz", email: "benedictify@gmail.com", password: "321coopshop", organisation_id: dbc.id, membership_expiration: "12/31/2026")
+felipe = User.create(first_name: "Felipe", last_name: "Witchger", email: "felipe@cpa.coop", password: "321coopshop", organisation_id: dbc.id, membership_expiration: "12/31/2026")
 coop = User.create(first_name: "Coop", last_name: "Shop", email: "coop@shop.com", password: "password", organisation_id: organisation.id, membership_expiration: "12/01/2026")
 fake = User.create(first_name: 'Fake', last_name: 'Member', email: 'fake@person.com', password: 'fakeperson', organisation_id: organisation_two.id)
 
