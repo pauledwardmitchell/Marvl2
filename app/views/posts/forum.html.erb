@@ -1,6 +1,11 @@
 <h1>Welcome to the CPA forum.</h1>
 <h3>Here you will find helpful posts from your loving leaders!</h3>
 
+<% if admin? %>
+  <h4>Hi, <%= @user.first_name %>: <%= link_to "Click here to create a new post", new_post_path %></h4>
+  
+<% end %>
+
 <div>
   <p><strong>Search all posts using the forms below.  We have a very simple search algorithm, so keep it simple. (Example:
 	  "HVAC" or "Pest")</strong></p>
@@ -30,13 +35,13 @@
   <h3>No posts matched your search.</h3>
 <% end %>
 
-  <% if @post && @post.length > 0 %>
+  <% if @posts && @posts.length > 0 %>
 <div class="reviews">
   <h3>Here are the most recent forum posts:</h3>
     <% @posts.each do |post| %>
       <p><%= post.title %></p>
       <p><%= post.content %></p>
-      <p>Written by: <%= post.user.full_name %></p><br>
+      <p>Written by <%= post.user.full_name %> on <%= post.created_at.strftime("%B, %d, %Y") %></p><br>
       ______________________________
     <% end %>
 </div>
