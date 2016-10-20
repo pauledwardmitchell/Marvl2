@@ -32,6 +32,10 @@ module ApplicationHelper
     end
   end
 
+  def reviews_for_category?(category)
+    @reviews.select { |review| review.vendor.categories.include? category }.sort_by { |review| review[:created_at] }.take(3) != nil
+  end
+
 
 end
 
