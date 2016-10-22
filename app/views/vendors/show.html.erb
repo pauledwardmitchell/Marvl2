@@ -1,10 +1,13 @@
 <div id="page-top">
 <div id="vendor-information">
-  <h1><%= @vendor.name %> </h1>
+  <h1><%= @vendor.name %> </h1><br>
 
-  <h4>Address:
+  <div id="review-link"><%=image_tag("outline-star.png")%><%= link_to "Write a Review", new_vendor_review_path(@vendor) %></div><br><br>
+
+  <h4>
     <% if @vendor.street_address %>
-      <%= @vendor.street_address %>, <%= @vendor.city %>, <%= @vendor.state %>, <%= @vendor.zip_code %>
+      <%= @vendor.street_address %>,<br> 
+      <%= @vendor.city %>, <%= @vendor.state %>, <%= @vendor.zip_code %>
     <% else %>
       <%= link_to 'add an address', edit_vendor_path %>
     <% end %>
@@ -23,34 +26,26 @@
     <h4>Website: <%= @vendor.website%></h4>
   <% end %>
 
+<% if admin? %>
+  <%= link_to "Update Vendor Information", edit_vendor_path(@vendor) %><br><br>
+<% end %>
+
+  <br><br>
+</div>
+
+<div class="left">
+
   <% if @vendor.categories.count > 0 %>
-    <h3>Categories:</h3>
+    <h3><%= @vendor.name %> does work in:</h3>
     <ul>
       <% @vendor.categories.each do |category| %>
         <li><%= category.name %></li>
       <% end %>
     </ul>
   <% end %>
-  <div id="review-link"><%=image_tag("outline-star.png")%><%= link_to "Write a Review", new_vendor_review_path(@vendor) %></div><br>
-  <br><br>
-<% if admin? %>
-  <%= link_to "Update Vendor Information", edit_vendor_path(@vendor) %><br>
-<% end %>
-</div>
 
-<div class="left">
-<h3>Add a Service Category</h3>
-<%= form_for [@vendor, @offering] do |f| %>
-  <%= f.hidden_field :vendor_id, :value => params[:id] %>
+<%= link_to "Add to this list of services", new_vendor_offering_path(@vendor) %>
 
-  <% @categories.each do |category| %>
-    <%= f.radio_button :category_id, category.id %>
-    <%= f.label :category_id, category.name %><br>
-  <% end %>
-  <div class="form-group">
-  <%= f.submit "Submit" %>
-  </div>
-<% end %>
 </div>
 </div>
 
