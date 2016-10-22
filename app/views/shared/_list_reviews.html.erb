@@ -7,16 +7,20 @@
 
       <% if review.title %>
         <div id="name">
-  		    <%= review.user.full_name %> - <%= link_to review.title, vendor_review_path(review.vendor, review) %>
+  		    Review of <%= link_to review.vendor.name, vendor_path(review.vendor.id) %> titled <%= link_to review.title, vendor_review_path(review.vendor_id, review.id) %> <br>
         </div>
-
-      <% end %>
-
+                  
       <% if review.rating %>
   		  <%= review.rating %> stars<br><br>
       <% end %>
+      
+      <% if review.content %>
+        <%= review.content %><br>
+        (Written by <%= link_to review.user.full_name, user_path(review.user.id) %> on <%= review.created_at.strftime("%B, %d, %Y") %>)<br>
+      <% end %>
+      
 
-		  <%= review.content %><br>
+      <% end %>
 
       <% if review.votes.any? %>
 		    <div class="up-votes">
