@@ -1,12 +1,22 @@
 <h2>Recent reviews</h2>
   <div class="reviews">
       <% @recent_reviews.each do |review| %>
-        <h4>Vendor Reviewed: <%= link_to review.vendor.name, vendor_path(review.vendor.id) %> </h4>
-        <p><%= link_to review.title, vendor_review_path(review.vendor_id, review.id) %></p>
-        <p>
-          <%= review.content %><br><br>
-          Written by <%= link_to review.user.full_name, user_path(review.user.id) %> on <%= review.created_at.strftime("%B, %d, %Y") %>
-        </p><br>
+        <% if review.title %>
+        <div id="name">
+          Review of <%= link_to review.vendor.name, vendor_path(review.vendor.id) %> titled <%= link_to review.title, vendor_review_path(review.vendor_id, review.id) %> <br>
+        </div>
+                  
+      <% if review.rating %>
+        <%= review.rating %> stars<br><br>
+      <% end %>
+      
+      <% if review.content %>
+        <%= review.content %><br>
+        (Written by <%= link_to review.user.full_name, user_path(review.user.id) %> on <%= review.created_at.strftime("%B, %d, %Y") %>)<br><br><br>
+      <% end %>
+      
+
+      <% end %>
       <% end %>
   </div>
 <div class="green-border"></div>
@@ -17,7 +27,7 @@
       	<h3><%= category.name %></h3>
           <% if reviews_for_category?(category) %>
       	    <ul>
-              <% @reviews.select { |review| review.vendor.categories.include? category }.sort_by { |review| review[:created_at] }.take(3).each do |review| %>
+              <% @all_reviews.select { |review| review.vendor.categories.include? category }.sort_by { |review| review[:created_at] }.take(3).each do |review| %>
                 <li>
                   Review of <%= link_to review.vendor.name, vendor_path(review.vendor.id) %> titled <%= link_to review.title, vendor_review_path(review.vendor_id, review.id) %> <br>
                   <%= review.content %><br>
