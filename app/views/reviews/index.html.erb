@@ -26,15 +26,28 @@
       <div>
       	<h3><%= category.name %></h3>
           <% if reviews_for_category?(category) %>
-      	    <ul>
               <% @all_reviews.select { |review| review.vendor.categories.include? category }.sort_by { |review| review[:created_at] }.take(3).each do |review| %>
-                <li>
-                  Review of <%= link_to review.vendor.name, vendor_path(review.vendor.id) %> titled <%= link_to review.title, vendor_review_path(review.vendor_id, review.id) %> <br>
-                  <%= review.content %><br>
-                  (Written by <%= link_to review.user.full_name, user_path(review.user.id) %> on <%= review.created_at.strftime("%B, %d, %Y") %>)<br><br>
-                </li> 
+                
+                <div class = "review">
+                  <% if review.title %>
+                    <div id="name">
+                      <h3>Review of <%= link_to review.vendor.name, vendor_path(review.vendor.id) %> titled <%= link_to review.title, vendor_review_path(review.vendor_id, review.id) %></h3>
+                </div>
+                  <% end %>
+                  
+                  <% if review.rating %>
+                    <div class="star-rating" data-score=<%= review.rating %>></div>
+                  <% end %>
+      
+                  <% if review.content %>
+                    <p><%= review.content %></p>
+                    <p>(Written by <%= link_to review.user.full_name, user_path(review.user.id) %> on <%= review.created_at.strftime("%B, %d, %Y") %>)</p>
+                  <% end %>
+                </div>
+
               <% end %>
-      	    </ul>
+            <div class="green-border"></div><br>
+
           <% end %>
       </div>
     <% end %> 
