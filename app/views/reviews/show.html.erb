@@ -6,7 +6,7 @@
 	<div class="reviews">
 	  <li>Posted By - <%= @review.user.full_name %></li>
 	  <li><%= @review.content %></li>
-	  <li><%= @review.rating %> stars</li>
+	  <li><div class="star-rating" data-score=<%= @review.rating %>></div></li>
   </ul>
   	<%= link_to "See all of #{@review.vendor.name}'s reviews", vendor_path(@vendor) %> | 
   	<%= link_to "See all reviews", reviews_path %> 
@@ -18,3 +18,13 @@
 <% if @review.user_id == session[:user_id] %>
   <%= link_to "Edit This Review", edit_vendor_review_path(@vendor, @review) %>
 <% end %>
+
+<script type="text/javascript">
+  $('.star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  });
+</script>

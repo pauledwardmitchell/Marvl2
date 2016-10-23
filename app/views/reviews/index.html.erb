@@ -7,7 +7,7 @@
         </div>
                   
       <% if review.rating %>
-        <%= review.rating %> stars<br><br>
+        <div class="star-rating" data-score=<%= review.rating %>></div>
       <% end %>
       
       <% if review.content %>
@@ -39,3 +39,13 @@
       </div>
     <% end %> 
   </div>
+
+<script type="text/javascript">
+  $('.star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  });
+</script>
