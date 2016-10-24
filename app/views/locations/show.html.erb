@@ -1,14 +1,14 @@
 <h1>Location Information</h1>
 
-<h3><%= @location.name %></h3>
+<h3><%= @location.name %> - <%= @location.organisation.name %></h3>
 <%= @location.street_address %><br>
 <%= @location.city %>, <%= @location.state %>, <%= @location.zip_code %><br>
 <%= @location.phone %><br>
 
-<h3>Affliated Members</h3>
+<h3>CPA Members from this Organization</h3>
   <ul>
-    <% @location.organisation.users do |user| %>
-      <li>Representative: <%= link_to user, user %></li>
+    <% @location.organisation.users.each do |user| %>
+      <li><%= link_to user.full_name, user %> | <%= user.email %></li>
     <% end %>
   </ul>
 
