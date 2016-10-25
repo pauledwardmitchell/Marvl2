@@ -3,8 +3,9 @@ class ReviewsController < ApplicationController
   def index
     if logged_in?
       @categories = Category.all  
-      @reviews = Review.all
-      @recent_reviews = Review.all.order(created_at: :desc).take(5)
+      @ratings = Review.where(user_id: nil)
+      @reviews = Review.where.not(user_id: nil)
+      @recent_reviews = @reviews.order(created_at: :desc).take(5)
     else
       flash[:access] = "Unauthorized access, please log in."
       redirect_to '/'

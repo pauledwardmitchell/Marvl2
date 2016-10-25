@@ -1,4 +1,4 @@
-member = Role.create name: "Member"
+gmember = Role.create name: "Member"
 admin = Role.create name: "Admin"
 ambassador = Role.create name: "Ambassador"
 
@@ -20,10 +20,11 @@ felipe = User.create(first_name: "Felipe", last_name: "Witchger", email: "felipe
 coop = User.create(first_name: "Coop", last_name: "Shop", email: "coop@shop.com", password: "password", organisation_id: cpa.id, membership_expiration: "2026/12/31")
 fake = User.create(first_name: 'Fake', last_name: 'Member', email: 'fake@person.com', password: 'fakeperson', organisation_id: cpa.id)
 
-[laur, paul, kaitlyn, benedict, felipe].each do |person|
+[laur, paul, kaitlyn, benedict, felipe, coop, fake].each do |person|
   Privacy.create user_id: person.id
-  person.add_role(admin.id)
+  unless person == fake
+    person.add_role(admin.id)
+  end
 end
-coop.add_role(admin.id)
-fake.add_role(member.id)
+
 
