@@ -25,7 +25,7 @@
   <h3> Here are the most recent posts that match your search: </h3>
   <% @searched_posts.each do |post| %>
     <p><%= post.title %></p>
-    <p><%= post.content %></p>
+    <p><%= post.content.html_safe %></p>
     <p>Written by: <%= post.user.full_name %></p><br>
     ______________________________
   <% end %>
@@ -40,7 +40,7 @@
   <h3>Here are the most recent forum posts:</h3>
     <% @posts.each do |post| %>
       <p><%= post.title %></p>
-      <p><%= post.content %></p>
+      <p><%= post.content.html_safe %></p>
       <p>Written by <%= post.user.full_name %> on <%= post.created_at.strftime("%B, %d, %Y") %></p><br>
       ______________________________
     <% end %>
