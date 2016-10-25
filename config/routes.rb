@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :roles, only: [:new, :create]
 
-  resources :posts, only: [:new, :create, :edit, :update]
+  resources :posts, only: [:new, :create, :edit, :update, :destroy]
 
   resources :privacy, only: [:edit, :update]
 
