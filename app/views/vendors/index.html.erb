@@ -5,7 +5,7 @@
     <h3><%= category.name %></h3>
       <ul>
         <% category.vendors.each do |vendor| %>
-        <li><%= link_to vendor.name, vendor %> | <%= vendor.reviews.count %> CPA member reviews | Average rating: <%= vendor.avg_rating %></li>
+        <li><%= link_to vendor.name, vendor %> | <%= vendor.reviews.count %> reviews | <%= vendor.avg_rating %> out of 5 stars</li>
         <% end %>
       </ul>
   <% end %>

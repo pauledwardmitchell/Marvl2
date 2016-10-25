@@ -7,8 +7,15 @@ class OfferingsController < ApplicationController
     if @offering.save
       redirect_to @vendor
     else
-      
+      flash[:notice] = "Category not saved"
+      render 'new'
     end
+  end
+
+  def new
+    @vendor = Vendor.find(params[:vendor_id])
+    @offering = Offering.new
+    @categories = Category.all
   end
 
   private
