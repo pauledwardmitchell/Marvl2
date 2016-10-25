@@ -42,7 +42,7 @@
         <% end %>
       </div>
 
-      <%= form_for vendor_review_votes_path(review.vendor, review, @vote) do |f| %>
+      <%= form_for [review.vendor, review, @vote] do |f| %>
         <%= f.hidden_field :helpful, :value => true %>
         <%= f.hidden_field :user_id, :value => session[:user_id] %>
         <%= f.hidden_field :review_id, :value => review.id %>
