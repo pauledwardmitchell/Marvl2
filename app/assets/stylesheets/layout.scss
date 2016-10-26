@@ -35,10 +35,13 @@ body {
   margin: 0 auto;
 }
 
-.nav {
+main {
   padding: 20px;
   background-color: white;
-  margin-bottom: 50px;
+}
+
+.nav {
+  background-color: white;
 
   .brand {
     display: inline-block;
@@ -284,6 +287,8 @@ p {
 
 .footer {
 
+  padding: 10px; 
+
   .left, .right {
     display: inline-block;
   }
@@ -291,7 +296,7 @@ p {
   .right {
     float: right;
     text-align: right;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-right: 20px;
 
     a {
