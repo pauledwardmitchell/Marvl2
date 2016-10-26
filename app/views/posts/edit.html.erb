@@ -1,4 +1,4 @@
-<h2>Create a new forum post.</h2>
+<h2>Edit this forum post.</h2>
 
 <div class="form-group">
   <%= form_for @post do |f| %>
@@ -9,7 +9,6 @@
     <%= f.text_area :content %><br>
   
     <%= f.hidden_field :user_id, :value => session[:user_id] %>
-    <%= f.submit "Publish post" %>
+    <%= f.submit "Update post" %>
   <% end %>
 </div>
-

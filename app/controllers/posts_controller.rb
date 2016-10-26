@@ -34,6 +34,22 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+
+    if @post.update(post_params)
+      redirect_to '/forum'
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+
+    if @post.destroy
+      redirect_to '/forum'
+    else
+      render 'edit'
+    end  
   end
 
   private
