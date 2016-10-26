@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       if @user && @user.authenticate(params[:password])
         if @user.roles.any?
           session[:user_id] = @user.id
-          redirect_to @user
+          redirect_to '/vendors'
         else
           flash[:notice] = "Your account has not yet been confirmed by an admin, please check back later"
           redirect_to '/'
