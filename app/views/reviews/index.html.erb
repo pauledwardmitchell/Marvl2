@@ -26,7 +26,7 @@
       <div>
       	<h3><%= category.name %></h3>
           <% if reviews_for_category?(category) %>
-              <% @all_reviews.select { |review| review.vendor.categories.include? category }.sort_by { |review| review[:created_at] }.take(3).each do |review| %>
+              <% @reviews.select { |review| review.vendor.categories.include? category }.sort_by { |review| review[:created_at] }.take(3).each do |review| %>
                 
                 <div class = "review">
                   <% if review.title %>

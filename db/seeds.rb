@@ -11,15 +11,23 @@ require_relative 'cpa_data/vendor_data.rb' # <-- vendors and seed reviews from o
 #   ActiveRecord::Base.connection.execute("TRUNCATE #{table}")
 # end
 
-# organisation = Organisation.create!(name: "Silver Spring UMC")
-# organisation_two = Organisation.create!(name: "KIPP DC")
-# organisations = [organisation, organisation_two]
-# organisations << Organisation.create(name: "E. L. Haynes Public Charter School")
 
+organisation = Organisation.create!(name: "Silver Spring UMC")
+organisation_two = Organisation.create!(name: "KIPP DC")
+organisations = [organisation, organisation_two]
+organisations << Organisation.create(name: "E. L. Haynes Public Charter School")
+organisations << Organisation.create(name: "National City Christian Church")
 
-# Location.create(name: "Main campus", street_address: "8900 Georgia Ave", city: "Silver Spring", state: "MD", zip_code: "20910", phone: "(301) 587-1215", organisation_id: "1")
-# Location.create(name: "KIPP DC AIM Academy: Douglass Campus", street_address: "2600 Douglass Road SE", city: "Washington", state: "DC", zip_code: "20020", phone: "202-678-5477", organisation_id: "2")
-# Location.create(name: "E. L. Haynes Public Charter Elementary School", street_address: "4501 Kansas Avenue, NW", city: "Washington", state: "DC", zip_code: "20011", phone: "(202) 667-4446)", organisation_id: "3")
+Location.create(name: "Main campus", street_address: "8900 Georgia Ave", city: "Silver Spring", state: "MD", zip_code: "20910", phone: "(301) 587-1215", organisation_id: organisations[0].id)
+Location.create(name: "KIPP DC AIM Academy: Douglass Campus", street_address: "2600 Douglass Road SE", city: "Washington", state: "DC", zip_code: "20020", phone: "202-678-5477", organisation_id: organisations[1].id)
+Location.create(name: "E. L. Haynes Public Charter Elementary School", street_address: "4501 Kansas Avenue, NW", city: "Washington", state: "DC", zip_code: "20011", phone: "(202) 667-4446)", organisation_id: organisations[2].id)
+Location.create(name: "National City Christian Church", street_address: "5 Thomas Cir NW", city: "Washington", state: "DC", zip_code: "20005",  organisation_id: organisations[3].id)
+bill = User.create(first_name: "Bill", last_name: "Knight", email: "billknight@fake.com", password: "321coopshop", organisation_id: organisations[3].id)
+
+require_relative 'cpa_data/static_data.rb' # <-- roles, permanent admins & orgs, etc.
+# require_relative 'cpa_data/member_data.rb'
+require_relative 'cpa_data/vendor_data.rb' # <-- vendors and seed reviews from original MARVL google spreadsheet
+
 
 # coop = User.create(first_name: "Coop", last_name: "Shop", email: "coop@shop.com", password: "password", organisation_id: organisation.id, membership_expiration: "12/01/2026")
 # fake = User.create(first_name: 'Fake', last_name: 'Member', email: 'fake@person.com', password: 'fakeperson', organisation_id: organisation_two.id)
