@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :posts
 
   has_secure_password
-
+  
   validates :email, uniqueness: true
   validates :email, :first_name, :last_name, presence: true
   validates_associated :organisation
