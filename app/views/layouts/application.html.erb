@@ -3,9 +3,8 @@
   <head>
     <title>Marvl</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'layout' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'layout' %>
     <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -14,7 +13,6 @@
   <body>
     <div class="container">
       <div class="nav">
-
         <div class="left">
           <a href="/">
             <div class="brand">
@@ -23,7 +21,8 @@
               <h2>MARVL</h2> <%# linkify this %>
             </div>
           </a>
-        </div>
+        </div> <%# /left %>
+
         <div class="right">
           <div class="session">
               <% if logged_in? %>
@@ -37,35 +36,57 @@
                 <%= link_to 'join us', new_user_path  %>
               <% end %>
           </div>
-        </div>
+        </div> <%# /right %>
+
         <div class="stripe">
           <div class="stripe-inner">
-          <span class="goto">goto: </span>
-          <% if logged_in? %>
-            <%= link_to "find a vendor", vendors_path %>
+            <span class="goto">
+              goto: 
+            </span>
+            
+            <% if logged_in? %>
+              <%= link_to "find a vendor", vendors_path %>
+              <span class="separator"></span>
+              <%= link_to "reviews", reviews_path %>
+              <span class="separator"></span>
+              <%= link_to "forum", forum_path  %>
+              <span class="separator"></span>
+              <%= link_to "our members", users_path %>
+            <% else %>
+              <%= link_to "find a vendor", samplevendors_path %>
+            <% end %>
+  
             <span class="separator"></span>
-            <%= link_to "reviews", reviews_path %>
-            <span class="separator"></span>
-            <%= link_to "forum", forum_path  %>
-            <span class="separator"></span>
-            <%= link_to "our members", users_path %>
-          <% else %>
-            <%= link_to "find a vendor", samplevendors_path %>
-          <% end %>
-          <span class="separator"></span>
-          <%= link_to "ambassadors", ambassadors_path %>
+            <%= link_to "ambassadors", ambassadors_path %>
 
-          <% if logged_in? %>
-            <span class="separator"></span>
-            <%= link_to "document uploader" , new_document_path(session[:user_id]) %>
-          <% end %>
+            <% if logged_in? %>
+              <span class="separator"></span>
+              <%= link_to "document uploader" , new_document_path(session[:user_id]) %>
+            <% end %>
+          </div>
+        </div> <%# /stripe %>
+      </div> <%# /nav %>
 
-        </div>
-      </div>
       <main>
         <%= yield %>
       </main>
-    </div>
+
+      <footer>
+        <section class="footer"> 
+          <div class="left">
+            <h4>Powered by:</h4>
+            <img class="cpa-logo-footer" src="http://cpa.coop/wp-content/themes/cpa_wp2015/assets/images/cpa_logo_stacked.png">
+          </div>
+
+          <div class="contact-column right">
+            <span>1226 Vermont Ave, NW, Suite 200</span><br>
+            <span>Washington DC 20005</span><br>
+            <span><a href="tel:202-810-2725">202-810-2725</a></span><br>
+            <span><a href="mailto:info@cpa.coop">info@cpa.coop</a></span><br>
+          </div>
+        </section>
+      </footer>
+    </div> <%# /container %>
 
     <script>
       $('a#logout_link').on('click', function(){
@@ -76,21 +97,6 @@
         })
       });
     </script>
+
   </body>
-  <footer>
-      <div class="footer"> 
-        <div class="left">
-          <h4>Powered by:</h4>
-          <img class="cpa-logo-footer" src="http://cpa.coop/wp-content/themes/cpa_wp2015/assets/images/cpa_logo_stacked.png">
-
-        </div>
-
-        <div class="contact-column right">
-            <span>1226 Vermont Ave, NW, Suite 200</span><br>
-            <span>Washington DC 20005</span><br>
-            <span><a href="tel:202-810-2725">202-810-2725</a></span><br>
-            <span><a href="mailto:info@cpa.coop">info@cpa.coop</a></span><br>
-        </div>
-      </div>
-    </footer>
 </html>
