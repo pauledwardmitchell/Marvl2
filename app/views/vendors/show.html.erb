@@ -1,7 +1,7 @@
 <div id="page-top">
 <div id="vendor-information">
   <h1><%= @vendor.name %> </h1>
-  <span><%= @vendor.avg_rating %> out of 5 stars </span><br><br>
+  <span class="star-rating" data-score=<%= @vendor.avg_rating %>></span><br><br>
 
   <div id="review-link"><%=image_tag("outline-star.png")%><%= link_to "Write a Review", new_vendor_review_path(@vendor) %></div><br><br>
 
@@ -50,4 +50,13 @@
 
 <%= render "shared/list_reviews", locals: { reviews: @reviews, vote: @vote} %>
 
+<script type="text/javascript">
+  $('.star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  });
+</script>
 

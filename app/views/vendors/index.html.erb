@@ -5,7 +5,9 @@
     <h3><%= category.name %></h3>
       <ul>
         <% category.vendors.each do |vendor| %>
-        <li><%= link_to vendor.name, vendor %> | <%= vendor.reviews.count %> reviews | <%= vendor.avg_rating %> out of 5 stars</li>
+        <li><%= link_to vendor.name, vendor %> | <%= vendor.reviews.count %> reviews | 
+            <span class="star-rating" data-score=<%= vendor.avg_rating %>></span>
+        </li>
         <% end %>
       </ul>
   <% end %>
@@ -16,3 +18,12 @@
   <h4>Can't find the Vendor you are looking for? <%= link_to 'Add them now!', new_vendor_path %> </h4>
 </center>
 
+<script type="text/javascript">
+  $('.star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  });
+</script>
