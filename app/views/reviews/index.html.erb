@@ -27,7 +27,7 @@
       	<h3><%= category.name %></h3>
           <% if reviews_for_category?(category) %>
       	    <ul>
-              <% @all_reviews.select { |review| review.vendor.categories.include? category }.sort_by { |review| review[:created_at] }.take(3).each do |review| %>
+              <% @reviews.where.not(user_id: nil).select { |review| review.vendor.categories.include? category }.sort_by { |review| review[:created_at] }.take(3).each do |review| %>
                 <li>
                   Review of <%= link_to review.vendor.name, vendor_path(review.vendor.id) %> titled <%= link_to review.title, vendor_review_path(review.vendor_id, review.id) %> <br>
                   <%= review.content %><br>
