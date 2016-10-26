@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
       @categories = Category.all  
       @ratings = Review.where(user_id: nil)
       @reviews = Review.where.not(user_id: nil)
+      @all_reviews = @reviews #sloppy kludge. Should replace all uses of @all_reviews with @reviews and delete this
       @recent_reviews = @reviews.order(created_at: :desc).take(5)
     else
       flash[:access] = "Unauthorized access, please log in."

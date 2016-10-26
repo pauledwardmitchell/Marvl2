@@ -4,7 +4,7 @@
 	<h1><%= @user.full_name %> <% if @ambassador %> - Membership Ambassador <%end%><% if @user.is_admin?%> - Admin<%end%></h1>
 
 	<% if admin? && @user.id == session[:user_id] %>
-	  <%= link_to "View/Manage Users", admin_users_path %>
+	  <%= link_to "View/Manage Users", admin_users_path %>  |  
 	  <% unless @user.is_admin? %>
 		  <%= form_for @roles, url: url_for(controller: "roles", action: "admin" ) do |f| %>
 		  <%= hidden_field_tag "user_id", @user.id %>
@@ -22,9 +22,9 @@
 
 
 	<% if @user.id == session[:user_id] %>
-		<%= link_to "View Uploaded Documents", documents_path %>
-		<%= link_to "Edit Your Profile", edit_user_path(@user) %>
-		<%= link_to "Privacy Settings", edit_privacy_path(@user) %>
+		<%= link_to "View Uploaded Documents", documents_path %>  | 
+		<%= link_to "Edit Your Profile", edit_user_path(@user) %>  | 
+		<%= link_to "Privacy Settings", edit_privacy_path(@user) %>   
 	<% end %>
 	<% if !@ambassador && @user.id == current_user.id %>
 		<%= link_to "Become an Ambassador", new_role_path %>
@@ -42,13 +42,9 @@
 
 <% if @privacy.reviews_allowed %>
 	<% if @reviews.length > 0 %>
-		<h3>Recent Reviews</h3>
-		<div class = "reviews">
-			<% @reviews.each do |review| %>
-			<%= review.vendor.name %><br>
-			<%= review.title %><br>
-			<%= review.content %><br><br>
-		<%end%>
+		<div class = "review">
+          <%= render "shared/list_reviews", locals: { reviews: @reviews, vote: @vote} %>
 		</div>
 	<% end %>
 <% end %>
+</div>

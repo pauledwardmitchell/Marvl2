@@ -21,9 +21,6 @@
     <h4>Email: <%= @vendor.email%></h4>
   <% end %>
   <% if @vendor.website != nil && @vendor.website.length > 0 %>
-<% if admin? %>
-  <%= link_to "Update Vendor Information", edit_vendor_path(@vendor) %><br>
-<% end %>
     <h4>Website: <%= @vendor.website%></h4>
   <% end %>
 
