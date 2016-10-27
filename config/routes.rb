@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/reviews', to: 'reviews#index'
   get '/documents/:id/download', to: 'documents#download', as: :download
   get '/editpassword', to: 'users#edit_password'
+  post '/patchpassword', to: 'users#patch_password'
 
   resources :users 
 

@@ -70,6 +70,25 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
   end
 
+  def patch_password
+    @user = User.find(current_user.id)
+
+    if @user && @user.authenticate(params[:old_password])
+      if params[:new_password_1] == params[:new_password_2]
+        @user.password = params[:new_password_1]
+        flash[:notice] = "You have successfully changed your password."
+        redirect_to @user
+      else
+        flash[:notice] = "Your new password entries do not match.  Please try again."
+        redirect_to editpassword_path
+      end
+    else
+      flash[:notice] = "Please enter your old password correctly."
+      redirect_to editpassword_path
+    end
+    
+  end
+
   def patch
     @user = User.find(current_user.id)
     if @user.update(user_params)
