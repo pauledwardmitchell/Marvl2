@@ -22,33 +22,6 @@
       
 
       <% end %>
-
-      <% if review.votes.any? %>
-		    <div class="up-votes">
-          <p><%= pluralize(review.votes.count, "member") %> found this review to be helpful.</p>
-        </div>
-      <% end %>
-
-		  <% if review.flagged %>
-        <span><em>This review has been flagged as needing admin attention. </em></span>
-		  <% end %>
-
-      <br>
-
-      <div class="review-left">
-        <%= form_for [review.vendor, review] do |f| %>
-          <%= f.hidden_field :flagged, :value => true %>
-          <%= f.submit "Flag this review" %>
-        <% end %>
-      </div>
-
-      <%= form_for [review.vendor, review, @vote] do |f| %>
-        <%= f.hidden_field :helpful, :value => true %>
-        <%= f.hidden_field :user_id, :value => session[:user_id] %>
-        <%= f.hidden_field :review_id, :value => review.id %>
-        <%= f.submit "Upvote this Review" %>
-      <% end %>
-
       <br>
       <br>
 
