@@ -76,6 +76,7 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:old_password])
       if params[:new_password_1] == params[:new_password_2]
         @user.password = params[:new_password_1]
+        @user.save!
         flash[:notice] = "You have successfully changed your password."
         redirect_to @user
       else
