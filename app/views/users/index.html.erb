@@ -8,6 +8,9 @@
   <% organisation.locations.each do |location| %>
     <%= location.name %> | <%= location.phone %><br>
     <%= location.full_address %>
+    <% if admin? || current_user.organisation.id == location.organisation.id %><br>
+      <%= link_to "Edit this information", edit_location_path(location) %>
+    <% end %>
   <% end %>
 
   <% if organisation.users.length > 0 %>
@@ -18,4 +21,13 @@
     </ul>
   <% end %>
 <% end %>
+
+<center>
+<br>
+
+<% if admin? %>
+  <h4>ADMIN: Can't find an Organisation that should be here? <%= link_to 'Add it now!', new_organisation_path %> </h4>
+<% end %>
+
+</center>
 

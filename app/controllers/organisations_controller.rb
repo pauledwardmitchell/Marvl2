@@ -9,7 +9,7 @@ class OrganisationsController < ApplicationController
     @user = User.find(current_user.id)
 
     if @organisation.save
-      redirect_to @user
+      redirect_to '/users'
     else
       redirect_to new_organisation_path
     end
