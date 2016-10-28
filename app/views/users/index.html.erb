@@ -5,11 +5,15 @@
 <% @organisations.each do |organisation| %>
   <h3><%= organisation.name %></h3>
   
-  <% organisation.locations.each do |location| %>
-    <%= location.name %> | <%= location.phone %><br>
-    <%= location.full_address %>
-    <% if admin? || current_user.organisation.id == location.organisation.id %><br>
-      <%= link_to "Edit this information", edit_location_path(location) %>
+  <% if organisation.locations.length == 0 %>
+    <%= link_to "Add location info", new_location_path %>
+  <% else %>
+    <% organisation.locations.each do |location| %>
+      <%= location.name %> | <%= location.phone %><br>
+      <%= location.full_address %>
+      <% if admin? || current_user.organisation.id == location.organisation.id %><br>
+        <%= link_to "Edit this information", edit_location_path(location) %>
+      <% end %>
     <% end %>
   <% end %>
 

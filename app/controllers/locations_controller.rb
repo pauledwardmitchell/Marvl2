@@ -1,5 +1,20 @@
 class LocationsController < ApplicationController
 
+  def new
+    @location = Location.new
+    @organisations = Organisation.all 
+  end
+
+  def create
+    @location = Location.new(location_params)
+
+    if @location.save
+      redirect_to '/users'
+    else
+      render 'new'
+    end
+  end
+
   def all
     locations = Location.all
     render json: locations

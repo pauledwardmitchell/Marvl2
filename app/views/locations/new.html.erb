@@ -1,0 +1,25 @@
+<h2>Add location information</h2>
+
+<%= form_for @location do |f| %>
+  
+  <%= f.label :organisation %>
+  <%= f.select(:organisation_id) do %>
+    <% @organisations.each do |c| -%>
+      <%= content_tag(:option, c.name, value: c.id) %>
+    <% end %>
+  <% end %><br><br>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+  <%= f.label :street_address %>
+  <%= f.text_field :street_address %><br>
+  <%= f.label :city %>
+  <%= f.text_field :city %><br>
+  <%= f.label :state %>
+  <%= f.text_field :state %><br>
+  <%= f.label :zip_code %>
+  <%= f.text_field :zip_code %><br>
+
+  <%= f.submit "Update" %>
+
+<% end %>
