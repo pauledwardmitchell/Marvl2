@@ -50,7 +50,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    binding.pry
     @organisation = Organisation.find(params[:user][:organisation_id])
     # if @organisation
     #   @user.organisation_id = @organisation.id
