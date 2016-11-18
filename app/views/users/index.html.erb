@@ -6,7 +6,8 @@
   <h3><%= organisation.name %></h3>
   
   <% if organisation.locations.length == 0 %>
-    <%= link_to "Add location info", new_location_path %>
+
+    <%= link_to "Add location info", new_location_path(org: organisation.id) %>
   <% else %>
     <% organisation.locations.each do |location| %>
       <%= location.name %> | <%= location.phone %><br>
