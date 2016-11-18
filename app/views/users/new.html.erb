@@ -23,6 +23,7 @@
 
   <%= f.label :organisation %>
   <%= f.select(:organisation_id) do %>
+    <%= content_tag(:option, 'Choose an Organisation', {value: nil, selected: "selected", disabled: true}) %>
     <% @organisations.each do |c| -%>
       <%= content_tag(:option, c.name, value: c.id) %>
     <% end %>
