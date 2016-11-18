@@ -9,6 +9,10 @@ $blue-light: #EAF2FA;
   src: font-url('BigJohn.otf') format("opentype");
 }
 
+a:-webkit-any-link {
+  color: black;
+}
+
 table {
   font-size: 11pt;
 }
