@@ -45,17 +45,18 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @organisations = Organisation.all
   end
 
   def create
     @user = User.new(user_params)
-    @organisation = Organisation.find_by(name: params[:organisation])
-    if @organisation
-      @user.organisation_id = @organisation.id
-    else
-      @organisation = Organisation.create(name: params[:organisation])
-      @user.organisation_id = @organisation.id
-    end
+    @organisation = Organisation.find(params[:user][:organisation_id])
+    # if @organisation
+    #   @user.organisation_id = @organisation.id
+    # else
+    #   @organisation = Organisation.create(name: params[:organisation])
+    #   @user.organisation_id = @organisation.id
+    # end
     if @user.save
       Privacy.create(user_id: @user.id)
       redirect_to root_path

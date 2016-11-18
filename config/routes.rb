@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   resources :privacy, only: [:edit, :update]
 
+  resources :organisations, only: [:new, :create, :edit, :update]
+
   resources :vendors do
     resources :reviews do
       resources :votes
@@ -38,7 +40,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
 
   get 'locations/all', to: 'locations#all'
-  resources :locations, only: [:index, :show, :all]
+  resources :locations, only: [:index, :show, :all, :new, :create, :edit, :update]
 
   namespace :admin do
     resources :vendors
