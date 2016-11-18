@@ -1,14 +1,11 @@
 <h2>Add location information</h2>
 
 <%= form_for @location do |f| %>
-  
-  <%= f.label :organisation %>
-  <%= f.select(:organisation_id) do %>
-    <% @organisations.each do |c| -%>
-      <%= content_tag(:option, c.name, value: c.id) %>
-    <% end %>
-  <% end %><br><br>
 
+  <%= f.label :organisation %>
+  <% selects = Organisation.all.collect{ |o| [o.name, o.id]} %>
+  <%= select_tag(:organisation, options_for_select(selects, @current_org)) %>
+  
   <%= f.label :name %>
   <%= f.text_field :name %><br>
   <%= f.label :street_address %>
@@ -23,3 +20,7 @@
   <%= f.submit "Update" %>
 
 <% end %>
+
+<script>
+$.('')
+</script>

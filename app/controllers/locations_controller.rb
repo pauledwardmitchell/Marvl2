@@ -1,6 +1,7 @@
 class LocationsController < ApplicationController
 
   def new
+    @current_org = params[:org]
     @location = Location.new
     @organisations = Organisation.all 
   end
