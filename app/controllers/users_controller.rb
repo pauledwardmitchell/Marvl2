@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     if @user.id == current_user.id
   		@user.update_attributes(title: params[:user][:title], first_name: params[:user][:first_name], last_name: params[:user][:last_name], email: params[:user][:email])
-	  	redirect_to @user
+	  	redirect_to root_path
     else
       flash[:access] = "Unauthorized access, please contact an administrator if you believe this error is incorrect."
       redirect_to @user
@@ -64,6 +64,39 @@ class UsersController < ApplicationController
     else
       @errors = @user.errors.full_messages
       render "new"
+    end
+  end
+
+  def edit_password
+    @user = User.find(current_user.id)
+  end
+
+  def patch_password
+    @user = User.find(current_user.id)
+
+    if @user && @user.authenticate(params[:old_password])
+      if params[:new_password_1] == params[:new_password_2]
+        @user.password = params[:new_password_1]
+        @user.save!
+        flash[:notice] = "You have successfully changed your password."
+        redirect_to @user
+      else
+        flash[:notice] = "Your new password entries do not match.  Please try again."
+        redirect_to editpassword_path
+      end
+    else
+      flash[:notice] = "Please enter your old password correctly."
+      redirect_to editpassword_path
+    end
+    
+  end
+
+  def patch
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      redirect_to root_path
+    else
+      render "edit_password"
     end
   end
 
