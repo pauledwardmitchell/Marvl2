@@ -1,52 +1,93 @@
 <%# /users/:id/show %>
-
 <div class="user-info">
-	<h1><%= @user.full_name %> <% if @ambassador %> - Membership Ambassador <%end%><% if @user.is_admin?%> - Admin<%end%></h1>
+  <h1><%= @user.full_name %> <% if @ambassador %> - Membership Ambassador <%end%><% if @user.is_admin?%> - Admin<%end%></h1>
 
-	<% if admin? && @user.id == session[:user_id] %>
-	  <%= link_to "View/Manage Users", admin_users_path %>  |  
-	  <% unless @user.is_admin? %>
-		  <%= form_for @roles, url: url_for(controller: "roles", action: "admin" ) do |f| %>
-		  <%= hidden_field_tag "user_id", @user.id %>
-		  <%= f.submit "Make #{@user.full_name} Admin" %>
-		 	<% end %>
-		<% end %>
-		<% unless @user.member? || @user.is_admin? %>
-		<p><%=@user.full_name%>'s membership is currently pending</p>
-			<%= form_for @roles, url: url_for(controller: "roles", action: "member") do |f| %>
-			<%= hidden_field_tag "user_id", @user.id %>
-			<%= f.submit "Approve Membership" %>
-			<% end %>
-		<% end %>
-	<% end %>
+  <%# if viewing user is admin %>
+  <% if admin? %>
+
+    <%= link_to "View/Manage Users", admin_users_path %>  |  
+    <%= link_to "View Uploaded Documents", documents_path %>  | 
+    <%= link_to "Add Organisation", new_organisation_path %> |
+
+    <%# viewing admin can promote non-admin viewed user to admin %>
+    <% unless @user.is_admin? %>
+      <%= form_for @roles, url: url_for(controller: "roles", action: "admin" ) do |f| %>
+      <%= hidden_field_tag "user_id", @user.id %>
+      <%= f.submit "Make #{@user.full_name} Admin" %>
+      <% end %>
+    <% end %>
+
+    <%# viewing admin can approve pending user's membership %>
+    <% unless @user.member? || @user.is_admin? %>
+    <p><%=@user.full_name%>'s membership is currently pending</p>
+      <%= form_for @roles, url: url_for(controller: "roles", action: "member") do |f| %>
+      <%= hidden_field_tag "user_id", @user.id %>
+      <%= f.submit "Approve Membership" %>
+      <% end %>
+    <% end %>
+
+  <%# specific to non-admin %>
+  <% else %>
+    <% if !@ambassador && !@user.is_admin? && @user.id == current_user.id %>
+      | <%= link_to "Become an Ambassador", new_role_path %>
+    <% end %>
+  <% end %>
 
 
-	<% if @user.id == session[:user_id] %>
-		<%= link_to "View Uploaded Documents", documents_path %>  | 
-		<%= link_to "Edit Your Profile", edit_user_path(@user) %>  | 
-		<%= link_to "Privacy Settings", edit_privacy_path(@user) %> |
-		<%= link_to "Add Organisation", new_organisation_path %>  
-		<%= link_to "Change Your Password", editpassword_path %>  
-	<% end %>
-	<% if !@ambassador && @user.id == current_user.id %>
-		| <%= link_to "Become an Ambassador", new_role_path %>
-	<% end %>
-<br><br>
-<% if @privacy.membership_allowed %>
-	<h4>Membership Expiration: <%= @expiration %></h4>
-<% end %>
-<% if @privacy.organisation_allowed %>
-	<h4>Organization: <%= @user.organisation.name %></h4>
-<% end %>
-<% if @privacy.email_allowed %>
-	<h4>Email: <%= @user.email %></h4>
-<% end %>
+  <%# links for admin and members seeing own page %>
+  <% if @user.id == session[:user_id] %>
+    <%= link_to "Edit Your Profile", edit_user_path(@user) %>  | 
+    <%= link_to "Privacy Settings", edit_privacy_path(@user) %> |
+    <%= link_to "Change Your Password", editpassword_path %>  
+  <% end %>
 
-<% if @privacy.reviews_allowed %>
-	<% if @reviews.length > 0 %>
-		<div class = "review">
+
+<div class="user-profile user-info">
+  
+  <% if @privacy.membership_allowed %>
+    <p>
+      Membership Expiration: 
+      <span class="info-value">
+        <%= @expiration %>
+      </span>
+    </p>
+  <% end %>
+
+  <% if @privacy.organisation_allowed %>
+    <p>
+      Organization: 
+      <span class="info-value">
+        <%= link_to @user.organisation.name, location_path(@user.location.id) %>
+      </span>
+    </p>
+  <% end %>
+  
+  <% if @privacy.email_allowed %>
+    <p>
+      Email: 
+      <span class="info-value">
+        <%= @user.email %>
+      </span>
+    </p>
+  <% end %>
+</div>
+
+
+<div class="user-profile recent-reviews-container">
+  <h4>Recent Reviews by <%= @user.full_name %> </h4>
+  <div class="recent-reviews-inner">
+    <% if @privacy.reviews_allowed %>
+      <% if @reviews.length > 0 %>
+        <div class = "review">
           <%= render "shared/list_reviews", locals: { reviews: @reviews, vote: @vote} %>
-		</div>
-	<% end %>
-<% end %>
+        </div>
+      <% else %>
+        <div class="no-reviews">
+          <p>
+            No reviews yet! 
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>

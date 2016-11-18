@@ -46,4 +46,8 @@ class User < ApplicationRecord
   	expiration_date.strftime("%m/%d/%y")
   end
 
+  def location
+    Location.find_by organisation_id: self.organisation.id
+  end
+
 end
