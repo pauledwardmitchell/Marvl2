@@ -24,10 +24,11 @@
 	<% if @user.id == session[:user_id] %>
 		<%= link_to "View Uploaded Documents", documents_path %>  | 
 		<%= link_to "Edit Your Profile", edit_user_path(@user) %>  | 
-		<%= link_to "Privacy Settings", edit_privacy_path(@user) %>   
+		<%= link_to "Privacy Settings", edit_privacy_path(@user) %> |
+		<%= link_to "Change Your Password", editpassword_path %>  
 	<% end %>
 	<% if !@ambassador && @user.id == current_user.id %>
-		<%= link_to "Become an Ambassador", new_role_path %>
+		<%= link_to " | Become an Ambassador", new_role_path %>
 	<% end %>
 <br><br>
 <% if @privacy.membership_allowed %>
