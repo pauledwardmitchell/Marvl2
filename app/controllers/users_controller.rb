@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @organisations = Organisation.all
+    @organisations = Organisation.order(:name)
   end
 
   def create
