@@ -1,7 +1,32 @@
+@import "layout";
+
+
+.user-info h1, .user-info h3 {
+  margin: 10px auto;
+}
+
 .user-profile.user-info, .user-profile .recent-reviews-inner{
   margin-left: 20px;
 }
 
 .user-profile.recent-reviews-container{
   margin-top: 50px;
+}
+
+.right {
+  float: right;
+}
+
+.admin-tools {
+  margin-right: 20px;
+  padding: 20px;
+  background-color: $blue-light;
+  border: 1px solid $blue;
+
+  h5 {
+    font-size: 14pt;
+    margin: auto auto 1em auto;
+    color: $blue;
+  }
+
 }

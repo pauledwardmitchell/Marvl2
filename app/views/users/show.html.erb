@@ -1,14 +1,27 @@
 <%# /users/:id/show %>
 <div class="user-info">
-  <h1><%= @user.full_name %> <% if @ambassador %> - Membership Ambassador <%end%><% if @user.is_admin?%> - Admin<%end%></h1>
-
   <%# if viewing user is admin %>
   <% if admin? %>
 
-    <%= link_to "View/Manage Users", admin_users_path %>  |  
-    <%= link_to "View Uploaded Documents", documents_path %>  | 
-    <%= link_to "Add Organisation", new_organisation_path %> |
+  <div class="admin-tools right">
+  <h5> Admin Tools </h5>
+  <ul>
+    <li><%= link_to "View/Manage Users", admin_users_path %> 
+    <li><%= link_to "View Uploaded Documents", documents_path %>   
+    <li><%= link_to "Add Organisation", new_organisation_path %> 
+  </ul>
+  </div>
+	<% end %>
 
+
+  <h1><%= @user.full_name %> </h1>
+
+  <% if @ambassador %> <h3> Membership Ambassador </h3> <%end%>
+
+  <% if @user.is_admin?%> <h3> Admin </h3> <%end%>
+
+  
+	<% if admin? %>
     <%# viewing admin can promote non-admin viewed user to admin %>
     <% unless @user.is_admin? %>
       <%= form_for @roles, url: url_for(controller: "roles", action: "admin" ) do |f| %>
@@ -74,7 +87,7 @@
 
 
 <div class="user-profile recent-reviews-container">
-  <h4>Recent Reviews by <%= @user.full_name %> </h4>
+  <h4>Recent Reviews by <%= @user.first_name %> </h4>
   <div class="recent-reviews-inner">
     <% if @privacy.reviews_allowed %>
       <% if @reviews.length > 0 %>
