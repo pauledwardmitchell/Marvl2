@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   resources :organisations, only: [:new, :create, :edit, :update]
 
+  resources :password_resets
+
   resources :vendors do
     resources :reviews do
       resources :votes
