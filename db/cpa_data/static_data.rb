@@ -1,4 +1,4 @@
-gmember = Role.create name: "Member"
+member = Role.create name: "Member"
 admin = Role.create name: "Admin"
 ambassador = Role.create name: "Ambassador"
 
