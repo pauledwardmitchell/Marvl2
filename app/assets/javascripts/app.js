@@ -19,6 +19,7 @@
 
     .done(function(allLocations){
       for (var i = 0; i < allLocations.length; i++) {
+      
         createMarker(allLocations[i]);
       }
     });

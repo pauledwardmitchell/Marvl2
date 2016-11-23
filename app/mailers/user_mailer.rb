@@ -1,4 +1,6 @@
 class UserMailer < ApplicationMailer
+  default from: 'cpamarvlapp@gmail.com'
+
   def membership(user)
   	@user = user
   	@url = "45.55.84.132/login"

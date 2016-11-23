@@ -52,10 +52,10 @@ class User < ApplicationRecord
 
   def send_password_reset
     generate_token(:password_reset_token)
-    self.password_reset_sent_at = Time.zone.now
-    save!
-    
-    UserMailer.password_reset(self).deliver_now
+    self.password_reset_sent_at = Time.now
+    self.save!
+
+    UserMailer.password_reset(self).deliver
   end
 
   def generate_token(column)
@@ -63,5 +63,7 @@ class User < ApplicationRecord
       self[column] = SecureRandom.urlsafe_base64
     end 
   end
+
+
 
 end
