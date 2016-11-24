@@ -8,6 +8,10 @@ class Location < ApplicationRecord
     self.street_address + ",   " + self.city + ", " + self.state + ", " + self.zip_code.to_s
   end
 
+  def info_window_link
+    "<a href='/locations/" + self.id.to_s + "'>" + self.name + "</a>"
+  end
+
 end
 
 ###IF THERE ARE LOCATIONS WITHOUT GEOCODE - RUN THIS IN CONSOLE:

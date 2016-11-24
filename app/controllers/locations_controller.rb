@@ -9,7 +9,7 @@ class LocationsController < ApplicationController
       if location.latitude != nil && location.longitude != nil
         marker.lat location.latitude
         marker.lng location.longitude
-        marker.infowindow location.name
+        marker.infowindow location.info_window_link
       end
     end
   end
