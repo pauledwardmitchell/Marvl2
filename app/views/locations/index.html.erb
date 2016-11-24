@@ -10,15 +10,15 @@
   <body>
     <h3>Check out this interactive map of all the CPA Members!</h3>
   
-  <div style='width: 800px;'>
-    <div id="map" style='width: 800px; height: 400px;'></div>
+  <div style='width: 1000px;'>
+    <div id="map" style='width: 1000px; height: 700px;'></div>
   </div>
 
   <script type="text/javascript">
     handler = Gmaps.build('Google');
     handler.buildMap({ provider: {
       center: {lat: 39.073279, lng: -77.035981},
-      zoom: 9
+      zoom: 10
     }, internal: {id: 'map'}}, function(){
       markers = handler.addMarkers(<%=raw @hash.to_json %>);
       handler.bounds.extendWith(markers);

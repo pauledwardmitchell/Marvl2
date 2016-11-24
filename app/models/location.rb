@@ -15,9 +15,6 @@ class Location < ApplicationRecord
 end
 
 ###IF THERE ARE LOCATIONS WITHOUT GEOCODE - RUN THIS IN CONSOLE:
-# Location.all.each do |l|
-#   if l.latitude == nil
-#     l.geocode
-#     l.save
-#   end
-# end
+# Location.all.each { |l| l.geocode }
+# Location.all.each { |l| l.save }
+
