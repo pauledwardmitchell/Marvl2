@@ -1,7 +1,7 @@
 class Location < ApplicationRecord
   belongs_to :organisation
 
-  geocoded_by :street_address
+  geocoded_by :full_address
   after_validation :geocode
 
   def full_address
