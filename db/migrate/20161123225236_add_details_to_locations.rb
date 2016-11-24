@@ -4,3 +4,5 @@ class AddDetailsToLocations < ActiveRecord::Migration[5.0]
     add_column :locations, :longitude, :float
   end
 end
+
+
