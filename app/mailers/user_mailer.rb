@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
 
   def membership(user)
   	@user = user
-  	@url = "45.55.84.132/login"
+  	@url = url_for controller: 'sessions', action: 'new'
   	mail(to: @user.email, subject: "Welcome to MARVL - Your Account has been Approved!")
   end
 
@@ -11,7 +11,7 @@ class UserMailer < ApplicationMailer
   	@roles = Role.find_by(name: "Admin")
   	@admins = @roles.users
   	emails = @admins.map {|admin| admin.email} 
-  	@url = "45.55.84.132/login"
+  	@url = url_for controller: 'sessions', action: 'new'
   	mail(to: emails, subject: "A Review has been Flagged on MARVL")
   end
 
