@@ -41,7 +41,7 @@
     <% @posts.each do |post| %>
       <p><%= post.title %></p>
       <p><%= post.content.html_safe %></p>
-      <p>Written by <%= link_to post.user.full_name, user_path(post.user.id) %> on <%= post.created_at.strftime("%B, %d, %Y") %></p><br>
+      <p>Written by <%= link_to post.user.full_name, user_path(post.user.id) %> on <%= post.created_at.strftime("%B %d, %Y") %></p><br>
 
       <% if post.user.id == current_user.id || current_user.email == "felipe@cpa.coop" %>
        <%= link_to "Edit post", edit_post_path(post) %>
