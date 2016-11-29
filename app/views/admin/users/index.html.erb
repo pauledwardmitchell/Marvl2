@@ -40,6 +40,10 @@
 <script>
   $('a.approve-member').on('click', function(){
     event.preventDefault();
+
+    var proceed = confirm("Approve membership?");
+    if(proceed == false){return};
+
     var user = $(this).attr('class').split(' ')[1]
     $.ajax({
       <%# TODO: janky alert! %>
@@ -55,6 +59,10 @@
   $('a.promote-admin').on('click', function(){
     var user = $(this).attr('class').split(' ')[1]
     event.preventDefault();
+
+    var proceed = confirm("Promote user to admin?");
+    if(proceed == false){return};
+
     $.ajax({
       <%# TODO: janky alert! %>
         url: '/admin/users/'+user+'/roles',
