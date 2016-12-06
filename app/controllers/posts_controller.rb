@@ -1,16 +1,20 @@
 class PostsController < ApplicationController
   def forum
+    @searched_posts = nil  
   	if admin?
   	  @user = User.find(session[:user_id])
   	end
   	
   	if logged_in?
-	  @posts = Post.all.order(created_at: :desc)
-	  @searched_posts = Post.search(params[:title_search])
-	else
-	  flash[:access] = "Unauthorized access, please log in."
-	  redirect_to '/'
-	end
+      @posts = Post.all.order(created_at: :desc)
+      if params[:title_search]
+        @searched_posts = Post.search(params[:title_search])
+        params.delete :title_search
+      end
+	  else
+	    flash[:access] = "Unauthorized access, please log in."
+	    redirect_to '/'
+	  end
   end
 
   def new
