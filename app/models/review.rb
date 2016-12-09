@@ -6,7 +6,5 @@ class Review < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
   validates :rating, presence: true
-  validates_associated :vendor
-  validates_associated :user
 
 end
