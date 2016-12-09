@@ -3,7 +3,6 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :content, presence: true
-  validates_associated :user
 
   def self.search(search)
     if search
