@@ -1,53 +1,38 @@
-<h1>Welcome to the CPA forum.</h1>
-<h3>Here you will find helpful posts from your loving leaders!</h3>
-
 <% if admin? %>
-  <h4>Hi, <%= @user.first_name %>: <%= link_to "Click here to create a new post", new_post_path %></h4>
+
+<div class="admin-tools right">
+  <h5> Admin Tools </h5>
+  <ul>
+    <li><%= link_to "Write a new post", new_post_path %>
+  </ul> 
+</div>
   
 <% end %>
 
-<div>
-  <p><strong>Search all posts using the forms below.  We have a very simple search algorithm, so keep it simple. (Example:
-	  "HVAC" or "Pest")</strong></p>
-	
+<h1><%= link_to 'marvl forum', forum_path %></h1>
+
+<p>
+Welcome to the forum! Here, CPA admins post helpful information from around the community.
+</p>
+
+<div class="forum-search">
 	<%= form_tag forum_path, :method => 'get' do %>
-	  <p>
-	  	Search all Forum Posts by Title:
-	    <%= text_field_tag :title_search, params[:title_search] %>
-	    <%= submit_tag "Search", :name => nil %>
-	  </p>
+    <%= label :title, :search, "Search posts by title words: " %>
+    <%= text_field_tag :title_search, params[:title_search] %>
+    <%= submit_tag "Search", :name => nil %>
 	<% end %>
 </div>
 
-<% if @searched_posts == nil %>
-  <h3>__________________</h3>
-<% elsif @searched_posts.length > 0 %>
-  <h3> Here are the most recent posts that match your search: </h3>
-  <% @searched_posts.each do |post| %>
-    <p><%= post.title %></p>
-    <p><%= post.content.html_safe %></p>
-    <p>Written by: <%= post.user.full_name %></p><br>
-    ______________________________
-  <% end %>
-  <h4>END OF SEARCH RESULTS</h4>
-  <p>______________________________</p>
-<% else %>
+<% if @searched_posts != nil && @searched_posts.length > 0 %>
+  <h1> Search returns: </h1>
+  <%= render "shared/forum_posts", locals: { posts: @searched_posts } %>
+
+<% elsif @searched_posts != nil %>
   <h3>No posts matched your search.</h3>
-<% end %>
 
-  <% if @posts && @posts.length > 0 %>
-<div class="reviews">
-  <h3>Here are the most recent forum posts:</h3>
-    <% @posts.each do |post| %>
-      <p><%= post.title %></p>
-      <p><%= post.content.html_safe %></p>
-      <p>Written by <%= link_to post.user.full_name, user_path(post.user.id) %> on <%= post.created_at.strftime("%B, %d, %Y") %></p><br>
-
-      <% if post.user.id == current_user.id || current_user.email == "felipe@cpa.coop" %>
-       <%= link_to "Edit post", edit_post_path(post) %>
-       <%= link_to "Delete post", post_path(post), method: :delete %>
-      <% end %>
-      ______________________________
-    <% end %>
-</div>
+<% elsif @posts && @posts.length > 0 %>
+  <div class="posts">
+    <h1>recent posts</h1>
+    <%= render "shared/forum_posts", locals: { posts: @posts } %>
+  </div>
 <%end %>

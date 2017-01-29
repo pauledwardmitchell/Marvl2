@@ -1,6 +1,6 @@
 <div id="page-top">
 <div id="vendor-information">
-  <h1><%= @vendor.name %> </h1>
+  <h1><%= @vendor.name %> </h1><br>
   <span class="star-rating" data-score=<%= @vendor.avg_rating %>></span><br><br>
 
   <div id="review-link"><%=image_tag("outline-star.png")%><%= link_to "Write a Review", new_vendor_review_path(@vendor) %></div><br><br>

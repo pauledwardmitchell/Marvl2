@@ -1,0 +1,16 @@
+<% @posts.each do |post| %>
+
+<div class="forum-post">
+  <h2><%= post.title %></h2>
+
+  <h5>posted by: <%= post.user.full_name %></h5>
+  <p><%= post.content.html_safe %></p>
+
+  <% if post.user.id == current_user.id || current_user.email == "felipe@cpa.coop" %>
+   <%= link_to "Edit post", edit_post_path(post) %>
+   <%= link_to "Delete post", post_path(post), method: :delete %>
+  <% end %>
+    
+</div>
+
+<% end %>
