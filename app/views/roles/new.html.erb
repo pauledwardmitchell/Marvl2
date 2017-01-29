@@ -11,5 +11,5 @@
 </div>
 </center>
 <%= form_for @roles, html: {class: "form-group"} do |f| %>
-  <%= f.submit "Yes, Sign Me Up" %>
+  <%= f.submit "Yes, Sign Me Up", data: { confirm: "Are you sure that you would like to be an ambassador?" } %>
 <% end %>
