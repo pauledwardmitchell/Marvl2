@@ -22,3 +22,7 @@ end
 # Location.all.each { |l| l.geocode }
 # Location.all.each { |l| l.save }
 
+# Location.all.each do |l|
+#   l.geocode
+#   l.save
+# end
