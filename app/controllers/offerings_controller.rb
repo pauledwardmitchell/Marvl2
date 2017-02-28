@@ -5,9 +5,10 @@ class OfferingsController < ApplicationController
   def create
   	@vendor = Vendor.find(params[:vendor_id])
     @offering = Offering.new(offering_params)
+    @categories = Category.all
 
     if @offering.save
-      redirect_to @vendor
+      redirect_to "/vendors/"+@vendor.id.to_s+"/reviews/new"
     else
       flash[:notice] = "Category not saved"
       render 'new'
