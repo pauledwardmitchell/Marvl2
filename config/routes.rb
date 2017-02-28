@@ -51,7 +51,4 @@ Rails.application.routes.draw do
     end
   end
 
-
-  get '', to: 'sessions#new'
-
 end

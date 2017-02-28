@@ -24,7 +24,7 @@ class VendorsController < ApplicationController
     @vendor = Vendor.new(vendor_params)
 
     if @vendor.save
-      redirect_to @vendor
+      redirect_to "/vendors/"+@vendor.id.to_s+"/reviews/new"
     else
       render 'index'
     end
