@@ -1,14 +1,15 @@
 class RolesController < ApplicationController
 
 	def new
-    @roles = Role.new
+      @roles = Role.new
 	end
 
 	def create
-		@user = User.find(current_user.id)
-		@role = Role.find_by(name: "Ambassador")
-		@user.add_role(@role.id)
-    redirect_to @user
+	  @user = User.find(current_user.id)
+	  @role = Role.find_by(name: "Ambassador")
+	  @user.add_role(@role.id)
+      
+      redirect_to @user
 	end
 
 	def admin
