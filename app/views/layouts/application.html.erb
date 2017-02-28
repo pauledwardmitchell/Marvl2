@@ -50,8 +50,10 @@
               <%= link_to "reviews", reviews_path %>
               <span class="separator"></span>
               <%= link_to "forum", forum_path  %>
-              <span class="separator"></span>
-              <%= link_to "our members", users_path %>
+              <% if admin? %>
+                <span class="separator"></span>
+                <%= link_to "our members", users_path %>
+              <% end %>
             <% else %>
               <%= link_to "find a vendor", samplevendors_path %>
             <% end %>
@@ -91,13 +93,6 @@
     </div> <%# /container %>
 
     <script>
-      $('a#logout_link').on('click', function(){
-        event.preventDefault();
-        $.ajax({
-          url: '/logout',
-          method: 'DELETE'
-        })
-      });
       $('#star').raty({
         starOn: '<%= image_path('star-on.png') %>',
         starOff: '<%= image_path('star-off.png') %>',

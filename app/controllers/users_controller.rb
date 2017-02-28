@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    if logged_in?
+    if admin?
       @organisations = Organisation.all
     else
       flash[:access] = "Unauthorized access, please log in."
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-  	if logged_in?
+  	if admin?
     	@user = User.find(params[:id])
     	@reviews = @user.reviews.limit(5)
       @expiration = @user.date_format(@user.membership_expiration)
