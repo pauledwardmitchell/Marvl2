@@ -59,8 +59,13 @@ class UsersController < ApplicationController
     # end
     if @user.save
       Privacy.create(user_id: @user.id)
+
+      @role = Role.find_by(name: "Member")
+      @user.add_role(@role.id)
+      UserMailer.membership(@user).deliver_now
+      
       redirect_to root_path
-      flash[:new] = "An administrator will notify you when your account has been confirmed"
+      flash[:new] = "Welcome to MARVL!"
     else
       @errors = @user.errors.full_messages
       render "new"
