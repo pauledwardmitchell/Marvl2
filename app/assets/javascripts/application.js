@@ -15,4 +15,5 @@
 //= require jquery.raty
 //= require underscore
 //= require gmaps/google
+//= require ./maps.js
 //= require_tree .
