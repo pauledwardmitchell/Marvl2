@@ -1,5 +1,7 @@
 class VendorsController < ApplicationController
 
+  before_action :require_login
+
   def index
     @vendors = Vendor.all
     @categories = Category.all

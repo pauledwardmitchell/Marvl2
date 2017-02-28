@@ -1,5 +1,7 @@
 class PrivacyController < ApplicationController
 
+  before_action :require_login
+
 	def edit
     @user = User.find(params[:id])
     @privacy = Privacy.find_by(user_id: @user.id)

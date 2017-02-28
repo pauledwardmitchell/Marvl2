@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+  before_action :require_login
+
   def index
     if logged_in?
       @categories = Category.all  
@@ -44,9 +46,6 @@ class ReviewsController < ApplicationController
     @vendor = Vendor.find(params[:vendor_id])
     
     if @review.update(review_params)
-      if @review.flagged
-        UserMailer.flagged(@user).deliver_now
-      end
       redirect_to @vendor
     else
       render 'edit'

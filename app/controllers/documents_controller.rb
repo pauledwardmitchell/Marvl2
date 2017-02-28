@@ -1,5 +1,7 @@
 class DocumentsController < ApplicationController
 
+  before_action :require_login
+
 	# form to upload a new document
 	def new
 		if logged_in?

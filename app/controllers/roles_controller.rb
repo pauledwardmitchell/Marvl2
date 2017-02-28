@@ -1,5 +1,7 @@
 class RolesController < ApplicationController
 
+  before_action :require_login
+
 	def new
     @roles = Role.new
 	end

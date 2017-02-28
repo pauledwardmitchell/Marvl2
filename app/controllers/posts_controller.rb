@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  before_action :require_login
+
   def forum
     @searched_posts = nil  
   	if admin?
