@@ -1,5 +1,7 @@
 class LocationsController < ApplicationController
   
+  before_action :require_login
+
   def index
     # @location1 = Location.last
     # @location2 = Location.find(124)

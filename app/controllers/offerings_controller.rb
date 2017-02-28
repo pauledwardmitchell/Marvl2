@@ -1,5 +1,7 @@
 class OfferingsController < ApplicationController
 
+  before_action :require_login
+
   def create
   	@vendor = Vendor.find(params[:vendor_id])
     @offering = Offering.new(offering_params)
