@@ -6,7 +6,7 @@ class OfferingsController < ApplicationController
   	@vendor = Vendor.find(params[:vendor_id])
     @offering = Offering.new(offering_params)
     @categories = Category.all
-binding.pry
+
     if @offering.save
       redirect_to "/vendors/"+@vendor.id.to_s+"/reviews/new"
     else
