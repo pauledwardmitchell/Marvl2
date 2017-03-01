@@ -4,7 +4,7 @@ class Vendor < ApplicationRecord
   has_many :reviews
 
   validates :name, uniqueness: true
-  validates :name, :street_address, :city, :state, :zip_code, presence: true
+  validates :name, presence: true
 
   def full_address
   	self.street_address + " " + self.city + " " + self.state + " " + self.zip_code.to_s
