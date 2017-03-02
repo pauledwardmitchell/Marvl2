@@ -55,7 +55,7 @@ class User < ApplicationRecord
     self.password_reset_sent_at = Time.now
     self.save!
 
-    UserMailer.password_reset(self).deliver
+    #UserMailer.password_reset(self).deliver
   end
 
   def generate_token(column)
