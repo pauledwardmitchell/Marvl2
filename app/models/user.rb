@@ -11,6 +11,7 @@ class User < ApplicationRecord
   
   validates :email, uniqueness: true
   validates :email, :first_name, :last_name, presence: true
+  validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   validates_associated :organisation
   validates_associated :roles
 

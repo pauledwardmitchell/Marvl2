@@ -46,6 +46,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @organisations = Organisation.order(:name)
+      binding.pry
   end
 
   def create
@@ -68,6 +69,7 @@ class UsersController < ApplicationController
       flash[:new] = "Welcome to MARVL!"
     else
       @errors = @user.errors.full_messages
+      @organisations = Organisation.order(:name)
       render "new"
     end
   end
