@@ -46,7 +46,6 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @organisations = Organisation.order(:name)
-      binding.pry
   end
 
   def create
