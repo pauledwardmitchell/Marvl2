@@ -62,7 +62,7 @@ class UsersController < ApplicationController
 
       @role = Role.find_by(name: "Member")
       @user.add_role(@role.id)
-      UserMailer.membership(@user).deliver_now
+      #UserMailer.membership(@user).deliver_now
       
       redirect_to root_path
       flash[:new] = "Welcome to MARVL!"
