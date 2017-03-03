@@ -68,6 +68,7 @@ class UsersController < ApplicationController
       flash[:new] = "Welcome to MARVL!"
     else
       @errors = @user.errors.full_messages
+      @organisations = Organisation.order(:name)
       render "new"
     end
   end
