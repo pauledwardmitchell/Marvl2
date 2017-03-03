@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-  	if admin? || current_user.id == params[:id]
+  	if admin? || current_user.id == params[:id].to_i
     	@user = User.find(params[:id])
     	@reviews = @user.reviews.limit(5)
       @expiration = @user.date_format(@user.membership_expiration)
