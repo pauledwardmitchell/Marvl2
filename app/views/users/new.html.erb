@@ -21,13 +21,13 @@
   <%= f.label :email %>
   <%= f.text_field :email %><br>
 
-  <%= f.label :organisation %>
+  <%= f.label :organisation %><br><span> (If your organization is not listed, please choose <strong>*New CPA Partner*</strong>.)</span>
   <%= f.select(:organisation_id) do %>
     <%= content_tag(:option, 'Choose an Organisation', {value: nil, selected: "selected", disabled: true}) %>
     <% @organisations.each do |c| -%>
       <%= content_tag(:option, c.name, value: c.id) %>
     <% end %>
-  <% end %>
+  <% end %>  
 
   <%= f.label :password %>
   <%= f.password_field :password, class: 'form-group password'%><br>
