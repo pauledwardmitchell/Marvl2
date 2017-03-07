@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   #   resources :votes
   # end
 
-  resources :categories, only: [:index, :show]
+  resources :categories, only: [:index, :show, :new, :create]
 
   get 'locations/all', to: 'locations#all'
   resources :locations, only: [:index, :show, :all, :new, :create, :edit, :update]
