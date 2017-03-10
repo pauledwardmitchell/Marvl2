@@ -9,11 +9,9 @@
     <% if @vendor.street_address %>
       <%= @vendor.street_address %>,<br> 
       <%= @vendor.city %>, <%= @vendor.state %>, <%= @vendor.zip_code %>
-    <% else %>
-      <%= link_to 'add an address', edit_vendor_path %>
     <% end %>
-
   </h4>
+
   <% if @vendor.phone != nil && @vendor.phone.length > 0 %>
     <h4>Phone: <%= @vendor.phone %></h4>
   <% end %>

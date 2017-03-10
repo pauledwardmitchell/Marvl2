@@ -13,7 +13,7 @@ const NewVendorForm = React.createClass({
 
   render: function() {
   	let vendorSearch
-  	if (this.state.vendorName.length > 0) {
+  	if (this.state.vendorName.length > 1) {
   	  vendorSearch = <div><VendorWarning vendorName={this.state.vendorName} vendors={this.props.data} /></div>
   	} else {
   	  vendorSearch = <div></div>
@@ -21,11 +21,10 @@ const NewVendorForm = React.createClass({
 
 	return(
 		<div>
-		  
 		  <div>
 		    {vendorSearch}
 		  </div>
-		  
+
 		  <center>
 	        <h1>Add a New Vendor</h1>
           </center>
