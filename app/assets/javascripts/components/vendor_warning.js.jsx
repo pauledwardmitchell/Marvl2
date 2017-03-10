@@ -3,8 +3,8 @@ const VendorWarning = React.createClass({
 
 	render: function() {
 		return(
-		  <div className='admin-tools'>
-            <h3>'Vendors Already in MARVL'</h3>
+		  <div className='vendor-box'>
+            <h5>Vendors in MARVL that match your search:</h5>
             <ul> 
               {this.props.vendors
               	.filter((vendor) => `${vendor.name}`.toUpperCase().indexOf(this.props.vendorName.toUpperCase()) >= 0)
