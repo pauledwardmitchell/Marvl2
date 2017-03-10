@@ -10,7 +10,7 @@ const VendorWarning = React.createClass({
               	.filter((vendor) => `${vendor.name}`.toUpperCase().indexOf(this.props.vendorName.toUpperCase()) >= 0)
               	.map((vendor) => {
               	  return (
-                    <li><a href={`/vendors/${vendor.id}`}>{vendor.name}</a></li>
+                    <li key={vendor.id}><a href={`/vendors/${vendor.id}`}>{vendor.name}</a></li>
               	  )
               	})} 
             </ul>

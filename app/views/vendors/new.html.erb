@@ -2,13 +2,6 @@
 	<h1>Add a New Vendor</h1>
 </center>
 
-  <%= form_for @vendor, html: {class: "form-group"} do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
-
-    <%= f.submit "Submit Vendor" %> 
-  <% end %>
-
 <%= react_component 'NewVendorForm', {data: @vendors}, authenticity_token: form_authenticity_token %>
 
 
