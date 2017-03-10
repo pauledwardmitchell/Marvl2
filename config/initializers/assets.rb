@@ -11,3 +11,11 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 Rails.application.config.assets.precompile += %w( layout.css )
+
+# react-rails configuration
+# if Rails.env.production?
+#   Rails.application.config.react.variant = :production
+# else
+#   Rails.application.config.react.variant = :development
+#   Rails.application.config.react.addons = true
+# end

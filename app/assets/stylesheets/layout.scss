@@ -295,8 +295,8 @@ p {
 }
 
 .footer {
-
-  padding: 10px; 
+  
+    padding: 10px; 
 
   .left, .right {
     display: inline-block;
@@ -483,3 +483,19 @@ h4 {
     }
   }
 }
+
+.vendor-box {
+  margin-right: 20px;
+  padding: 20px;
+  background-color: $blue-light;
+  border: 1px solid $blue;
+  column-count: 4;
+
+  h5 {
+    font-size: 14pt;
+    margin: auto auto 1em auto;
+    color: $blue;
+  }
+
+}
+
