@@ -18,6 +18,7 @@ class VendorsController < ApplicationController
 
   def new
     @vendor = Vendor.new
+    @vendors = Vendor.all
   end
 
   def create
