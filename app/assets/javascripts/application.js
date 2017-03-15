@@ -22,6 +22,8 @@
 //= require gmaps/google
 //= require ./maps.js
 
+//= require ./app_scripts.js
+
 
 //= require components
 //= require_tree .
