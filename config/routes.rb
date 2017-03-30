@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  root to: "sessions#index"
+
+  devise_for :users
+  authenticated :user do
+    root to: 'vendors#index'
+  end
+
+  # root to: "sessions#index"
 
   get '/ambassadors', to: 'users#ambassadors'
   get '/samplevendors', to: 'users#samplevendors', as: :samplevendors
