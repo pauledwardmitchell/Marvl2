@@ -1,5 +1,4 @@
 log/*.log
-/Gemfile.lock
 /db/*.sql*
 /tmp/*
 research_resources/*
