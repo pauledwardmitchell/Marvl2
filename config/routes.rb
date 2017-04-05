@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
 
+  # namespace :admin do
+  #   resources :users
+  #   root to: "devise/sessions#new"
+  # end
+
+  root to: 'vendors#index'
  
-  root to: "sessions#index"
+  # devise_for :users
+  # devise_scope :users do
+  #   get '/', to: "devise/sessions#new"
+  # end 
+  # root to: "sessions#index"
 
 
   devise_for :users

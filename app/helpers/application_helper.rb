@@ -4,14 +4,6 @@ module ApplicationHelper
     session.keys.include? "user_id"
   end
 
-  def current_user
-    if logged_in?
-      User.find(session[:user_id])
-    else
-      nil
-    end
-  end
-
   def admin?
     if logged_in?
       current_user.is_admin?
@@ -25,8 +17,8 @@ module ApplicationHelper
   end
 
   def my_home
-    if logged_in?
-      user_path(session[:user_id])
+    if current_user
+      user_path(current_user.id)
     else
       '/'
     end

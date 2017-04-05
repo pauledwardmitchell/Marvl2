@@ -12,10 +12,11 @@ class User < ApplicationRecord
   has_many :documents
   has_many :posts
 
-  has_secure_password
+#  has_secure_password
   
   validates :email, uniqueness: true
-  validates :email, :first_name, :last_name, presence: true
+  validates :email, presence: true
+#  validates :first_name, :last_name, presence: true
   validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   validates_associated :organisation
   validates_associated :roles

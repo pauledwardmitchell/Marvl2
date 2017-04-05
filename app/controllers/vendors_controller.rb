@@ -1,8 +1,10 @@
 class VendorsController < ApplicationController
 
-  before_action :require_login
+  #before_action :require_login
+  before_action :authenticate_user!
 
   def index
+    @user = current_user
     @vendors = Vendor.all
     @categories = Category.all
     @vendor = Vendor.new
