@@ -12,7 +12,6 @@ before_action :authenticate_user!, except: [ :new, :create ]
   # end
 
   def show
-    binding.pry
   	if admin? || current_user.id == params[:id].to_i
     	@user = User.find(params[:id])
     	@reviews = @user.reviews.limit(5)
@@ -66,7 +65,7 @@ before_action :authenticate_user!, except: [ :new, :create ]
       @role = Role.find_by(name: "Member")
       @user.add_role(@role.id)
       #UserMailer.membership(@user).deliver_now
-      
+
       redirect_to root_path
       flash[:new] = "Welcome to MARVL!"
     else
@@ -97,7 +96,7 @@ before_action :authenticate_user!, except: [ :new, :create ]
   #     flash[:notice] = "Please enter your old password correctly."
   #     redirect_to editpassword_path
   #   end
-    
+
   # end
 
   # def patch
@@ -115,7 +114,7 @@ before_action :authenticate_user!, except: [ :new, :create ]
 
   # def samplevendors
   #   @vendors = Vendor.all.limit(5)
-  # end 
+  # end
 
   private
   def user_params
