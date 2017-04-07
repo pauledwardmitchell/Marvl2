@@ -71,7 +71,9 @@
     <p>
       Organization: 
       <span class="info-value">
-        <%= link_to @user.organisation.name, location_path(@user.location.id) %>
+        <% if @user.organisation %>
+          <%= link_to @user.organisation.name, location_path(@user.location.id) %>
+        <% end %>
       </span>
     </p>
   <% end %>

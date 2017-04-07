@@ -1,9 +1,9 @@
 class ReviewsController < ApplicationController
 
-  before_action :require_login
+  before_action :authenticate_user!
 
   def index
-    if logged_in?
+    if current_user
       @categories = Category.all  
       @ratings = Review.where(user_id: nil)
       @reviews = Review.where.not(user_id: nil)
