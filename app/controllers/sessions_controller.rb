@@ -2,11 +2,11 @@ class SessionsController < ApplicationController
 
   #before_filter :authenticate_user!
 
-  # def index
-  #   if user_signed_in?
-  #     redirect_to '/vendors'
-  #   end
-  # end
+  def index
+    if user_signed_in?
+      redirect_to '/vendors'
+    end
+  end
 
   # def new
   #   @user = User.new

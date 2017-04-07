@@ -10,11 +10,11 @@
 	</div>
 </div>
 
-<div class="blue-light">
+<div class="form-group">
 <% unless logged_in? %>
-	<%= render(partial: '/shared/login', locals: { obj: @user }) %>
 	<center>
-	<p>Not a Member? <%= link_to "Create an Account", new_user_path %></p>
+		<%= button_to "sign in", new_user_session_path, :method => "get", :class => "form-group" %>
+		<%= button_to "sign up", new_user_registration_path, :method => "get", :class => "form-group" %>
 	</center>
 <% end %>
 </div>

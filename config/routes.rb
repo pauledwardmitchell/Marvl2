@@ -5,28 +5,28 @@ Rails.application.routes.draw do
   #   root to: "devise/sessions#new"
   # end
 
-  root to: 'vendors#index'
- 
+  # root to: 'vendors#index'
+
   # devise_for :users
   # devise_scope :users do
   #   get '/', to: "devise/sessions#new"
-  # end 
+  # end
   # root to: "sessions#index"
 
 
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   authenticated :user do
     root to: 'vendors#index'
   end
 
-  # root to: "sessions#index"
+  root to: "sessions#index"
 
 
   get '/ambassadors', to: 'users#ambassadors'
   get '/samplevendors', to: 'users#samplevendors', as: :samplevendors
   post '/admin', to: 'roles#admin'
   post '/member', to: 'roles#member'
-  get '/login', to: 'sessions#new'
+  # get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create', as: :post_login
   delete '/logout', to: 'sessions#destroy'
   get '/forum', to: 'posts#forum'
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   get '/editpassword', to: 'users#edit_password'
   post '/patchpassword', to: 'users#patch_password'
 
-  resources :users 
+  resources :users
 
   resources :documents, only: [:new, :create, :index, :show, :destroy]
 

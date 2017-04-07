@@ -31,12 +31,10 @@
                 <%= link_to 'sign in', new_user_session_path %>
               <% end %>
               <% if user_signed_in? %>
-                <%= link_to 'logout', logout_path, {id: 'logout_link'} %>
+                <%= link_to('log out', destroy_user_session_path, :method => :delete) %>        
               <% else %>
-                <%= link_to 'join us', new_user_path  %>
+                <%= link_to 'sign up', new_user_registration_path  %>  
               <% end %>
-
-              <%= link_to 'signout', destroy_user_session_path %>
           </div>
         </div> <%# /right %>
 
@@ -46,7 +44,7 @@
               goto: 
             </span>
             
-            <% if logged_in? %>
+            <% if current_user %>
               <%= link_to "find a vendor", vendors_path %>
               <span class="separator"></span>
               <%= link_to "reviews", reviews_path %>
