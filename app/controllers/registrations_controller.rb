@@ -10,7 +10,6 @@ class RegistrationsController < Devise::RegistrationsController
 
       @user.add_role(@role.id)
     end
-    binding.pry
   end
 
   private

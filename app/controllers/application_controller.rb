@@ -16,7 +16,11 @@ class ApplicationController < ActionController::Base
   private
 
   def after_sign_out_path_for(user)
-    ambassadors_path
+    vendors_path
+  end
+
+  def after_sign_up_path_for(user)
+    vendors_path
   end
 
   def require_login
