@@ -1,17 +1,20 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
-	
-  protect_from_forgery 
-  
-  # before_action :authenticate_user!
 
-  # def devise_mapping
-  #   @devise_mapping ||= Devise.mappings[:user]
-  # end
+  protect_from_forgery
+
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :organisation_id])
+  end
 
 
   private
- 
+
   def after_sign_out_path_for(user)
     ambassadors_path
   end

@@ -1,5 +1,18 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  def create
+    super do
+      @user = User.last
+
+      Privacy.create(user_id: @user.id)
+
+      @role = Role.find_by(name: "Member")
+
+      @user.add_role(@role.id)
+    end
+    binding.pry
+  end
+
   private
 
   def sign_up_params
