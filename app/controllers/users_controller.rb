@@ -12,7 +12,6 @@ before_action :authenticate_user!, except: [ :new, :create ]
   # end
 
   def show
-    binding.pry
   	if admin? || current_user.id == params[:id].to_i
     	@user = User.find(params[:id])
     	@reviews = @user.reviews.limit(5)
