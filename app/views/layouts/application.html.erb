@@ -55,10 +55,9 @@
                 <%= link_to "our members", users_path %>
               <% end %>
             <% else %>
-              <%= link_to "find a vendor", samplevendors_path %>
+              <%= link_to "find a vendor", vendors_path %>
             <% end %>
 
-            <%# link_to "ambassadors", ambassadors_path %>
 
             <% if user_signed_in? %>
               <%# link_to "document uploader" , new_document_path(session[:user_id]) %>
