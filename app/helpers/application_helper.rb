@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def admin?
-    if logged_in?
+    if user_signed_in?
       current_user.is_admin?
     else
       false

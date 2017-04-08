@@ -3,12 +3,12 @@ class PostsController < ApplicationController
   before_action :require_login
 
   def forum
-    @searched_posts = nil  
+    @searched_posts = nil
   	if admin?
   	  @user = User.find(session[:user_id])
   	end
-  	
-  	if logged_in?
+
+  	if user_signed_in?
       @posts = Post.all.order(created_at: :desc)
       if params[:title_search]
         @searched_posts = Post.search(params[:title_search])
@@ -56,7 +56,7 @@ class PostsController < ApplicationController
       redirect_to '/forum'
     else
       render 'edit'
-    end  
+    end
   end
 
   private
