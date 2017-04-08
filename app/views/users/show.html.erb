@@ -1,17 +1,17 @@
 <%# /users/:id/show %>
 <div class="user-info">
   <%# if viewing user is admin %>
-  <% if admin? %>
+  <% if current_user.is_admin? %>
 
-  <div class="admin-tools right">
-  <h5> Admin Tools </h5>
-  <ul>
-    <li><%= link_to "View/Manage Users", admin_users_path %> 
-    <li><%= link_to "View Uploaded Documents", documents_path %>   
-    <li><%= link_to "Add Organisation", new_organisation_path %>
-    <li><%= link_to "Add Service Category", new_category_path %> 
-  </ul>
-  </div>
+    <div class="admin-tools right">
+      <h5> Admin Tools </h5>
+      <ul>
+        <li><%= link_to "View/Manage Users", admin_users_path %>
+        <li><%= link_to "View Uploaded Documents", documents_path %>
+        <li><%= link_to "Add Organisation", new_organisation_path %>
+        <li><%= link_to "Add Service Category", new_category_path %>
+      </ul>
+    </div>
 	<% end %>
 
 
@@ -21,7 +21,7 @@
 
   <% if @user.is_admin?%> <h3> Admin </h3> <%end%>
 
-  
+
 	<% if admin? %>
     <%# viewing admin can promote non-admin viewed user to admin %>
     <% unless @user.is_admin? %>
@@ -46,9 +46,9 @@
 
   <%# links for admin and members seeing own page %>
   <% if @user.id == session[:user_id] %>
-    <%= link_to "Edit Your Profile", edit_user_path(@user) %>  | 
+    <%= link_to "Edit Your Profile", edit_user_path(@user) %>  |
     <%= link_to "Privacy Settings", edit_privacy_path(@user) %> |
-    <%= link_to "Change Your Password", editpassword_path %>  
+    <%= link_to "Change Your Password", editpassword_path %>
   <% end %>
 
   <%# link to make oneself ambassador %>
@@ -57,10 +57,10 @@
   <% end %>
 
 <div class="user-profile user-info">
-  
+
   <% if @privacy.membership_allowed %>
     <p>
-      Membership Expiration: 
+      Membership Expiration:
       <span class="info-value">
         <%= @expiration %>
       </span>
@@ -69,18 +69,18 @@
 
   <% if @privacy.organisation_allowed %>
     <p>
-      Organization: 
+      Organization:
       <span class="info-value">
-        <% if @user.organisation %>
-          <%= link_to @user.organisation.name, location_path(@user.location.id) %>
+        <% if @user.organisation.locations %>
+          <%= @user.organisation.name %>
         <% end %>
       </span>
     </p>
   <% end %>
-  
+
   <% if @privacy.email_allowed %>
     <p>
-      Email: 
+      Email:
       <span class="info-value">
         <%= @user.email %>
       </span>
@@ -100,7 +100,7 @@
       <% else %>
         <div class="no-reviews">
           <p>
-            No reviews yet! 
+            No reviews yet!
           </p>
         </div>
       <% end %>

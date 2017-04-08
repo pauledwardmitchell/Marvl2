@@ -25,15 +25,15 @@
 
         <div class="right">
           <div class="session">
-              <% if current_user %>
+              <% if user_signed_in? %>
                 <%= link_to current_user.first_name.downcase, my_home %>
               <% else %>
                 <%= link_to 'sign in', new_user_session_path %>
               <% end %>
               <% if user_signed_in? %>
-                <%= link_to('log out', destroy_user_session_path, :method => :delete) %>        
+                <%= link_to('log out', destroy_user_session_path, :method => :delete) %>
               <% else %>
-                <%= link_to 'sign up', new_user_registration_path  %>  
+                <%= link_to 'sign up', new_user_registration_path  %>
               <% end %>
           </div>
         </div> <%# /right %>
@@ -41,10 +41,10 @@
         <div class="stripe">
           <div class="stripe-inner">
             <span class="goto">
-              goto: 
+              goto:
             </span>
-            
-            <% if current_user %>
+
+            <% if user_signed_in? %>
               <%= link_to "find a vendor", vendors_path %>
               <span class="separator"></span>
               <%= link_to "reviews", reviews_path %>
@@ -55,15 +55,12 @@
                 <%= link_to "our members", users_path %>
               <% end %>
             <% else %>
-              <%= link_to "find a vendor", samplevendors_path %>
+              <%= link_to "find a vendor", vendors_path %>
             <% end %>
-  
-            <span class="separator"></span>
-            <%= link_to "ambassadors", ambassadors_path %>
 
-            <% if logged_in? %>
-              <span class="separator"></span>
-              <%= link_to "document uploader" , new_document_path(session[:user_id]) %>
+
+            <% if user_signed_in? %>
+              <%# link_to "document uploader" , new_document_path(session[:user_id]) %>
             <% end %>
           </div>
         </div> <%# /stripe %>
@@ -81,7 +78,7 @@
             <h3>Please send feedback about this app to: cpamarvlapp@gmail.com</h3>
           </div>
         </section>
-        <section class="footer"> 
+        <section class="footer">
           <div class="left">
             <p>MARVL is brought to you by the</p>
             <a target="_blank" href="http://cpa.coop" >
@@ -111,7 +108,7 @@
         starOff: '<%= image_path('star-off.png') %>',
         path: '',
         scoreName: 'star',
-        space: true 
+        space: true
       });
       $('.star-rating').raty({
         starOn: '<%= image_path('star-on.png') %>',

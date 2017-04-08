@@ -11,31 +11,7 @@
 </div>
 
 <div class="form-group">
-<% unless logged_in? %>
-	<center>
-		<%= button_to "sign in", new_user_session_path, :method => "get", :class => "form-group" %>
-		<%= button_to "sign up", new_user_registration_path, :method => "get", :class => "form-group" %>
-	</center>
-<% end %>
+		<%= button_to "sign in", new_user_session_path, :method => "get" %>
+		<%= button_to "sign up", new_user_registration_path, :method => "get" %>
 </div>
 
-<div id="sample">
-	<div id="ambassador-list">
-		<a href="/ambassadors">
-		<%= image_tag 'CPA_Step1.png', class: "sample-logo" %>
-		</a>
-		<p>Have Questions? Our membership ambassadors are happy to help!</p>
-	</div>
-	<div id="vendor-list">
-		<a href="/samplevendors">
-			<%= image_tag 'CPA_Step2.png', class: "sample-logo" %>
-		</a>
-		<p>See a sampling of our vendors</p>
-	</div>
-	<div id="vendor-list">
-		<a href="http://www.cpa.coop">
-			<%= image_tag 'CPA_PeopleCircle.png', class: "sample-logo" %>
-		</a>
-		<p>View Community Purchasing Alliance homepage</p>
-	</div>
-</div>
