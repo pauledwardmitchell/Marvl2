@@ -248,6 +248,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
+  mail
   mini_magick (~> 4.5.1)
   pg
   pry
