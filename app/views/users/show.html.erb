@@ -45,10 +45,10 @@
 
 
   <%# links for admin and members seeing own page %>
-  <% if @user.id == session[:user_id] %>
+  <% if @user.id == current_user.id %>
     <%= link_to "Edit Your Profile", edit_user_path(@user) %>  |
     <%= link_to "Privacy Settings", edit_privacy_path(@user) %> |
-    <%= link_to "Change Your Password", editpassword_path %>
+    <%= link_to "Change your password", edit_user_registration_path %>
   <% end %>
 
   <%# link to make oneself ambassador %>

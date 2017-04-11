@@ -2,14 +2,14 @@ class UsersController < ApplicationController
 
 before_action :authenticate_user!, except: [ :new, :create ]
 
-  # def index
-  #   if admin?
-  #     @organisations = Organisation.all
-  #   else
-  #     flash[:access] = "Unauthorized access, please log in."
-  #     redirect_to '/'
-  #   end
-  # end
+  def index
+    if admin?
+      @organisations = Organisation.all
+    else
+      flash[:access] = "Unauthorized access, please log in."
+      redirect_to '/'
+    end
+  end
 
   def show
   	if admin? || current_user.id == params[:id].to_i
@@ -26,19 +26,19 @@ before_action :authenticate_user!, except: [ :new, :create ]
     end
   end
 
-  # def edit
-  # 	@user = User.find(params[:id])
-  # 	unless @user.id == current_user.id
-		# 	flash[:access] = "Unauthorized access, please contact an administrator if you believe this error is incorrect."
-  #     redirect_back
-		# end
-  # end
+  def edit
+  	@user = User.find(params[:id])
+  	unless @user.id == current_user.id
+			flash[:access] = "Unauthorized access, please contact an administrator if you believe this error is incorrect."
+      redirect_back
+		end
+  end
 
   def update
   	@user = current_user #User.find(params[:id])
     if @user.id == current_user.id
   		@user.update_attributes(title: params[:user][:title], first_name: params[:user][:first_name], last_name: params[:user][:last_name], email: params[:user][:email])
-	  	redirect_to root_path
+	  	redirect_to @user
     else
       flash[:access] = "Unauthorized access, please contact an administrator if you believe this error is incorrect."
       redirect_to @user

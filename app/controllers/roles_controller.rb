@@ -10,12 +10,12 @@ class RolesController < ApplicationController
 	  @user = User.find(current_user.id)
 	  @role = Role.find_by(name: "Ambassador")
 	  @user.add_role(@role.id)
-      
+
       redirect_to @user
 	end
 
 	def admin
-		@user = User.find(params[:user_id])
+		@user = User.find(current_user.id)
 		@role = Role.find_by(name: "Admin")
 		@user.add_role(@role.id)
 		if request.xhr?
@@ -27,7 +27,7 @@ class RolesController < ApplicationController
 	end
 
 	def member
-		@user = User.find(params[:user_id])
+		@user = User.find(current_user.id)
 		@role = Role.find_by(name: "Member")
 		@user.add_role(@role.id)
 		#UserMailer.membership(@user).deliver_now
