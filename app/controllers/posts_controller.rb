@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def forum
     @searched_posts = nil
   	if admin?
-  	  @user = User.find(session[:user_id])
+  	  @user = current_user.id
   	end
 
   	if user_signed_in?
