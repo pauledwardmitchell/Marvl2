@@ -42,12 +42,11 @@ gem 'react-rails'
 gem 'devise'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  # gem 'byebug', platform: :mri
-  gem 'pry'
-
-  gem 'rspec-rails', '~> 3.5'
   gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'pry'
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :development do
@@ -57,7 +56,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'faker'
 end
 
 group :production do
