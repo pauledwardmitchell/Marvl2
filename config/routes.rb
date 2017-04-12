@@ -21,22 +21,18 @@ Rails.application.routes.draw do
 
   root to: "sessions#index"
 
-  post '/admin', to: 'roles#admin'
-  post '/member', to: 'roles#member'
-  # get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create', as: :post_login
-  delete '/logout', to: 'sessions#destroy'
+
   get '/forum', to: 'posts#forum'
   get '/reviews', to: 'reviews#index'
   get '/documents/:id/download', to: 'documents#download', as: :download
-  # get '/editpassword', to: 'users#edit_password'
-  # post '/patchpassword', to: 'users#patch_password'
 
   resources :users
 
   resources :documents, only: [:new, :create, :index, :show, :destroy]
 
   resources :roles, only: [:new, :create]
+  post '/admin', to: 'roles#admin'
+  post '/member', to: 'roles#member'
 
   resources :posts, only: [:new, :create, :edit, :update, :destroy]
 
@@ -47,9 +43,7 @@ Rails.application.routes.draw do
   resources :password_resets
 
   resources :vendors do
-    resources :reviews do
-      resources :votes
-    end
+    resources :reviews
     resources :offerings
   end
 
