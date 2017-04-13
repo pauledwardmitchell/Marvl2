@@ -29,11 +29,22 @@ const AllCategories = React.createClass({
     return clickedCategoryVendors
   },
 
+  getClickedCategoryName: function(category_id) {
+    var categories = this.props.data.categories
+
+    for (i = 0; i < categories.length; i++) {
+      if (categories[i].id === category_id) {
+        return categories[i].name
+      }
+    }
+  },
+
   setCategoryVendors: function(category_id) {
     var offeringsForGivenCategoryId = []
     var clickedCategoryVendorsIds = []
     var clickedCategoryVendors = []
     var offerings = this.props.data.offerings
+    var clickedCategory = ''
 
     for (i = 0; i < offerings.length; i++) {
       if (offerings[i].category_id === category_id) {
@@ -45,7 +56,10 @@ const AllCategories = React.createClass({
 
     clickedCategoryVendors = this.getVendorsFromVendorsIdsArray(clickedCategoryVendorsIds)
 
+    clickedCategory = this.getClickedCategoryName(category_id)
+
     this.setState({ displayedVendors: clickedCategoryVendors })
+    this.setState({ selectedCategory: clickedCategory })
 
   },
 
