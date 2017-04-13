@@ -8,6 +8,10 @@ class VendorsController < ApplicationController
     @vendors = Vendor.all
     @categories = Category.all
     @vendor = Vendor.new
+    @data = {
+      vendors: @vendors,
+      categories: @categories
+    }
   end
 
   def show
