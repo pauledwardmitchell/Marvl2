@@ -53,7 +53,7 @@ const AllCategories = React.createClass({
     return(
       <div>
         <div className='vendors-column-container' >
-          <h2>Vendors by Category</h2>
+          <h2>Click a Category</h2>
           {this.props.data.categories.map((category) => {
             return <CategoryButton
                      key={category.id}

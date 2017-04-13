@@ -14,7 +14,7 @@ const VendorsColumn = React.createClass({
         <h2>Vendors in Selected Category</h2>
 
         {this.props.displayedVendors.map(function(vendor) {
-          return <h4>{vendor.name}</h4>
+          return <h4 key={vendor.id}>{vendor.name}</h4>
           }
         )}
       </div>

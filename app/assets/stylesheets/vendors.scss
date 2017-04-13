@@ -1,13 +1,14 @@
 .vendors-column-container {
   margin-left: 5%;
-  padding-top: 10px;
+  padding: 10px;
   height: 400px;
-  width: 400px;
+  width: 340px;
   overflow: auto;
   float: left;
+  border: 1px solid black;
 
   h2 {
-    margin-left: 12%;
+    margin-left: 1%;
   }
 }
 
