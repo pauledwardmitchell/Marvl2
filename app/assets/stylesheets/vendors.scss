@@ -8,15 +8,16 @@
   border: 1px solid black;
 
   h2 {
-    margin-left: 1%;
+    margin-left: 0px;
   }
 }
 
 .cell-container-right {
-  padding-top: 100px;
+  padding: 10px;
   height: 400px;
   width: 400px;
   overflow: auto;
+  border: 1px solid black;
 }
 
 .cell {
@@ -29,11 +30,11 @@
   border: 1px solid black;
   width: 330px;
   margin-left: 9%;
-  background-color: #3f4247;
+  background-color: #adebad;
 
 
   &:hover {
-    background-color: darken(#3f4247, 10%);
+    background-color: darken(#adebad, 10%);
   }
 }
 
@@ -84,18 +85,20 @@
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: hsla(0,0%,100%,.8);
     font-size: 1em;
     font-weight: 300;
     line-height: 140%;
     font-style: normal;
+
+    a {
+      font-size: 20px;
+    }
 }
 
 .sub-title {
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: hsla(0,0%,100%,.8);
     font-size: 1em;
     font-weight: 300;
     line-height: 140%;

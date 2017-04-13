@@ -2,8 +2,8 @@ const AllCategories = React.createClass({
 
   getInitialState: function() {
     return {
-      displayedVendors: []
-      // offeringsInClickedCategory: []
+      displayedVendors: [],
+      selectedCategory: ''
     }
 
   },
@@ -63,7 +63,7 @@ const AllCategories = React.createClass({
           )}
         </div>
 
-        <VendorsColumn displayedVendors={this.state.displayedVendors}/>
+        <VendorsColumn selectedCategory={this.state.selectedCategory} displayedVendors={this.state.displayedVendors}/>
       </div>
     )
   }
