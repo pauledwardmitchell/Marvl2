@@ -7,10 +7,12 @@ class VendorsController < ApplicationController
     @user = current_user
     @vendors = Vendor.all
     @categories = Category.all
+    @offerings = Offering.all
     @vendor = Vendor.new
     @data = {
       vendors: @vendors,
-      categories: @categories
+      categories: @categories,
+      offerings: @offerings
     }
   end
 

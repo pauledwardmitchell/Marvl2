@@ -1,0 +1,163 @@
+.vendors-column-container {
+  margin-left: 5%;
+  padding-top: 10px;
+  height: 400px;
+  width: 400px;
+  overflow: auto;
+  float: left;
+
+  h2 {
+    margin-left: 12%;
+  }
+}
+
+.cell-container-right {
+  padding-top: 100px;
+  height: 400px;
+  width: 400px;
+  overflow: auto;
+}
+
+.cell {
+  border-radius: 8px;
+  margin-bottom: 10px;
+  line-height: 80px;
+  height: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  width: 330px;
+  margin-left: 9%;
+  background-color: #3f4247;
+
+
+  &:hover {
+    background-color: darken(#3f4247, 10%);
+  }
+}
+
+.cell-right {
+  margin-bottom: 10px;
+  line-height: 80px;
+  height: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid black;
+  width: 330px;
+  margin-left: 9%;
+  background-color: #979da8;
+
+
+  &:hover {
+    background-color: darken(#979da8, 10%);
+  }
+}
+
+.icon {
+  margin-left: 16px;
+}
+
+.icon-right {
+  margin-right: 10%;
+}
+
+.icon-img {
+  height: 40px;
+  width: 40px;
+  display: block;
+  margin-top: 20px;
+
+}
+
+.text-container {
+  position: relative;
+  overflow: hidden;
+  align-self: center;
+  vertical-align: middle;
+  margin: 0 30px;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.title {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: hsla(0,0%,100%,.8);
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 140%;
+    font-style: normal;
+}
+
+.sub-title {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: hsla(0,0%,100%,.8);
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 140%;
+    font-style: normal;
+}
+
+.right-container {
+  height: auto;
+  width: 30px;
+}
+
+.right-decorator {
+  margin-right: 10px;
+}
+
+.chevron {
+  height: 20px;
+  width: 20px;
+}
+
+.play-arrow {
+  height: 20px;
+  width: 20px;
+  background-color: black;
+  border-radius: 10px;
+}
+
+
+h1 {
+  text-align: center
+}
+
+.b-table {
+  float: left;
+  padding: 5px;
+  border: 5px;
+  margin: 20px;
+  height: 500px
+
+  div {
+    border: 2px;
+    border-style: solid;
+    padding: 5px;
+  }
+}
+
+.a-table {
+  float: left;
+  padding: 5px;
+  border: 5px;
+  margin: 20px;
+}
+
+th {
+  font-size: 20px;
+}
+
+.box {
+  border: 2px;
+  border-style: solid;
+  padding: 4px;
+}
+
+.sub {
+  font-weight: bold;
+}
