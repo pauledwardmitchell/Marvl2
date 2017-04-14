@@ -3,7 +3,8 @@ const AllCategories = React.createClass({
   getInitialState: function() {
     return {
       displayedVendors: [],
-      selectedCategory: ''
+      selectedCategory: '',
+      selectedCategoryVendorHashes: []
     }
 
   },
@@ -39,10 +40,24 @@ const AllCategories = React.createClass({
     }
   },
 
+  getClickedCategoryVendorHashes: function(vendorIds_array) {
+    var clickedCategoryVendorHashes = []
+    var allVendorHashes = this.props.data.vendor_hashes
+
+    for (i = 0; i < allVendorHashes.length; i++) {
+      if (vendorIds_array.includes(allVendorHashes[i].vendor_id)) {
+        clickedCategoryVendorHashes.push(allVendorHashes[i])
+      }
+    }
+
+    return clickedCategoryVendorHashes
+  },
+
   setCategoryVendors: function(category_id) {
     var offeringsForGivenCategoryId = []
     var clickedCategoryVendorsIds = []
     var clickedCategoryVendors = []
+    var clickedCategoryVendorHashes = []
     var offerings = this.props.data.offerings
     var clickedCategory = ''
 
@@ -58,8 +73,12 @@ const AllCategories = React.createClass({
 
     clickedCategory = this.getClickedCategoryName(category_id)
 
+    clickedCategoryVendorHashes = this.getClickedCategoryVendorHashes(clickedCategoryVendorsIds)
+
     this.setState({ displayedVendors: clickedCategoryVendors })
     this.setState({ selectedCategory: clickedCategory })
+
+    this.setState({ selectedCategoryVendorHashes: clickedCategoryVendorHashes })
 
   },
 
@@ -77,7 +96,7 @@ const AllCategories = React.createClass({
           )}
         </div>
 
-        <VendorsColumn selectedCategory={this.state.selectedCategory} displayedVendors={this.state.displayedVendors}/>
+        <VendorsColumn vendorHashes={this.state.selectedCategoryVendorHashes} selectedCategory={this.state.selectedCategory} displayedVendors={this.state.displayedVendors}/>
       </div>
     )
   }

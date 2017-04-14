@@ -1,15 +1,27 @@
 const VendorCell = React.createClass({
 
+  formattedRating: function(rating) {
+    var formattedRating = 0
+
+    if ( rating != "n/a" ) {
+      formattedRating = rating.toFixed(1)
+    } else {
+      formattedRating = "n/a"
+    }
+
+    return formattedRating
+  },
+
   render: function() {
     return(
       <div className='cell'>
 
         <div className='text-container'>
 
-            <div className='title'><a href={'/vendors/'+this.props.vendor.id}>{this.props.vendor.name}</a></div>
+            <div className='title'><a href={'/vendors/'+this.props.vendor.vendor_id}>{this.props.vendor.vendor_name}</a></div>
             <div className='sub-title'>
-              <span>5 reviews | </span>
-              <span><img className='little-star' src="/assets/big-star.png"></img><span>4.6</span></span>
+              <span>{this.props.vendor.vendor_reviews_count} reviews | </span>
+              <span><img className='little-star' src="/assets/big-star.png"></img><span>{this.formattedRating(this.props.vendor.vendor_avg_rating)}</span></span>
 
 
 
@@ -19,7 +31,7 @@ const VendorCell = React.createClass({
         <div className="right-container">
           <div className="right-decorator">
             <div>
-              <span><img className='big-star' src="/assets/big-star.png"></img><span className='score'>4.6</span></span>
+              <span><img className='big-star' src="/assets/big-star.png"></img><span className='score'>{this.formattedRating(this.props.vendor.vendor_avg_rating)}</span></span>
             </div>
           </div>
         </div>

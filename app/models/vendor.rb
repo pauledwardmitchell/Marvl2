@@ -11,10 +11,14 @@ class Vendor < ApplicationRecord
   end
 
   def avg_rating
+    avg_rating = 0
+    reviews_ratings_array = self.reviews.map { |r| r.rating }
     if self.reviews.count > 0
-      self.reviews.map { |review| review.rating }.inject(0, :+) / self.reviews.count
+      avg_rating = self.reviews.map { |r| r.rating }.reduce(0, :+) / self.reviews.count.to_f
+      avg_rating = avg_rating.round(1)
+      avg_rating
     else
-  	  "no ratings"
+  	  "n/a"
     end
   end
 

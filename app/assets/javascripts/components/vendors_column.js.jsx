@@ -4,6 +4,7 @@ const VendorsColumn = React.createClass({
     return(
       <div className="cell-container-right">
         <center>
+          <h4>Can&apos;t find the Vendor you are looking for?</h4>
           <a href='/vendors/new'><h4>Add a vendor now!</h4></a>
         </center>
       </div>
@@ -13,12 +14,13 @@ const VendorsColumn = React.createClass({
   allVendors: function() {
     return(
       <div className="cell-container-right">
+        <center>
+          <h2>{this.props.selectedCategory} Vendors</h2>
+        </center>
 
-        <h2>{this.props.selectedCategory} Vendors</h2>
-
-        {this.props.displayedVendors.map(function(vendor) {
+        {this.props.vendorHashes.map(function(vendor) {
           return <VendorCell
-                   key={vendor.id}
+                   key={vendor.vendor_id}
                    vendor={vendor} />
 
           }

@@ -9,12 +9,24 @@ class VendorsController < ApplicationController
     @categories = Category.all
     @offerings = Offering.all
     @vendor = Vendor.new
+    @vendor_hashes = []
+
+    @vendors.each do |vendor|
+      vendor_hash = {
+        vendor_id: vendor.id,
+        vendor_name: vendor.name,
+        vendor_reviews_count: vendor.reviews.count,
+        vendor_avg_rating: vendor.avg_rating
+      }
+      @vendor_hashes << vendor_hash
+    end
+
     @data = {
       vendors: @vendors,
       categories: @categories,
-      offerings: @offerings
+      offerings: @offerings,
+      vendor_hashes: @vendor_hashes
     }
-    #CREATE ASERIALIZEDATAHELPER AND INCLUDE IT IN THIS CONTROLLER FOR MAKING 'QUADS'
   end
 
   def show
