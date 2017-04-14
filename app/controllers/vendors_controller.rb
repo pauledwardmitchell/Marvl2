@@ -14,6 +14,7 @@ class VendorsController < ApplicationController
       categories: @categories,
       offerings: @offerings
     }
+    #CREATE ASERIALIZEDATAHELPER AND INCLUDE IT IN THIS CONTROLLER FOR MAKING 'QUADS'
   end
 
   def show
