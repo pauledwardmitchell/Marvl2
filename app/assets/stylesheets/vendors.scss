@@ -108,6 +108,7 @@
 .right-container {
   height: auto;
   width: 50px;
+  position: relative;
 }
 
 .right-decorator {
@@ -116,16 +117,23 @@
 }
 
 .score {
+  z-index: 100;
   position: absolute;
-  margin-right: 20px;
+  top: 3px;
 }
 
-.star {
+.little-star {
   height: 20px;
   width: 20px;
 }
 
-
+.big-star {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  height: 60px;
+  width: 60px;
+}
 
 .play-arrow {
   height: 20px;
