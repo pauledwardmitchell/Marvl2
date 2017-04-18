@@ -20,10 +20,7 @@ const VendorCell = React.createClass({
 
             <div className='title'><a href={'/vendors/'+this.props.vendor.vendor_id}>{this.props.vendor.vendor_name}</a></div>
             <div className='sub-title'>
-              <span>{this.props.vendor.vendor_reviews_count} reviews | </span>
-              <span><img className='little-star' src="/assets/big-star.png"></img><span>{this.formattedRating(this.props.vendor.vendor_avg_rating)}</span></span>
-
-
+              <span>{this.props.vendor.vendor_reviews_count} reviews</span>
 
             </div>
         </div>
