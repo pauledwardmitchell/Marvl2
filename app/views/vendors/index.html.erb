@@ -1,33 +1,9 @@
-<center>
-  <h4>Can't find the Vendor you are looking for? <%= link_to 'Add it now!', new_vendor_path %> </h4>
-</center>
 
-<h2>Vendors by Category</h2>
+<%= react_component 'AllCategories', {data: @data} %>
 
-<div id="categories">
-  <% @categories.each do |category| %>
-    <h3><%= link_to category.name, category %></h3>
-      <ul>
-        <% category.vendors.each do |vendor| %>
-        <li><%= link_to vendor.name, vendor %> | <%= vendor.reviews.count %> reviews | 
-            <span class="star-rating" data-score=<%= vendor.avg_rating %>></span>
-        </li>
-        <% end %>
-      </ul>
-  <% end %>
-</div>
 
 <center>
 <br>
   <h4>Can't find the Vendor you are looking for? <%= link_to 'Add it now!', new_vendor_path %> </h4>
 </center>
 
-<script type="text/javascript">
-  $('.star-rating').raty({
-    path: '/assets/',
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    }
-  });
-</script>

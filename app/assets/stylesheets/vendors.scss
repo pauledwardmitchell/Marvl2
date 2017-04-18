@@ -1,0 +1,190 @@
+.vendors-column-container {
+  margin-left: 5%;
+  padding: 10px;
+  height: 400px;
+  width: 340px;
+  overflow: auto;
+  float: left;
+  border: 1px solid black;
+  background: linear-gradient(#EAF2FA, white);
+
+  h2 {
+    margin-left: 0px;
+  }
+}
+
+.vendors-index-title {
+  margin-left: 17%;
+}
+
+.cell-container-right {
+  padding: 10px;
+  height: 400px;
+  width: 400px;
+  overflow: auto;
+  border: 1px solid black;
+  background: linear-gradient(#EAF2FA, white);
+
+}
+
+.cell {
+  border-radius: 8px;
+  margin-bottom: 10px;
+  line-height: 80px;
+  height: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  width: 330px;
+  margin-left: 9%;
+  background-color: #DEF3DE;
+
+
+  &:hover {
+    background-color: darken(#DEF3DE, 10%);
+  }
+}
+
+.cell-right {
+  margin-bottom: 10px;
+  line-height: 80px;
+  height: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid black;
+  width: 330px;
+  margin-left: 9%;
+  background-color: #979da8;
+
+
+  &:hover {
+    background-color: darken(#979da8, 10%);
+  }
+}
+
+.icon {
+  margin-left: 16px;
+}
+
+.icon-right {
+  margin-right: 10%;
+}
+
+.icon-img {
+  height: 40px;
+  width: 40px;
+  display: block;
+  margin-top: 20px;
+
+}
+
+.text-container {
+  position: relative;
+  overflow: hidden;
+  align-self: center;
+  vertical-align: middle;
+  margin: 0 30px;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.title {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 140%;
+    font-style: normal;
+
+    a {
+      font-size: 20px;
+    }
+}
+
+.sub-title {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 140%;
+    font-style: normal;
+}
+
+.right-container {
+  height: auto;
+  width: 50px;
+  position: relative;
+}
+
+.right-decorator {
+  margin-right: 10px;
+
+}
+
+.score {
+  z-index: 100;
+  position: absolute;
+  top: 3px;
+}
+
+.little-star {
+  height: 20px;
+  width: 20px;
+}
+
+.big-star {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  height: 60px;
+  width: 60px;
+}
+
+.play-arrow {
+  height: 20px;
+  width: 20px;
+  background-color: black;
+  border-radius: 10px;
+}
+
+
+h1 {
+  text-align: center
+}
+
+.b-table {
+  float: left;
+  padding: 5px;
+  border: 5px;
+  margin: 20px;
+  height: 500px
+
+  div {
+    border: 2px;
+    border-style: solid;
+    padding: 5px;
+  }
+}
+
+.a-table {
+  float: left;
+  padding: 5px;
+  border: 5px;
+  margin: 20px;
+}
+
+th {
+  font-size: 20px;
+}
+
+.box {
+  border: 2px;
+  border-style: solid;
+  padding: 4px;
+}
+
+.sub {
+  font-weight: bold;
+}

@@ -10,7 +10,7 @@
     </div>
   <% end %>
 <center>
-  <h1>Leave a Review for <%=@vendor.name%></h1>  
+  <h1>Leave a Review for <%=@vendor.name%></h1>
 </center>
 <!-- <h3>Thanks for writing a review!  As you write, please consider answering the following questions:</h3>
  --><!-- <ul>
@@ -41,9 +41,9 @@
   	<%= f.label :rating, "5" %>
     <%= f.radio_button :rating, "5" %>
   </p>
-  
+
   <%= f.hidden_field :vendor_id, :value => params[:vendor_id] %>
-  <%= f.hidden_field :user_id, :value => session[:user_id] %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
 
   <%= f.submit "Submit Review" %>
 <% end %>
