@@ -1,5 +1,13 @@
 const VendorCell = React.createClass({
 
+  formattedRatingNoun: function(num_reviews) {
+    if (num_reviews === 1) {
+      return 'review'
+    } else {
+      return 'reviews'
+    }
+  },
+
   formattedRating: function(rating) {
     var formattedRating = 0
 
@@ -20,7 +28,7 @@ const VendorCell = React.createClass({
 
             <div className='title'><a href={'/vendors/'+this.props.vendor.vendor_id}>{this.props.vendor.vendor_name}</a></div>
             <div className='sub-title'>
-              <span>{this.props.vendor.vendor_reviews_count} reviews</span>
+              <span>{this.props.vendor.vendor_reviews_count} {this.formattedRatingNoun(this.props.vendor.vendor_reviews_count)}</span>
 
             </div>
         </div>
