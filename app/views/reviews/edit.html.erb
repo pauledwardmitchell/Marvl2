@@ -1,7 +1,8 @@
 <h1>Edit your review</h1>
 
+<div class='form-group'>
 <%= form_for [@vendor, @review] do |f| %>
-  
+
   <p>
     <%= f.label :title, "Review Title:" %><br>
     <%= f.text_field :title %>
@@ -11,21 +12,22 @@
     <%= f.text_area :content %>
   </p>
   <p>
-  	<p>Rate your experience with this vendor. (1 = Poor, 5 = Excellent)</p>
-  	<%= f.label :rating, "1" %>
+    <p>Rate your experience with this vendor. (1 = Poor, 5 = Excellent)</p>
+    <%= f.label :rating, "1" %>
     <%= f.radio_button :rating, "1" %>
-  	<%= f.label :rating, "2" %>
+    <%= f.label :rating, "2" %>
     <%= f.radio_button :rating, "2" %>
-  	<%= f.label :rating, "3" %>
+    <%= f.label :rating, "3" %>
     <%= f.radio_button :rating, "3" %>
-  	<%= f.label :rating, "4" %>
+    <%= f.label :rating, "4" %>
     <%= f.radio_button :rating, "4" %>
-  	<%= f.label :rating, "5" %>
+    <%= f.label :rating, "5" %>
     <%= f.radio_button :rating, "5" %>
   </p>
-  
+
   <%= f.hidden_field :vendor_id, :value => params[:vendor_id] %>
   <%= f.hidden_field :user_id, :value => session[:user_id] %>
 
   <%= f.submit "Submit Review" %>
 <% end %>
+</div>

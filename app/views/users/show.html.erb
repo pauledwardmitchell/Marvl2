@@ -7,7 +7,7 @@
       <h5> Admin Tools </h5>
       <ul>
         <li><%= link_to "View/Manage Users", admin_users_path %>
-        <li><%= link_to "View Uploaded Documents", documents_path %>
+        <%# link_to "View Uploaded Documents", documents_path %>
         <li><%= link_to "Add Organisation", new_organisation_path %>
         <li><%= link_to "Add Service Category", new_category_path %>
       </ul>
@@ -52,9 +52,9 @@
   <% end %>
 
   <%# link to make oneself ambassador %>
-  <% if !@ambassador && @user.id == current_user.id %>
-    | <%= link_to "Become an Ambassador", new_role_path %>
-  <% end %>
+  <%# if !@ambassador && @user.id == current_user.id %>
+     <%# link_to "Become an Ambassador", new_role_path %>
+  <%# end %>
 
 <div class="user-profile user-info">
 
