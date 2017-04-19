@@ -366,9 +366,17 @@ h4 {
 }
 
 .reviews {
-    padding: 10px;
-    margin-top: 5px;
-    max-width: 50%;
+  padding: 10px;
+  margin-top: 5px;
+  max-width: 75%;
+  min-width: 50px;
+}
+
+.individual-review {
+  padding: 20px;
+  margin-top: 5px;
+  max-width: 90%;
+  background-color: $blue-light;
 }
 
 #vendor-information{
@@ -428,6 +436,11 @@ h4 {
 .emphasis-font {
   font-size: 30px;
   margin-left: 10px;
+
+  h3 {
+  margin-top: 30px;
+  margin-left: 20px;
+  }
 }
 
 .session {
