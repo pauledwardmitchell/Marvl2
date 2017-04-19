@@ -1,13 +1,21 @@
 <div id="page-top">
 <div id="vendor-information">
-  <h1><%= @vendor.name %> </h1><br>
-  <span class="star-rating" data-score=<%= @vendor.avg_rating %>></span><br><br>
+  <h1><%= @vendor.name %> </h1>
+ <div class='star-container'>
+  <div class="right-container">
+    <div class="right-decorator-show">
+      <%= react_component 'BigStar', {rating: @vendor.avg_rating, style: 'show'} %>
+    </div>
+  </div>
+ </div>
+
+  <br>
 
   <div id="review-link"><%=image_tag("outline-star.png")%><%= link_to "Write a Review", new_vendor_review_path(@vendor) %></div><br><br>
 
   <h4>
     <% if @vendor.street_address %>
-      <%= @vendor.street_address %>,<br> 
+      <%= @vendor.street_address %>,<br>
       <%= @vendor.city %>, <%= @vendor.state %>, <%= @vendor.zip_code %>
     <% end %>
   </h4>
