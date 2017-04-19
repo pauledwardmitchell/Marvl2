@@ -1,10 +1,16 @@
 <h1>CPA Member Institutions</h1>
 
-<%= link_to "See our Members on an Interactive Map", locations_path %>
+<%# link_to "See our Members on an Interactive Map", locations_path %>
+
+<% if admin? %>
+  <center>
+    <h4>Can't find an Organisation that should be here? <%= link_to 'Add it now!', new_organisation_path %> </h4>
+  </center>
+<% end %>
 
 <% @organisations.each do |organisation| %>
   <h3><%= organisation.name %></h3>
-  
+
   <% if organisation.locations.length == 0 %>
 
     <%= link_to "Add location info", new_location_path(org: organisation.id) %>
@@ -31,7 +37,7 @@
 <br>
 
 <% if admin? %>
-  <h4>ADMIN: Can't find an Organisation that should be here? <%= link_to 'Add it now!', new_organisation_path %> </h4>
+  <h4>Can't find an Organisation that should be here? <%= link_to 'Add it now!', new_organisation_path %> </h4>
 <% end %>
 
 </center>

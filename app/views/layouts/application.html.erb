@@ -47,21 +47,21 @@
             <% if user_signed_in? %>
               <%= link_to "find a vendor", vendors_path %>
               <span class="separator"></span>
-              <%= link_to "reviews", reviews_path %>
-              <span class="separator"></span>
               <%= link_to "forum", forum_path  %>
+
               <% if admin? %>
               <span class="separator"></span>
                 <%= link_to "our members", users_path %>
               <% end %>
+
             <% else %>
               <%= link_to "find a vendor", vendors_path %>
             <% end %>
 
 
-            <% if user_signed_in? %>
+            <%# if user_signed_in? %>
               <%# link_to "document uploader" , new_document_path(session[:user_id]) %>
-            <% end %>
+            <%# end %>
           </div>
         </div> <%# /stripe %>
       </div> <%# /nav %>
