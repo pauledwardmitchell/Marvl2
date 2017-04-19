@@ -1,38 +1,18 @@
-<% if admin? %>
 
-<div class="admin-tools right">
-  <h5> Admin Tools </h5>
-  <ul>
-    <li><%= link_to "Write a new post", new_post_path %>
-  </ul> 
-</div>
-  
-<% end %>
+<center>
+  <h1><%= link_to 'marvl forum', forum_path %></h1>
 
-<h1><%= link_to 'marvl forum', forum_path %></h1>
+  <p>
+    Welcome to the forum! Here, CPA admins post helpful information from around the community.
+  </p>
 
-<p>
-Welcome to the forum! Here, CPA admins post helpful information from around the community.
-</p>
+  <% if admin? %>
+    <%= link_to "Write a new post", new_post_path %>
+  <% end %>
 
-<div class="forum-search">
-	<%= form_tag forum_path, :method => 'get' do %>
-    <%= label :title, :search, "Search posts by title words: " %>
-    <%= text_field_tag :title_search, params[:title_search] %>
-    <%= submit_tag "Search", :name => nil %>
-	<% end %>
-</div>
+  <br><br>
+</center>
 
-<% if @searched_posts != nil && @searched_posts.length > 0 %>
-  <h1> Search returns: </h1>
-  <%= render "shared/forum_posts", locals: { posts: @searched_posts } %>
-
-<% elsif @searched_posts != nil %>
-  <h3>No posts matched your search.</h3>
-
-<% elsif @posts && @posts.length > 0 %>
   <div class="posts">
-    <h1>recent posts</h1>
     <%= render "shared/forum_posts", locals: { posts: @posts } %>
   </div>
-<%end %>
