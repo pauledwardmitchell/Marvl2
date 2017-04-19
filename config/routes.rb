@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
 
   get '/forum', to: 'posts#forum'
-  get '/reviews', to: 'reviews#index'
+  # get '/reviews', to: 'reviews#index'
   get '/documents/:id/download', to: 'documents#download', as: :download
 
   resources :users
@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   resources :password_resets
 
   resources :vendors do
-    resources :reviews
+    resources :reviews, except: :index
     resources :offerings
   end
 
