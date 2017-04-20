@@ -1,8 +1,14 @@
 @import "layout";
 
+.user-info {
 
-.user-info h1, .user-info h3 {
-  margin: 10px auto;
+  h1 {
+    margin: 10px auto;
+    text-align: left;
+  }
+  h3 {
+    margin: 10px auto;
+  }
 }
 
 .user-profile.user-info, .user-profile .recent-reviews-inner{
