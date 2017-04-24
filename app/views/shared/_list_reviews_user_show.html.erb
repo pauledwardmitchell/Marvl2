@@ -7,9 +7,8 @@
 
       <% if review.title %> <%# 3 %>
         <div id="name">
-          Review of <%=link_to review.vendor.name, vendor_path(review.vendor.id) %> titled <%= link_to review.title, vendor_review_path(review.vendor_id, review.id) %>
+          Review of <%=link_to review.vendor.name, vendor_path(review.vendor.id) %> titled <%= link_to review.title, vendor_review_path(review.vendor_id, review.id) %><br>
           <% if review.rating %> <%# 4 %>
-            <span> | </span>
             <span class="star-rating" data-score=<%= review.rating %>></span>
             <br>
           <% end %> <%# 4 %>
