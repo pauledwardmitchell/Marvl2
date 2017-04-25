@@ -20,6 +20,6 @@
         <p><%= link_to "Admin: Edit This Review", edit_vendor_review_path(@vendor, @review) %></p>
       <% end %>
 
-      <% if @review.user_id == current_user.id  %>
+      <% if @review.user_id == current_user.id %>
         <p><%= link_to "Edit My Review", edit_vendor_review_path(@vendor, @review) %></p>
       <% end %>
