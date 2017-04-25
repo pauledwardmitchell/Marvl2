@@ -88,6 +88,8 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => "www.marvl.org" }
 
+  config.action_mailer.asset_host = 'www.marvl.org'
+
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.delivery_method = :smtp
