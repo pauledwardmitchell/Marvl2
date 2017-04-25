@@ -14,48 +14,48 @@
 // Original CoffeeScript version: http://reed.github.io/turbolinks-compatibility/google_analytics.html
 // Prefer Universal Analytics if you can, as Google recommends
 
-var googleAnalytics = {
-  load: function() {
-    var firstScript;
-    window._gaq = [];
-    window._gaq.push(["_setAccount", googleAnalytics.analyticsId()]);
+// var googleAnalytics = {
+//   load: function() {
+//     var firstScript;
+//     window._gaq = [];
+//     window._gaq.push(["_setAccount", googleAnalytics.analyticsId()]);
 
-    ga = document.createElement("script");
-    ga.type = "text/javascript";
-    ga.async = true;
-    ga.src = (document.location.protocol === "https:" ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
-    firstScript = document.getElementsByTagName("script")[0];
-    firstScript.parentNode.insertBefore(ga, firstScript);
+//     ga = document.createElement("script");
+//     ga.type = "text/javascript";
+//     ga.async = true;
+//     ga.src = (document.location.protocol === "https:" ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+//     firstScript = document.getElementsByTagName("script")[0];
+//     firstScript.parentNode.insertBefore(ga, firstScript);
 
-    if(typeof(Turbolinks) !== undefined && Turbolinks.supported) {
-      document.addEventListener("page:change", function() {
-        googleAnalytics.trackPageview();
-      }, true)
-    }
-    else {
-      googleAnalytics.trackPageview();
-    }
-  },
-  trackPageview: function(url) {
-    if ( !googleAnalytics.isLocalRequest() ) {
-      if (url) {
-        window._gaq.push(["_trackPageview", url]);
-      }
-      else {
-        window._gaq.push(["_trackPageview"]);
-      }
-      window._gaq.push(["_trackPageLoadTime"]);
-    }
-  },
-  isLocalRequest: function() {
-    return googleAnalytics.documentDomainIncludes("local");
-  },
-  documentDomainIncludes: function(str) {
-    return document.domain.indexOf(str) !== -1;
-  },
-  analyticsId: function() {
-    return 'UA-98079940-1';
-  }
-};
+//     if(typeof(Turbolinks) !== undefined && Turbolinks.supported) {
+//       document.addEventListener("page:change", function() {
+//         googleAnalytics.trackPageview();
+//       }, true)
+//     }
+//     else {
+//       googleAnalytics.trackPageview();
+//     }
+//   },
+//   trackPageview: function(url) {
+//     if ( !googleAnalytics.isLocalRequest() ) {
+//       if (url) {
+//         window._gaq.push(["_trackPageview", url]);
+//       }
+//       else {
+//         window._gaq.push(["_trackPageview"]);
+//       }
+//       window._gaq.push(["_trackPageLoadTime"]);
+//     }
+//   },
+//   isLocalRequest: function() {
+//     return googleAnalytics.documentDomainIncludes("local");
+//   },
+//   documentDomainIncludes: function(str) {
+//     return document.domain.indexOf(str) !== -1;
+//   },
+//   analyticsId: function() {
+//     return 'UA-98079940-1';
+//   }
+// };
 
-googleAnalytics.load();
+// googleAnalytics.load();
