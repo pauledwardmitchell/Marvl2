@@ -3,7 +3,7 @@
 <div class="forum-post">
   <h2><%= post.title %></h2>
 
-  <% if post.user.full_name %>
+  <% if post.user %>
     <h5>posted by: <%= post.user.full_name %></h5>
   <% end %>
 
