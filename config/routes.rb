@@ -21,9 +21,9 @@ Rails.application.routes.draw do
 
   root to: "sessions#index"
 
+  get '/super_admin_delete', to: 'users#super_admin_delete'
 
   get '/forum', to: 'posts#forum'
-  # get '/reviews', to: 'reviews#index'
   get '/documents/:id/download', to: 'documents#download', as: :download
 
   resources :users
