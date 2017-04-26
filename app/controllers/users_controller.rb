@@ -25,6 +25,22 @@ before_action :authenticate_user!, except: [ :new, :create ]
     if @super_admin_emails.include? current_user.email
       @active_users = User.all.where.not(status: 'inactive')
       @inactive_users = User.all.where(status: 'inactive')
+      @users = User.all
+      @user_hashes = []
+
+      @active_users.each do |user|
+        user_hash = {
+          user_id: user.id,
+          user_name: user.full_name,
+          user_status: user.status,
+          user_organisation: user.organisation.name || nil
+        }
+        @user_hashes << user_hash
+      end
+
+      @data = {
+        user_hashes: @user_hashes
+      }
     else
       redirect_to current_user
     end
@@ -40,7 +56,6 @@ before_action :authenticate_user!, except: [ :new, :create ]
   end
 
   def update
-    binding.pry
   	@user = User.find(params[:id])
     if @user.update(user_params)
 	  	redirect_to @user

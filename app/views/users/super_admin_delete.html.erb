@@ -1,23 +1,6 @@
-<h1>Make Users Inactive</h1>
 
-<% @active_users.each do |user| %>
+<%= react_component 'DeactivateUsersPanel', {data: @data}, authenticity_token: form_authenticity_token %>
 
-  <% if user.first_name != nil && user.last_name != nil %>
-
-    <h5><%= user.full_name %> | <%= user.id %> </h5>
-
-  <% else %>
-
-    <p>BAD NAME DATA</p>
-
-  <% end %>
-
-  <%= form_for [user] do |f| %>
-    <%= f.hidden_field :status, :value => 'inactive' %>
-    <%= f.submit "Make user inactive" %>
-  <% end %>
-
-<% end %>
 
 <h2>Inactive Users</h2>
 
