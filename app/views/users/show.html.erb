@@ -10,6 +10,11 @@
         <%# link_to "View Uploaded Documents", documents_path %>
         <li><%= link_to "Add Organisation", new_organisation_path %>
         <li><%= link_to "Add Service Category", new_category_path %>
+
+        <% if ['felipe@cpa.coop', 'lauren@cpa.coop', 'pauledwardmitchell@gmail.com'].include? current_user.email %>
+          <li> <%= link_to "Deactivate a User", super_admin_delete_path %></li>
+        <% end %>
+
       </ul>
     </div>
 	<% end %>

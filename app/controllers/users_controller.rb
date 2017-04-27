@@ -20,6 +20,33 @@ before_action :authenticate_user!, except: [ :new, :create ]
     @roles = Role.new
   end
 
+  def super_admin_delete
+    @super_admin_emails = ['felipe@cpa.coop', 'lauren@cpa.coop', 'pauledwardmitchell@gmail.com']
+    if @super_admin_emails.include? current_user.email
+      @active_users = User.all.where.not(status: 'inactive')
+      @inactive_users = User.all.where(status: 'inactive')
+      @users = User.all
+      @user_hashes = []
+
+      @active_users.each do |user|
+        user_hash = {
+          user_id: user.id,
+          user_name: user.full_name,
+          user_status: user.status,
+          user_organisation: user.organisation.name || nil
+        }
+        @user_hashes << user_hash
+      end
+
+      @data = {
+        user_hashes: @user_hashes
+      }
+    else
+      redirect_to current_user
+    end
+
+  end
+
   def edit
   	@user = User.find(params[:id])
   	unless @user.id == current_user.id
@@ -29,9 +56,8 @@ before_action :authenticate_user!, except: [ :new, :create ]
   end
 
   def update
-  	@user = current_user #User.find(params[:id])
-    if @user.id == current_user.id
-  		@user.update_attributes(title: params[:user][:title], first_name: params[:user][:first_name], last_name: params[:user][:last_name], email: params[:user][:email])
+  	@user = User.find(params[:id])
+    if @user.update(user_params)
 	  	redirect_to @user
     else
       flash[:access] = "Unauthorized access, please contact an administrator if you believe this error is incorrect."
@@ -69,30 +95,6 @@ before_action :authenticate_user!, except: [ :new, :create ]
     end
   end
 
-  # def edit_password
-  #   @user = User.find(current_user.id)
-  # end
-
-  # def patch_password
-  #   @user = User.find(current_user.id)
-
-  #   if @user && @user.authenticate(params[:old_password])
-  #     if params[:new_password_1] == params[:new_password_2]
-  #       @user.password = params[:new_password_1]
-  #       @user.save!
-  #       flash[:notice] = "You have successfully changed your password."
-  #       redirect_to @user
-  #     else
-  #       flash[:notice] = "Your new password entries do not match.  Please try again."
-  #       redirect_to editpassword_path
-  #     end
-  #   else
-  #     flash[:notice] = "Please enter your old password correctly."
-  #     redirect_to editpassword_path
-  #   end
-
-  # end
-
   # def patch
   #   @user = User.find(current_user.id)
   #   if @user.update(user_params)
@@ -100,14 +102,6 @@ before_action :authenticate_user!, except: [ :new, :create ]
   #   else
   #     render "edit_password"
   #   end
-  # end
-
-  # def ambassadors
-  #   @ambassadors = Role.where(name: "Ambassador")
-  # end
-
-  # def samplevendors
-  #   @vendors = Vendor.all.limit(5)
   # end
 
   private
