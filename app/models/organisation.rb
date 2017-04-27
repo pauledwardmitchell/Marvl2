@@ -5,5 +5,9 @@ class Organisation < ApplicationRecord
 
   validates :name, presence: true
   validates :name, uniqueness: true
-  
+
+  def active_users
+    self.users.all.where.not(status: 'inactive')
+  end
+
 end
