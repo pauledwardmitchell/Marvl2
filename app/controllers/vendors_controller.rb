@@ -6,7 +6,7 @@ class VendorsController < ApplicationController
   def index
     @user = current_user
     @vendors = Vendor.all
-    @categories = Category.all
+    @categories = Category.all.order('name ASC')
     @offerings = Offering.all
     @vendor = Vendor.new
     @vendor_hashes = []
