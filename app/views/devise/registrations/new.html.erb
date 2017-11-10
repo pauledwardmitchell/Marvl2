@@ -18,11 +18,11 @@
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
   </div>
-  
+
   <div>
     <%= f.label :organisation %><br><span> (If your organization is not listed, please choose <strong>*New CPA Partner*</strong>.)<br></span>
     <%= f.select(:organisation_id) do %>
-      <%= content_tag(:option, 'Choose an Organisation', {value: nil, selected: "selected", disabled: true}) %>
+      <%= content_tag(:option, 'Choose an Organization', {value: nil, selected: "selected", disabled: true}) %>
       <% Organisation.all.each do |c| -%>
         <%= content_tag(:option, c.name, value: c.id) %>
       <% end %>
