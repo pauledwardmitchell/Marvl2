@@ -4,7 +4,7 @@ before_action :authenticate_user!, except: [ :new, :create ]
 
   def index
     if admin?
-      @organisations = Organisation.all
+      @organisations = Organisation.order(:name)
     else
       flash[:access] = "Unauthorized access, please log in."
       redirect_to '/'
