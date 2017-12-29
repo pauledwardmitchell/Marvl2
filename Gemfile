@@ -41,6 +41,8 @@ gem 'react-rails'
 
 gem 'devise'
 
+gem 'trix'
+
 group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
