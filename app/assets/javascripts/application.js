@@ -17,6 +17,7 @@
 //= require jquery_ujs
 //= require jquery.raty
 //= require underscore
+//= require trix
 
 
 //= require gmaps/google

@@ -7,7 +7,7 @@
     <h5>posted by: <%= post.user.full_name %></h5>
   <% end %>
 
-  <p><%= post.content.html_safe %></p>
+  <p><%= sanitize post.content.html_safe %></p>
 
   <% if post.user.id == current_user.id || current_user.email == "felipe@cpa.coop" %>
    <%= link_to "Edit post", edit_post_path(post) %>
