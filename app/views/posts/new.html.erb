@@ -7,7 +7,7 @@
 
     <%= f.label :content %>
     <%= f.hidden_field :content, id: :content_body%>
-    <trix-editor input="content_body"></trix-editor>
+    <trix-editor style="background-color: white;" input="content_body"></trix-editor><br>
 
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.submit "Publish post" %>
