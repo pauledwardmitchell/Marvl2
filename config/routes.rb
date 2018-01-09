@@ -63,4 +63,6 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'data', to: 'categories#data'
+
 end

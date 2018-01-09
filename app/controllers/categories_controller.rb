@@ -26,6 +26,11 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def data
+    @categories = Category.all
+    render json: @categories
+  end
+
   private
   def category_params
   	params.require(:category).permit(:name)
