@@ -28,7 +28,10 @@ class CategoriesController < ApplicationController
 
   def data
     @categories = Category.all
-    render json: @categories
+    @vendors = Vendor.all
+    @data = {categories: @categories,
+             vendors: @vendors}
+    render json: @data
   end
 
   private
