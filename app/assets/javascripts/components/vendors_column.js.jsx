@@ -6,6 +6,8 @@ const VendorsColumn = React.createClass({
         <center>
           <h4>Can&apos;t find the Vendor you are looking for?</h4>
           <a href='/vendors/new'><h4>Add a vendor now!</h4></a>
+          <h4>Can&apos;t find the Category you are looking for?</h4>
+          <h4>Email your idea to paul@cpa.coop!</h4>
         </center>
       </div>
     )
