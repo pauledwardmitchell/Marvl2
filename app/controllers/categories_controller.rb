@@ -29,10 +29,8 @@ class CategoriesController < ApplicationController
   def data
     @categories = Category.all
     @vendors = Vendor.all
-    @tag = current_user.id
     @data = {categories: @categories,
-             vendors: @vendors,
-             tag: @tag}
+             vendors: @vendors}
     render json: @data
   end
 
