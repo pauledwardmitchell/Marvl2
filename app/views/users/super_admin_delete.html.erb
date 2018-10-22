@@ -22,3 +22,33 @@
   <% end %>
 
 <% end %>
+
+<h1>All reviews</h1>
+
+<table style="width:100%">
+  <tr>
+    <th>Organization</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Vendor Name</th>
+    <th>Review</th>
+    <th>Rating</th>
+  </tr>
+
+<% @users.each do |u| %>
+
+    <% u.reviews.each do |r| %>
+
+      <tr>
+        <td><%= r.user.organisation.name %></td>
+        <td><%= r.user.full_name %></td>
+        <td><%= r.user.email %></td>
+        <td><%= r.vendor.name %></td>
+        <td><%= r.content %></td>
+        <td><%= r.rating %></td>
+      </tr>
+
+    <% end %>
+<% end %>
+
+</table>
