@@ -43,6 +43,8 @@ gem 'devise'
 
 gem 'trix'
 
+gem 'sprockets', '~> 3.7.2'
+
 group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
